@@ -1,7 +1,7 @@
 {
   "name": "Banana Clean",
   "short_name": "Banana Clean",
-  "description": "Убирает водяной знак Gemini / Nano Banana при скачивании изображения.",
+  "description": "Removes Gemini / Nano Banana watermark on image download.",
   "icons": [
     {
       "src": "/icon-192.png",
