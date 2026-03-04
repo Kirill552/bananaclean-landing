@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+  <!-- SEO -->
+  <title>Remove Gemini Watermark — Banana Clean</title>
+  <meta name="description" content="Free Chrome extension that removes the Gemini / Nano Banana watermark when you download an image. Runs locally in your browser — no uploads, no accounts.">
+  <link rel="canonical" href="https://bananaclean.app/">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="120x120" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- OG -->
+  <meta property="og:title" content="Banana Clean — Remove Gemini Watermark">
+  <meta property="og:description" content="Removes the Gemini / Nano Banana watermark on download. Runs locally, no server uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bananaclean.app/">
+  <meta property="og:image" content="https://bananaclean.app/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Banana Clean">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Banana Clean — Remove Gemini Watermark">
+  <meta name="twitter:description" content="Removes the Gemini / Nano Banana watermark on download. Runs locally, no server uploads.">
+  <meta name="twitter:image" content="https://bananaclean.app/og-image.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Schema.org: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Banana Clean",
+    "url": "https://bananaclean.app/",
+    "logo": "https://bananaclean.app/logo-512.png",
+    "sameAs": [
+      "https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://t.me/KroVik"
+    }
+  }
+  </script>
+
+  <!-- Schema.org: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Banana Clean",
+    "alternateName": ["Banana Clean", "Gemini Watermark Remover", "Nano Banana Remover"],
+    "url": "https://bananaclean.app/",
+    "inLanguage": "en",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://bananaclean.app/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Schema.org: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Banana Clean",
+    "alternateName": "Gemini Watermark Remover",
+    "description": "Chrome extension that removes the Gemini (Nano Banana) watermark from AI-generated images on download. Local processing in under 100ms.",
+    "applicationCategory": "BrowserExtension",
+    "operatingSystem": "Chrome, Edge, Opera, Brave",
+    "softwareVersion": "1.2.0",
+    "datePublished": "2026-02-28",
+    "screenshot": "https://bananaclean.app/og-image.png",
+    "featureList": [
+      "Automatic Gemini watermark removal on download",
+      "Reverse alpha blending in under 100ms",
+      "Local processing — no server uploads",
+      "Works on gemini.google.com and aistudio.google.com",
+      "48x48 and 96x96 pixel watermark masks"
+    ],
+    "installUrl": "https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah",
+    "downloadUrl": "https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Banana Clean",
+      "url": "https://bananaclean.app/"
+    }
+  }
+  </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bananaclean.app/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Gemini watermark (Nano Banana)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nano Banana is Google's image generation model built into Gemini and AI Studio. It adds a small banana logo to the bottom-right corner of every generated image — 48x48 or 96x96 pixels depending on resolution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remove the Gemini watermark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Install Banana Clean from the Chrome Web Store. The extension intercepts downloads from Gemini and AI Studio and removes the watermark automatically. Generate an image, click Download, get a clean file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You get 15 free cleanings. After that, a one-time $4.99 payment unlocks unlimited lifetime access — no subscriptions, no recurring fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which browsers are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chrome, Edge, Opera, and Brave — any Chromium-based browser that supports extensions from the Chrome Web Store."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it upload my images to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The watermark removal runs entirely in your browser using the Canvas API. Your images never leave your machine."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which websites are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "gemini.google.com and aistudio.google.com — both Google services that use the Nano Banana image generator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if Google changes the watermark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Watermark masks are bundled with the extension and updated through the Chrome Web Store. New pattern — new update."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <p class="hero__badge">Chrome · Edge · Opera · Brave</p>
+        <h1>Remove <span class="accent">Gemini</span> watermark<span class="cursor" aria-hidden="true">_</span></h1>
+        <p class="hero__subtitle">
+          Banana Clean is a browser extension that strips the Gemini watermark (Nano Banana)
+          in&nbsp;&lt;100ms on download. 15 free cleans included, then $4.99 for lifetime PRO.
+          No sign-ups. No server uploads. Everything runs locally.
+        </p>
+        <div class="hero__actions">
+          <a href="#install" class="btn-primary" id="hero-install-link">Install Free →</a>
+        </div>
+        <p class="hero__hint">Local processing — your images never leave your machine.</p>
+      </div>
+      <div class="hero__visual">
+        <div class="ba-slider" id="ba-slider">
+          <div class="ba-slider__before">
+            <div class="ba-slider__img">
+              <img src="assets/hero_before_zoom.png" alt="Close-up of an image with the Gemini watermark" loading="eager">
+            </div>
+            <span class="ba-slider__label">BEFORE</span>
+          </div>
+          <div class="ba-slider__after">
+            <div class="ba-slider__img">
+              <img src="assets/hero_after_zoom.png" alt="Close-up of the same image after watermark removal" loading="eager">
+            </div>
+            <span class="ba-slider__label">AFTER</span>
+          </div>
+          <div class="ba-slider__handle" id="ba-handle">
+            <div class="ba-slider__line"></div>
+            <div class="ba-slider__knob">⟷</div>
+            <div class="ba-slider__line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro block -->
+  <section class="geo-intro" id="about">
+    <div class="container">
+      <p class="geo-intro__text">
+        <strong>Banana Clean</strong> is a browser extension that automatically removes the Gemini
+        watermark from images generated by Google's Nano Banana model.
+        Works in Chrome, Edge, Opera, and Brave.
+        No server uploads — processing happens locally via Canvas API
+        in&nbsp;&lt;100ms.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="steps section-alt" id="how">
+    <div class="container">
+      <h2>How to remove the <span class="accent">Gemini</span> watermark</h2>
+      <div class="steps__grid">
+        <div class="step-card">
+          <span class="step-card__num accent">01</span>
+          <h3>Open Gemini</h3>
+          <p>gemini.google.com or AI Studio — the extension works on both</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num accent">02</span>
+          <h3>Generate an image</h3>
+          <p>Prompt, style, aspect ratio — business as usual</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num accent">03</span>
+          <h3>Click "Download"</h3>
+          <p>The extension intercepts the file automatically</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num accent">04</span>
+          <h3>Get a clean file</h3>
+          <p>No banana. Reverse alpha blending in&nbsp;&lt;100ms</p>
+        </div>
+      </div>
+      <div class="steps__formula">
+        <code>original = (watermarked - α × logo) / (1 - α)</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat">
+          <span class="stat__value accent" data-target="100" data-prefix="<" data-suffix="ms">&lt;100ms</span>
+          <span class="stat__label">per image processing time</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value accent" id="publicCleanedCount">0</span>
+          <span class="stat__label">images cleaned</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value accent">48 + 96px</span>
+          <span class="stat__label">two watermark mask sizes</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value accent">100%</span>
+          <span class="stat__label">data stays on your device</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRO offer -->
+  <section class="pro-soon-block section-alt" id="pro-section">
+    <div class="container pro-soon__panel">
+      <div class="pro-soon__copy">
+        <p class="pro-soon__eyebrow">PRO</p>
+        <h2>15 free cleans. Then <span class="accent">$4.99</span> for life.</h2>
+        <p>
+          Start with 15 free watermark removals — no card required.
+          When you run out, unlock unlimited access with a single payment.
+          No subscriptions, no recurring charges.
+        </p>
+      </div>
+      <div class="pro-soon__card">
+        <ul class="pro-soon__list">
+          <li>Unlimited watermark removals forever</li>
+          <li>All future updates included</li>
+          <li>One-time payment, no subscription</li>
+          <li>Crypto accepted (via NOWPayments)</li>
+        </ul>
+        <a href="/pricing" class="btn-primary pro-soon__button" id="pricing-link">Get PRO — $4.99 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section-alt" id="faq">
+    <div class="container">
+      <h2>Questions about <span class="accent">Banana Clean</span></h2>
+      <div class="faq__list">
+        <details class="faq__item">
+          <summary>What is the Gemini watermark (Nano Banana)?</summary>
+          <div class="faq__answer">
+            <p>Nano Banana is Google's image generation model built into Gemini and AI Studio. It adds a small banana logo to the bottom-right corner of every generated image — 48x48 or 96x96 pixels depending on resolution.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>How do I remove the Gemini watermark?</summary>
+          <div class="faq__answer">
+            <p>Install Banana Clean from the Chrome Web Store. The extension intercepts downloads from Gemini and AI Studio and removes the watermark automatically. Generate an image, click Download, get a clean file.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Is it free?</summary>
+          <div class="faq__answer">
+            <p>You get 15 free cleanings — no card, no sign-up. After that, a one-time $4.99 payment unlocks unlimited lifetime access. No subscriptions.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Which browsers are supported?</summary>
+          <div class="faq__answer">
+            <p>Chrome, Edge, Opera, and Brave — any Chromium-based browser that supports extensions from the Chrome Web Store.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Does it upload my images to a server?</summary>
+          <div class="faq__answer">
+            <p>No. Watermark removal runs entirely in your browser using the Canvas API. Your images never leave your machine. The extension sends only anonymous usage events for product analytics.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Which websites does it work on?</summary>
+          <div class="faq__answer">
+            <p>gemini.google.com and aistudio.google.com — both Google services that use the Nano Banana image generator. The extension cleans images when you download via the built-in Download button.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Is it safe?</summary>
+          <div class="faq__answer">
+            <p>Images are processed right in your browser and never sent anywhere. For product analytics, the extension sends only anonymous usage events — no image data, no personal information.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>What if Google changes the watermark?</summary>
+          <div class="faq__answer">
+            <p>Watermark masks are bundled with the extension and updated through the Chrome Web Store. New pattern — new update.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="install">
+    <div class="container cta__inner">
+      <h2>One click — forget the banana</h2>
+      <p class="cta__sub">10-second install. Works right away.</p>
+      <div class="cta__buttons">
+        <a href="#" class="btn-primary" id="chrome-link">Install from Chrome Web Store →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-install" id="stickyInstall" hidden>
+    <a href="#install" class="sticky-install__button" id="sticky-install-link">Install Free →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">© 2026 Banana Clean</span>
+      <nav class="footer__links">
+        <a href="/pricing">Pricing</a>
+        <a href="/privacy">Privacy</a>
+        <a href="https://t.me/KroVik" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </nav>
+      <span class="footer__version">v1.2.0</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
