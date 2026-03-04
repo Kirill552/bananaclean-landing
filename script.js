@@ -217,6 +217,7 @@ function sendLandingAnalytics(eventType, properties) {
   if (!LANDING_ANALYTICS_URL) return;
 
   const payload = JSON.stringify({
+    uid: 'landing-en',
     event: eventType,
     source: 'landing-en',
     ts: Date.now(),
