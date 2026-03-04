@@ -9,7 +9,7 @@ const SLIDER_MIN_POSITION = 1;
 const SLIDER_MAX_POSITION = 99;
 const SLIDER_INITIAL_POSITION = 85;
 const PUBLIC_COUNTER_REFRESH_MS = 30000;
-const CREATE_PAYMENT_URL = 'https://nanobanana-clean.ru/api/create-payment';
+const CREATE_PAYMENT_URL = 'https://banana-clean.app/api/create-payment';
 
 bindFaqAccordion();
 bindStatsCounter();
