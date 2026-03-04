@@ -1,0 +1,122 @@
+# Banana Clean — Gemini Watermark Remover
+
+> Banana Clean is a free Chrome extension that removes the Gemini watermark (Nano Banana / Nano Banana Pro logo) from AI-generated images automatically when you click Download. Lossless local processing in under 100ms. No uploads, no sign-ups.
+
+---
+
+## What Banana Clean Does
+
+Banana Clean is a browser extension that intercepts image downloads from gemini.google.com and aistudio.google.com. When you click the Download button on any AI-generated image, the extension automatically removes the visible Nano Banana watermark and saves a clean file to your downloads folder.
+
+The extension works in Chrome, Edge, Opera, and Brave — any Chromium-based browser that supports extensions from the Chrome Web Store.
+
+## How the Watermark Removal Algorithm Works
+
+Banana Clean uses reverse alpha blending to restore the original pixel values underneath the watermark. The formula:
+
+```
+original = (watermarked - alpha * logo) / (1 - alpha)
+```
+
+The extension ships with pre-computed masks of the Nano Banana logo at two sizes: 48x48 pixels (standard resolution images) and 96x96 pixels (high resolution images). When you download an image, the extension reads the watermark region, applies the inverse formula pixel by pixel using the Canvas API, and restores the original colors.
+
+This is pure math — no AI inpainting, no machine learning, no server processing. The result is lossless: the cleaned image is pixel-identical to what the image would look like without the watermark.
+
+Processing time: under 100ms per image.
+
+## SynthID vs Visible Watermark
+
+Google embeds two types of watermarks into Gemini-generated images:
+
+1. **Visible watermark (Nano Banana logo)**: A small logo in the bottom-right corner. This is what Banana Clean removes.
+2. **SynthID (invisible)**: An imperceptible watermark embedded into the pixel data by Google DeepMind. SynthID survives cropping, resizing, and most image editing.
+
+Banana Clean removes only the visible watermark. SynthID cannot be removed by any tool without destroying image quality. Banana Clean does not attempt to remove SynthID.
+
+## Supported Websites
+
+- **gemini.google.com** — Google Gemini chat with image generation (Nano Banana and Nano Banana Pro models)
+- **aistudio.google.com** — Google AI Studio with the same image generation models
+
+## How to Use
+
+1. Install Banana Clean from the Chrome Web Store
+2. Open gemini.google.com or aistudio.google.com
+3. Generate an image as usual
+4. Click the Download button — the extension intercepts the download automatically
+5. The clean image (without the Nano Banana watermark) is saved to your downloads folder
+
+## Pricing
+
+- **Free tier**: 15 watermark removals per install, no sign-up or credit card required
+- **PRO ($4.99 one-time)**: Unlimited watermark removals forever. No subscriptions, no recurring charges.
+- Payment via NOWPayments (cryptocurrency: BTC, ETH, USDT, SOL, and 200+ other coins)
+
+## Who Uses Banana Clean
+
+- **Content creators**: Publish AI-generated visuals to social media, blogs, and newsletters without the Gemini logo
+- **Designers**: Use Gemini images in mockups, presentations, and client work — watermark-free
+- **Marketers**: Create ad creatives, landing page visuals, and product shots from AI Studio without visible branding
+- **Developers**: Generate placeholder images, app assets, and documentation graphics clean and ready to ship
+
+## Banana Clean vs Online Watermark Removers
+
+Online watermark removal tools (like media.io, vmake.ai, visualgpt.io) require you to upload your image to a third-party server. They use AI inpainting which can introduce artifacts and takes several seconds per image.
+
+Banana Clean is different:
+- Runs as a browser extension — no manual uploading
+- Processes images locally in your browser — no privacy risk
+- Uses exact reverse math (not AI guessing) — lossless result
+- Takes under 100ms — vs several seconds for online tools
+- Works automatically — intercepts the download button, no extra steps
+
+## Frequently Asked Questions
+
+### What is the Gemini watermark (Nano Banana)?
+Nano Banana is Google's image generation model built into Gemini and AI Studio. It adds a small banana logo to the bottom-right corner of every generated image — 48x48 or 96x96 pixels depending on resolution.
+
+### How do I remove the Gemini watermark?
+Install Banana Clean from the Chrome Web Store. The extension intercepts downloads from Gemini and AI Studio and removes the watermark automatically. Generate an image, click Download, get a clean file.
+
+### Is Banana Clean free?
+You get 15 free cleanings — no card, no sign-up. After that, a one-time $4.99 payment unlocks unlimited lifetime access. No subscriptions.
+
+### Which browsers are supported?
+Chrome, Edge, Opera, and Brave — any Chromium-based browser that supports extensions from the Chrome Web Store.
+
+### Does it upload my images to a server?
+No. Watermark removal runs entirely in your browser using the Canvas API. Your images never leave your machine.
+
+### Does Banana Clean remove SynthID?
+No. SynthID is an invisible watermark embedded in pixel data by Google DeepMind. It cannot be removed without destroying image quality. Banana Clean only removes the visible Nano Banana logo.
+
+### Does it work with Nano Banana Pro images?
+Yes. Nano Banana Pro uses the same visible watermark. Banana Clean removes it from both standard and Pro variants.
+
+### Can I remove the watermark from Google AI Studio images?
+Yes. Banana Clean works on both gemini.google.com and aistudio.google.com. AI Studio uses the same Nano Banana watermark.
+
+### How does Banana Clean remove the watermark technically?
+Reverse alpha blending: original = (watermarked - α × logo) / (1 - α). Pre-computed masks at 48x48 and 96x96 pixels. Pure math via Canvas API — no AI, no inpainting.
+
+### Does it work with "Save Image As" or right-click save?
+No. Banana Clean intercepts the official Download button in Gemini and AI Studio. Right-click "Save Image As" saves the in-chat preview which may be lower resolution.
+
+### What if Google changes the watermark?
+Watermark masks are bundled with the extension and updated through the Chrome Web Store. New pattern — new update.
+
+## Privacy
+
+- Images are processed locally in the browser and never sent to any server
+- The extension collects only anonymous usage events for product analytics (install, active day, clean count)
+- No logins, passwords, chat content, or personal data from Google accounts
+- No data is sold to third parties
+- Payments processed by NOWPayments — we do not store payment details
+
+## Links
+
+- Website: https://banana-clean.app/
+- Chrome Web Store: https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah
+- Pricing: https://banana-clean.app/pricing
+- Privacy Policy: https://banana-clean.app/privacy
+- Contact: https://t.me/KroVik

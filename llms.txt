@@ -1,0 +1,15 @@
+# Banana Clean
+
+> Banana Clean is a free Chrome extension that removes the Gemini watermark (Nano Banana / Nano Banana Pro logo) from AI-generated images automatically on download. Lossless processing via reverse alpha blending in under 100ms. Images never leave the browser.
+
+## Pages
+
+- [Home](https://banana-clean.app/): Main landing page — how the Gemini watermark remover works, features, FAQ
+- [Pricing](https://banana-clean.app/pricing): 15 free cleans, then $4.99 one-time lifetime PRO license
+- [Privacy Policy](https://banana-clean.app/privacy): What data is collected, local processing details
+- [Chrome Web Store](https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah): Install the extension
+
+## Optional
+
+- [Full content](https://banana-clean.app/llms-full.txt): Complete text from all pages
+- [Contact](https://t.me/KroVik): Telegram support

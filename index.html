@@ -6,8 +6,8 @@
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
   <!-- SEO -->
-  <title>Remove Gemini Watermark — Free Chrome Extension | Banana Clean</title>
-  <meta name="description" content="Banana Clean removes the Gemini watermark (Nano Banana) automatically when you download images from Gemini or AI Studio. 15 free cleans, then $4.99 lifetime. Local processing, no uploads.">
+  <title>Gemini Watermark Remover — Free Chrome Extension | Banana Clean</title>
+  <meta name="description" content="Banana Clean is a free Gemini watermark remover extension for Chrome. Removes the Nano Banana logo from Gemini and AI Studio images automatically on download. Lossless, local, under 100ms. 15 free cleans, then $4.99 lifetime.">
   <link rel="canonical" href="https://banana-clean.app/">
   <link rel="alternate" hreflang="en" href="https://banana-clean.app/">
   <link rel="alternate" hreflang="ru" href="https://nanobanana-clean.ru/">
@@ -19,18 +19,19 @@
   <link rel="icon" type="image/png" sizes="120x120" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="help" type="text/plain" href="/llms.txt">
 
   <!-- OG -->
-  <meta property="og:title" content="Banana Clean — Remove Gemini Watermark">
-  <meta property="og:description" content="Removes the Gemini / Nano Banana watermark on download. Runs locally, no server uploads.">
+  <meta property="og:title" content="Gemini Watermark Remover — Free Chrome Extension | Banana Clean">
+  <meta property="og:description" content="Free Gemini watermark remover. Removes the Nano Banana logo on download — lossless, local, under 100ms.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://banana-clean.app/">
   <meta property="og:image" content="https://banana-clean.app/og-image.png">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Banana Clean">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Banana Clean — Remove Gemini Watermark">
-  <meta name="twitter:description" content="Removes the Gemini / Nano Banana watermark on download. Runs locally, no server uploads.">
+  <meta name="twitter:title" content="Gemini Watermark Remover — Free Chrome Extension | Banana Clean">
+  <meta name="twitter:description" content="Free Gemini watermark remover. Removes the Nano Banana logo on download — lossless, local, under 100ms.">
   <meta name="twitter:image" content="https://banana-clean.app/og-image.png">
 
   <!-- Fonts -->
@@ -82,8 +83,9 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Banana Clean",
-    "alternateName": "Gemini Watermark Remover",
-    "description": "Chrome extension that removes the Gemini (Nano Banana) watermark from AI-generated images on download. Local processing in under 100ms.",
+    "alternateName": ["Gemini Watermark Remover", "Nano Banana Watermark Remover"],
+    "description": "Free Chrome extension that removes the Gemini watermark (Nano Banana / Nano Banana Pro) from AI-generated images on download. Lossless local processing in under 100ms.",
+    "keywords": "gemini watermark remover, nano banana watermark, remove gemini watermark, ai studio watermark, nano banana pro watermark remover",
     "applicationCategory": "BrowserExtension",
     "operatingSystem": "Chrome, Edge, Opera, Brave",
     "softwareVersion": "1.2.0",
@@ -91,10 +93,11 @@
     "screenshot": "https://banana-clean.app/og-image.png",
     "featureList": [
       "Automatic Gemini watermark removal on download",
-      "Reverse alpha blending in under 100ms",
-      "Local processing — no server uploads",
+      "Lossless reverse alpha blending in under 100ms",
+      "Local processing — no server uploads, no privacy risk",
       "Works on gemini.google.com and aistudio.google.com",
-      "48x48 and 96x96 pixel watermark masks"
+      "Supports Nano Banana and Nano Banana Pro watermarks",
+      "48x48 and 96x96 pixel pre-computed watermark masks"
     ],
     "installUrl": "https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah",
     "downloadUrl": "https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah",
@@ -261,6 +264,22 @@
           "@type": "Answer",
           "text": "No. Banana Clean intercepts the official Download button in Gemini and AI Studio. Use the Download button for best quality and automatic watermark removal."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Banana Clean remove SynthID?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Google embeds two watermarks: the visible Nano Banana logo (removed by Banana Clean) and SynthID — an invisible watermark in pixel data by Google DeepMind. SynthID cannot be removed without destroying image quality. Banana Clean only removes the visible logo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with Nano Banana Pro images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Nano Banana Pro uses the same visible watermark. Banana Clean removes it from both standard and Pro variants with masks for 48x48 and 96x96 pixel watermarks."
+        }
       }
     ]
   }
@@ -273,11 +292,11 @@
     <div class="container hero__grid">
       <div class="hero__text">
         <p class="hero__badge">Chrome · Edge · Opera · Brave</p>
-        <h1>Remove <span class="accent">Gemini</span> watermark<span class="cursor" aria-hidden="true">_</span></h1>
+        <h1><span class="accent">Gemini</span> watermark remover<span class="cursor" aria-hidden="true">_</span></h1>
         <p class="hero__subtitle">
-          Banana Clean is a browser extension that strips the Gemini watermark (Nano Banana)
-          in&nbsp;&lt;100ms on download. 15 free cleans included, then $4.99 for lifetime PRO.
-          No sign-ups. No server uploads. Everything runs locally.
+          Banana Clean is a free Chrome extension that removes the Gemini watermark (Nano Banana / Nano Banana Pro)
+          automatically on download. Lossless removal in&nbsp;&lt;100ms — no uploads, no sign-ups.
+          15 free cleans included, then $4.99 for lifetime PRO.
         </p>
         <div class="hero__actions">
           <a href="#install" class="btn-primary" id="hero-install-link">Install Free →</a>
@@ -312,11 +331,10 @@
   <section class="geo-intro" id="about">
     <div class="container">
       <p class="geo-intro__text">
-        <strong>Banana Clean</strong> is a browser extension that automatically removes the Gemini
-        watermark from images generated by Google's Nano Banana model.
-        Works in Chrome, Edge, Opera, and Brave.
-        No server uploads — processing happens locally via Canvas API
-        in&nbsp;&lt;100ms.
+        <strong>Banana Clean</strong> is a free Gemini watermark remover extension that automatically
+        strips the Nano Banana logo from images generated by Google Gemini and Google AI Studio.
+        Works in Chrome, Edge, Opera, and Brave. Lossless removal via reverse alpha blending
+        — your images never leave the browser. Processing takes under 100ms per image.
       </p>
     </div>
   </section>
@@ -324,7 +342,7 @@
   <!-- How it works -->
   <section class="steps section-alt" id="how">
     <div class="container">
-      <h2>How to remove the <span class="accent">Gemini</span> watermark</h2>
+      <h2>How to remove the <span class="accent">Gemini</span> watermark from images</h2>
       <div class="steps__grid">
         <div class="step-card">
           <span class="step-card__num accent">01</span>
@@ -476,6 +494,18 @@
           <summary>Does it work with "Save Image As" or right-click save?</summary>
           <div class="faq__answer">
             <p>No. Banana Clean intercepts the official Download button in Gemini and AI Studio. Right-click "Save Image As" saves the in-chat preview which may be lower resolution. Use the Download button for the best quality and automatic watermark removal.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Does Banana Clean remove SynthID?</summary>
+          <div class="faq__answer">
+            <p>No. Google embeds two types of watermarks: the visible Nano Banana logo in the corner (this is what Banana Clean removes) and SynthID — an invisible watermark baked into pixel data by Google DeepMind. SynthID cannot be removed by any tool without destroying the image quality. Banana Clean only removes the visible logo.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Does it work with Nano Banana Pro images?</summary>
+          <div class="faq__answer">
+            <p>Yes. Nano Banana Pro uses the same visible watermark as the standard Nano Banana model. Banana Clean removes it from both. The extension ships with masks for both 48x48 and 96x96 pixel watermarks used across all Nano Banana variants.</p>
           </div>
         </details>
       </div>
