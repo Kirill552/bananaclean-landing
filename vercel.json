@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/api/:path*", "destination": "https://85.208.85.104/api/:path*" },
     { "source": "/pricing", "destination": "/pricing.html" },
     { "source": "/privacy", "destination": "/privacy.html" }
   ]
