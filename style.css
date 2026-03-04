@@ -966,6 +966,13 @@ section { position: relative; }
   font-family: var(--font-heading);
 }
 
+.pricing-card__hint {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 .pricing-trial {
   margin-top: 24px;
   padding: 16px 24px;
