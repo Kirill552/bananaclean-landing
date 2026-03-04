@@ -6,9 +6,12 @@
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
   <!-- SEO -->
-  <title>Remove Gemini Watermark — Banana Clean</title>
-  <meta name="description" content="Free Chrome extension that removes the Gemini / Nano Banana watermark when you download an image. Runs locally in your browser — no uploads, no accounts.">
+  <title>Remove Gemini Watermark — Free Chrome Extension | Banana Clean</title>
+  <meta name="description" content="Banana Clean removes the Gemini watermark (Nano Banana) automatically when you download images from Gemini or AI Studio. 15 free cleans, then $4.99 lifetime. Local processing, no uploads.">
   <link rel="canonical" href="https://banana-clean.app/">
+  <link rel="alternate" hreflang="en" href="https://banana-clean.app/">
+  <link rel="alternate" hreflang="ru" href="https://nanobanana-clean.ru/">
+  <link rel="alternate" hreflang="x-default" href="https://banana-clean.app/">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -124,6 +127,47 @@
   }
   </script>
 
+  <!-- Schema.org: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Remove the Gemini Watermark from AI-Generated Images",
+    "description": "Remove the Nano Banana watermark from Gemini and Google AI Studio images using the Banana Clean browser extension. Takes under 10 seconds.",
+    "totalTime": "PT10S",
+    "tool": {
+      "@type": "HowToTool",
+      "name": "Banana Clean Chrome Extension"
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Install Banana Clean",
+        "text": "Install the Banana Clean extension from the Chrome Web Store. Works in Chrome, Edge, Opera, and Brave."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Open Gemini or AI Studio",
+        "text": "Navigate to gemini.google.com or aistudio.google.com and generate an image as usual."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Click Download",
+        "text": "Click the Download button on any generated image. The extension intercepts the download automatically."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Get a clean image",
+        "text": "The watermark is removed using reverse alpha blending in under 100ms. The clean file is saved to your downloads folder."
+      }
+    ]
+  }
+  </script>
+
   <!-- Schema.org: FAQPage -->
   <script type="application/ld+json">
   {
@@ -184,6 +228,38 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Watermark masks are bundled with the extension and updated through the Chrome Web Store. New pattern — new update."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Banana Clean remove the watermark technically?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Banana Clean uses reverse alpha blending: original = (watermarked - α × logo) / (1 - α). Pre-computed masks at 48x48 and 96x96 pixels. Pure math via Canvas API — no AI, no inpainting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I remove the watermark from Google AI Studio images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Banana Clean works on both gemini.google.com and aistudio.google.com. AI Studio uses the same Nano Banana watermark."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Banana Clean and online watermark removers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Online tools require uploading images to a server. Banana Clean runs locally in your browser — no uploads, no waiting, no privacy risk. Processing takes under 100ms vs several seconds for online tools."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with Save Image As or right-click save?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Banana Clean intercepts the official Download button in Gemini and AI Studio. Use the Download button for best quality and automatic watermark removal."
         }
       }
     ]
@@ -378,6 +454,55 @@
             <p>Watermark masks are bundled with the extension and updated through the Chrome Web Store. New pattern — new update.</p>
           </div>
         </details>
+        <details class="faq__item">
+          <summary>How does Banana Clean remove the watermark technically?</summary>
+          <div class="faq__answer">
+            <p>Banana Clean uses reverse alpha blending: <code>original = (watermarked - α × logo) / (1 - α)</code>. The extension has pre-computed masks of the Nano Banana logo at 48x48 and 96x96 pixels. When you download an image, it reads the watermark region, applies the inverse formula pixel by pixel using the Canvas API, and restores the original colors. No AI, no inpainting — pure math.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Can I remove the watermark from Google AI Studio images?</summary>
+          <div class="faq__answer">
+            <p>Yes. Banana Clean works on both gemini.google.com and aistudio.google.com. Google AI Studio uses the same Nano Banana image generator, so the watermark is identical and removed the same way.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>What is the difference between Banana Clean and online watermark removers?</summary>
+          <div class="faq__answer">
+            <p>Online tools require you to upload your image to a third-party server. Banana Clean works as a browser extension — it intercepts the download automatically and removes the watermark locally in your browser. No uploads, no waiting, no privacy risk. Processing takes under 100ms vs several seconds for online tools.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Does it work with "Save Image As" or right-click save?</summary>
+          <div class="faq__answer">
+            <p>No. Banana Clean intercepts the official Download button in Gemini and AI Studio. Right-click "Save Image As" saves the in-chat preview which may be lower resolution. Use the Download button for the best quality and automatic watermark removal.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who uses it -->
+  <section class="use-cases" id="use-cases">
+    <div class="container">
+      <h2>Who uses <span class="accent">Banana Clean</span></h2>
+      <div class="steps__grid">
+        <div class="step-card">
+          <h3>Content creators</h3>
+          <p>Publish AI-generated visuals to social media, blogs, and newsletters without the Gemini logo.</p>
+        </div>
+        <div class="step-card">
+          <h3>Designers</h3>
+          <p>Use Gemini images in mockups, presentations, and client work — watermark-free.</p>
+        </div>
+        <div class="step-card">
+          <h3>Marketers</h3>
+          <p>Create ad creatives, landing page visuals, and product shots from AI Studio without visible branding.</p>
+        </div>
+        <div class="step-card">
+          <h3>Developers</h3>
+          <p>Generate placeholder images, app assets, and documentation graphics clean and ready to ship.</p>
+        </div>
       </div>
     </div>
   </section>
