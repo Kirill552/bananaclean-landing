@@ -1,6 +1,6 @@
 // Banana Clean EN Landing — интерактив
 
-const FALLBACK_ANALYTICS_ORIGIN = 'https://nanobanana-clean.ru';
+const FALLBACK_ANALYTICS_ORIGIN = 'https://banana-clean.app';
 const LANDING_API_ORIGIN = resolveLandingApiOrigin();
 const LANDING_ANALYTICS_URL = LANDING_API_ORIGIN ? LANDING_API_ORIGIN + '/collect' : '';
 const LANDING_PUBLIC_METRICS_URL = LANDING_API_ORIGIN ? LANDING_API_ORIGIN + '/api/public-metrics' : '';
@@ -22,7 +22,7 @@ bindBuyPro();
 
 function resolveLandingApiOrigin() {
   if (window.location.protocol === 'file:') return FALLBACK_ANALYTICS_ORIGIN;
-  return FALLBACK_ANALYTICS_ORIGIN;
+  return window.location.origin;
 }
 
 // --- FAQ аккордеон ---
