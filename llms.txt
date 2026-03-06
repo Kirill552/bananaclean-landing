@@ -11,6 +11,8 @@
 - [How to Remove the Gemini Watermark](https://banana-clean.app/blog/how-to-remove-gemini-watermark): Step-by-step guide to removing the Nano Banana watermark
 - [What Is SynthID?](https://banana-clean.app/blog/what-is-synthid-watermark): How Google's invisible watermark works and what can be removed
 - [Gemini Images Copyright](https://banana-clean.app/blog/gemini-images-copyright-commercial-use): Commercial use rules for Gemini-generated images
+- [Google AI Studio Watermark](https://banana-clean.app/blog/google-ai-studio-watermark): How to remove the watermark from AI Studio images
+- [Nano Banana Pro Watermark](https://banana-clean.app/blog/nano-banana-pro-watermark): Nano Banana model versions and watermark removal
 - [Chrome Web Store](https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah): Install the extension
 
 ## Optional

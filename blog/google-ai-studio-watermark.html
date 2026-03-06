@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google AI Studio Watermark: How to Remove It | Banana Clean</title>
+  <meta name="description" content="Images generated in Google AI Studio carry the same Nano Banana watermark as Gemini. Here's how to remove it automatically with a Chrome extension or manually.">
+  <link rel="canonical" href="https://banana-clean.app/blog/google-ai-studio-watermark">
+  <meta name="robots" content="index,follow">
+
+  <meta property="og:title" content="Google AI Studio Watermark: How to Remove It">
+  <meta property="og:description" content="AI Studio images have the same Nano Banana watermark as Gemini. Remove it automatically or manually.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://banana-clean.app/blog/google-ai-studio-watermark">
+  <meta property="og:image" content="https://banana-clean.app/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Banana Clean">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../blog.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Google AI Studio Watermark: How to Remove It from Generated Images",
+    "description": "AI Studio uses the same Nano Banana watermark as Gemini. How to remove it automatically or manually.",
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "author": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/" },
+    "publisher": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/", "logo": { "@type": "ImageObject", "url": "https://banana-clean.app/logo-512.png" } },
+    "mainEntityOfPage": "https://banana-clean.app/blog/google-ai-studio-watermark",
+    "image": "https://banana-clean.app/og-image.png"
+  }
+  </script>
+</head>
+<body>
+  <nav class="blog-nav">
+    <div class="container blog-nav__inner">
+      <a href="/" class="blog-nav__logo">Banana Clean</a>
+      <div class="blog-nav__links">
+        <a href="/">Home</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="blog-article">
+    <div class="container">
+      <div class="blog-article__header">
+        <span class="blog-article__date">March 6, 2026</span>
+        <h1>Google AI Studio Watermark: How to Remove It from Generated Images</h1>
+        <p class="blog-article__lead">Google AI Studio at aistudio.google.com is where developers test Gemini models, including image generation. Every image you generate and download comes with the same Nano Banana watermark you see in the consumer Gemini app. Here is how to deal with it.</p>
+      </div>
+      <div class="blog-article__body">
+
+        <h2>AI Studio and Gemini use the same watermark</h2>
+
+        <p>If you have used both gemini.google.com and aistudio.google.com for image generation, you may have noticed the output looks identical in terms of watermarking. That is because both services run the same underlying model (Nano Banana / Nano Banana Pro / Nano Banana 2) and apply the same post-processing pipeline before serving the download.</p>
+
+        <p>The watermark is a semi-transparent logo composited onto the bottom-right corner of the image. Standard resolution outputs get a 48x48 pixel mark. Higher resolution images &mdash; and AI Studio tends to produce these more often, since developers frequently request larger outputs &mdash; get a 96x96 pixel version of the same logo.</p>
+
+        <p>Both the visible Nano Banana logo and the invisible SynthID watermark are applied. This article focuses on removing the visible one.</p>
+
+        <h2>What makes AI Studio different from Gemini</h2>
+
+        <p>For watermark removal purposes, the differences between AI Studio and Gemini matter:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Gemini (gemini.google.com)</th>
+              <th>AI Studio (aistudio.google.com)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Audience</td>
+              <td>General users</td>
+              <td>Developers, researchers</td>
+            </tr>
+            <tr>
+              <td>Max resolution</td>
+              <td>1024x1024 (typical)</td>
+              <td>Up to 2048x2048</td>
+            </tr>
+            <tr>
+              <td>Watermark size</td>
+              <td>Usually 48x48</td>
+              <td>Often 96x96 (higher-res outputs)</td>
+            </tr>
+            <tr>
+              <td>API access</td>
+              <td>No</td>
+              <td>Yes (Gemini API)</td>
+            </tr>
+            <tr>
+              <td>Batch generation</td>
+              <td>One at a time</td>
+              <td>Possible via API</td>
+            </tr>
+            <tr>
+              <td>Download method</td>
+              <td>Download button in chat</td>
+              <td>Download button in playground</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The key difference for watermark removal: AI Studio outputs are often larger, which means they use the 96x96 mask instead of the 48x48 one. Any removal tool needs to handle both sizes.</p>
+
+        <h2>Removing the watermark in the AI Studio web UI</h2>
+
+        <p>When you use AI Studio's image generation playground in the browser (not the API), the workflow is the same as Gemini. You type a prompt, the model generates an image, you click Download.</p>
+
+        <p>Banana Clean works here automatically. The extension monitors downloads from <code>aistudio.google.com</code> the same way it monitors <code>gemini.google.com</code>. It intercepts the fetch request, applies reverse alpha blending with the appropriate mask (48px or 96px, selected based on image dimensions), and returns a clean file.</p>
+
+        <p>Setup:</p>
+
+        <ol>
+          <li>Install <a href="https://chromewebstore.google.com/detail/banana-clean-%E2%80%94-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah">Banana Clean from Chrome Web Store</a></li>
+          <li>Open aistudio.google.com (refresh if already open)</li>
+          <li>Generate an image in the playground</li>
+          <li>Click Download &mdash; the file is already clean</li>
+        </ol>
+
+        <p>No configuration. The extension detects the AI Studio domain and activates automatically.</p>
+
+        <h2>The API problem: watermarks on programmatic downloads</h2>
+
+        <p>This is where things get more interesting for developers. When you call the Gemini API to generate images programmatically &mdash; using the REST endpoint or a client library &mdash; the response includes the image data with the watermark already applied. The image bytes you receive have the Nano Banana logo composited in.</p>
+
+        <p>Banana Clean cannot help here. The extension works by intercepting browser downloads on specific Google domains. An API call from your Python script or Node.js server does not go through the browser &mdash; the extension never sees it.</p>
+
+        <h3>Options for API-generated images</h3>
+
+        <p>If you are generating images via the Gemini API and need them without the visible watermark, you have a few paths:</p>
+
+        <ul>
+          <li>Apply the reverse alpha blending formula yourself. The math is straightforward: <code>original = (watermarked - alpha * 255) / (1 - alpha)</code>. You need the watermark mask (48x48 or 96x96), which is the same static image for every output. Libraries like Pillow (Python) or Sharp (Node.js) can do the pixel math.</li>
+          <li>Use a headless browser that loads aistudio.google.com with the Banana Clean extension installed. Puppeteer with Chrome can load extensions. This is overengineered for most use cases, but it works if you want the exact same pipeline.</li>
+          <li>Generate images in the web UI when you need clean outputs, and use the API for cases where the watermark does not matter (prototyping, batch testing, internal tools).</li>
+        </ul>
+
+        <h3>Implementing reverse alpha blending in Python</h3>
+
+        <p>For developers who want to remove the watermark from API responses programmatically, here is the approach:</p>
+
+        <pre><code>from PIL import Image
+import numpy as np
+
+def remove_watermark(image_path, mask_path, output_path):
+    img = np.array(Image.open(image_path)).astype(np.float64)
+    mask = np.array(Image.open(mask_path)).astype(np.float64)
+
+    # mask alpha = max(R,G,B) / 255
+    alpha = np.max(mask[:, :, :3], axis=2) / 255.0
+    h, w = alpha.shape
+
+    # apply to bottom-right corner
+    region = img[-h:, -w:, :3]
+    for c in range(3):
+        a = alpha
+        valid = a > 0.002  # threshold
+        a_clamped = np.clip(a, 0, 0.99)
+        region[:, :, c] = np.where(
+            valid,
+            np.clip((region[:, :, c] - a_clamped * 255) / (1 - a_clamped), 0, 255),
+            region[:, :, c]
+        )
+    img[-h:, -w:, :3] = region
+    Image.fromarray(img.astype(np.uint8)).save(output_path)</code></pre>
+
+        <p>You will need the mask PNG files. These are the same masks Banana Clean uses internally &mdash; static images of the Nano Banana logo at 48x48 and 96x96 pixels. The mask's RGB channels encode the watermark shape, and the alpha for each pixel is derived from <code>max(R, G, B) / 255</code>.</p>
+
+        <h2>AI Studio image generation parameters</h2>
+
+        <p>When testing image generation in AI Studio, the output resolution depends on the model and parameters you choose. Nano Banana 2 Pro, the latest model as of March 2026, supports outputs up to 2048x2048 pixels. At that resolution, the watermark uses the 96x96 mask.</p>
+
+        <p>Some specifics worth knowing:</p>
+
+        <ul>
+          <li>Images under ~1024px on the longest side get the 48x48 watermark</li>
+          <li>Images above that threshold get the 96x96 version</li>
+          <li>The watermark position is always bottom-right, flush with the image edge</li>
+          <li>The watermark is applied server-side, before the image reaches your browser or API response</li>
+          <li>JPEG and PNG outputs both carry the watermark</li>
+        </ul>
+
+        <h2>Does removing the AI Studio watermark affect SynthID?</h2>
+
+        <p>No. SynthID is embedded during the generation process, not during post-processing. It lives in the statistical structure of the pixel data across the entire image. Removing the visible Nano Banana logo from the corner does not touch SynthID in any way. The invisible watermark persists after cleaning.</p>
+
+        <p>This means platforms with SynthID detection can still identify your image as AI-generated regardless of whether the visible mark is present.</p>
+
+        <h2>FAQ</h2>
+
+        <h3>Does Banana Clean work on both gemini.google.com and aistudio.google.com?</h3>
+        <p>Yes. The extension monitors both domains. When you click Download on either site, the watermark is removed automatically before the file hits your downloads folder.</p>
+
+        <h3>Why does AI Studio use a larger watermark than Gemini?</h3>
+        <p>It does not always. The watermark size depends on image resolution, not the platform. AI Studio often produces higher-resolution outputs (up to 2048px), which triggers the 96x96 mask. Gemini web typically outputs at 1024px, which gets the 48x48 mask. Same logic, different defaults.</p>
+
+        <h3>Can I use the Gemini API free tier for image generation?</h3>
+        <p>Google offers a free tier for the Gemini API with rate limits. Image generation is available on both free and paid tiers, but the free tier has lower quotas. The watermark is identical regardless of tier.</p>
+
+        <h3>Will Banana Clean work if Google changes the AI Studio URL?</h3>
+        <p>The extension matches against <code>aistudio.google.com</code> as declared in its manifest. If Google changes the domain, an extension update would be needed. The download URL pattern (<code>lh3.googleusercontent.com/rd-gg</code>) is the actual trigger for interception, and that has remained stable across both platforms.</p>
+
+      </div>
+      <div class="blog-article__cta">
+        <h2>Works on AI Studio too</h2>
+        <p>Banana Clean removes the Nano Banana watermark from both Gemini and AI Studio images. 15 free cleans, then $4.99 for life.</p>
+        <a href="https://chromewebstore.google.com/detail/banana-clean-%E2%80%94-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah" class="btn-primary">Install from Chrome Web Store</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Banana Clean</span>
+      <nav class="footer__links">
+        <a href="/pricing">Pricing</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/blog">Blog</a>
+      </nav>
+    </div>
+  </footer>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
