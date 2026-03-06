@@ -20,6 +20,12 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://banana-clean.app/pricing">
   <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://banana-clean.app/og-image.png">
+  <meta property="og:site_name" content="Banana Clean">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pricing — Banana Clean PRO">
+  <meta name="twitter:description" content="15 free cleans, then $4.99 for unlimited lifetime access.">
+  <meta name="twitter:image" content="https://banana-clean.app/og-image.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,6 +152,66 @@
     </div>
   </footer>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Banana Clean PRO",
+    "description": "Unlimited Gemini watermark removal. One-time payment, lifetime access. Removes the Nano Banana logo from AI-generated images automatically on download.",
+    "brand": { "@type": "Organization", "name": "Banana Clean" },
+    "offers": {
+      "@type": "Offer",
+      "price": "4.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "url": "https://banana-clean.app/pricing"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://banana-clean.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://banana-clean.app/pricing" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does payment work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Click \"Buy PRO\" and you will be redirected to NOWPayments, a crypto payment processor. Pay with any supported cryptocurrency. After confirmation, you will receive a license key." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which cryptocurrencies are accepted?",
+        "acceptedAnswer": { "@type": "Answer", "text": "NOWPayments supports 200+ cryptocurrencies including BTC, ETH, USDT, SOL, and many others." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this a subscription?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. It is a one-time payment. You pay $4.99 once and get lifetime access. No recurring charges, no renewal fees." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use the key on multiple devices?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each key activates one browser installation. If you need access on a second device, you will need a second key." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I reinstall the browser?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Save your license key. After reinstalling, enter it again in the extension popup and your PRO access will be restored." }
+      }
+    ]
+  }
+  </script>
   <script src="script.js" defer></script>
 
   <!-- Vercel Analytics -->
