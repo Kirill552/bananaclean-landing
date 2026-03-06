@@ -7,6 +7,10 @@
 - [Home](https://banana-clean.app/): Main landing page — how the Gemini watermark remover works, features, FAQ
 - [Pricing](https://banana-clean.app/pricing): 15 free cleans, then $4.99 one-time lifetime PRO license
 - [Privacy Policy](https://banana-clean.app/privacy): What data is collected, local processing details
+- [Blog](https://banana-clean.app/blog): Guides on Gemini watermarks, SynthID, and commercial use of AI images
+- [How to Remove the Gemini Watermark](https://banana-clean.app/blog/how-to-remove-gemini-watermark): Step-by-step guide to removing the Nano Banana watermark
+- [What Is SynthID?](https://banana-clean.app/blog/what-is-synthid-watermark): How Google's invisible watermark works and what can be removed
+- [Gemini Images Copyright](https://banana-clean.app/blog/gemini-images-copyright-commercial-use): Commercial use rules for Gemini-generated images
 - [Chrome Web Store](https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah): Install the extension
 
 ## Optional
