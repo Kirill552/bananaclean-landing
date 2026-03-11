@@ -19,6 +19,7 @@ applyInstallLinks();
 bindInstallTracking();
 bindStickyInstall();
 bindBuyPro();
+bindBuyStars();
 
 function resolveLandingApiOrigin() {
   if (window.location.protocol === 'file:') return FALLBACK_ANALYTICS_ORIGIN;
@@ -175,12 +176,24 @@ function bindStickyInstall() {
 
 // --- Покупка PRO (pricing page) ---
 
+function bindBuyStars() {
+  const button = document.getElementById('buy-stars-button');
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    sendLandingAnalytics('buy_stars_clicked', { surface: 'pricing' });
+  });
+}
+
 function bindBuyPro() {
   const button = document.getElementById('buy-pro-button');
   const status = document.getElementById('buy-pro-status');
   if (!button || !status) return;
 
-  button.addEventListener('click', () => buyPro(button, status));
+  button.addEventListener('click', () => {
+    sendLandingAnalytics('buy_crypto_clicked', { surface: 'pricing' });
+    buyPro(button, status);
+  });
 }
 
 function buyPro(button, status) {
