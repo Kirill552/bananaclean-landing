@@ -64,16 +64,16 @@
           <li>No subscriptions, no recurring fees</li>
         </ul>
 
-        <a href="https://t.me/BananaCleanBot?start=pay" class="btn-primary pricing-card__buy" id="buy-stars-button" target="_blank" rel="noopener noreferrer">Pay via Telegram — 250 Stars →</a>
-        <p class="pricing-card__hint" style="margin-top:10px">Pay with Apple Pay, Google Pay, or card through Telegram. Instant delivery.</p>
+        <div id="paypal-button-container" style="margin-bottom:12px"></div>
+        <p class="pricing-card__status" id="paypal-status"></p>
+        <p class="pricing-card__hint" style="margin-top:10px">Pay with PayPal, credit card, or debit card. Instant delivery.</p>
 
         <div class="pricing-card__divider" style="margin:20px 0;border-top:1px solid rgba(255,255,255,0.1);position:relative;text-align:center">
           <span style="background:#1a1a2e;padding:0 12px;position:relative;top:-10px;font-size:12px;color:#666">or</span>
         </div>
 
-        <button type="button" class="btn-secondary pricing-card__buy" id="buy-pro-button" style="background:transparent;border:1px solid #444;color:#B0B0B0;font-size:14px">Pay with Crypto — $4.99 →</button>
-        <p class="pricing-card__status" id="buy-pro-status"></p>
-        <p class="pricing-card__hint" style="font-size:11px;color:#555">200+ cryptocurrencies via NOWPayments. USDT (TRC-20) recommended.</p>
+        <a href="https://t.me/BananaCleanBot?start=pay" class="btn-secondary pricing-card__buy" id="buy-stars-button" target="_blank" rel="noopener noreferrer" style="background:transparent;border:1px solid #444;color:#B0B0B0;font-size:14px">Pay via Telegram — 250 Stars →</a>
+        <p class="pricing-card__hint" style="font-size:11px;color:#555">Pay with Apple Pay, Google Pay, or card through Telegram.</p>
       </div>
 
       <div class="pricing-trial">
@@ -106,8 +106,8 @@
         <details class="faq__item">
           <summary>How does payment work?</summary>
           <div class="faq__answer">
-            <p><strong>Telegram Stars (recommended):</strong> Tap "Pay via Telegram", it opens @BananaCleanBot. Pay 250 Stars using Apple Pay, Google Pay, or card — right inside Telegram. You get your license key instantly.</p>
-            <p><strong>Crypto:</strong> Click "Pay with Crypto" to pay via NOWPayments with 200+ cryptocurrencies.</p>
+            <p><strong>PayPal (recommended):</strong> Click the PayPal button on the pricing page. Pay with your PayPal account, credit card, or debit card. You get your license key instantly after payment.</p>
+            <p><strong>Telegram Stars:</strong> Tap "Pay via Telegram", it opens @BananaCleanBot. Pay 250 Stars using Apple Pay, Google Pay, or card — right inside Telegram.</p>
           </div>
         </details>
         <details class="faq__item">
@@ -204,7 +204,7 @@
       {
         "@type": "Question",
         "name": "How does payment work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Telegram Stars (recommended): tap Pay via Telegram, it opens @BananaCleanBot. Pay 250 Stars using Apple Pay, Google Pay, or card. You get your license key instantly. Alternatively, pay with 200+ cryptocurrencies via NOWPayments." }
+        "acceptedAnswer": { "@type": "Answer", "text": "PayPal (recommended): click the PayPal button and pay with PayPal, credit card, or debit card. You get your license key instantly. Alternatively, pay via Telegram Stars (250 Stars) using Apple Pay, Google Pay, or card." }
       },
       {
         "@type": "Question",
@@ -229,6 +229,7 @@
     ]
   }
   </script>
+  <script src="https://www.paypal.com/sdk/js?client-id=Ae-G0TZ2sY3pqkG-fhOuBYfs0MacW7TT4adnZzWmda5vFDdGxEVq-P0mr2WPn3RdF9kvmPkj8VK52NSt&currency=USD"></script>
   <script src="script.js" defer></script>
 
   <!-- Vercel Analytics -->

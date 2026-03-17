@@ -9,7 +9,8 @@ const SLIDER_MIN_POSITION = 1;
 const SLIDER_MAX_POSITION = 99;
 const SLIDER_INITIAL_POSITION = 85;
 const PUBLIC_COUNTER_REFRESH_MS = 30000;
-const CREATE_PAYMENT_URL = 'https://banana-clean.app/api/create-payment';
+const PAYPAL_CREATE_ORDER_URL = 'https://banana-clean.app/api/create-paypal-order';
+const PAYPAL_CAPTURE_ORDER_URL = 'https://banana-clean.app/api/capture-paypal-order';
 
 bindFaqAccordion();
 bindStatsCounter();
@@ -18,7 +19,7 @@ bindBeforeAfterSlider();
 applyInstallLinks();
 bindInstallTracking();
 bindStickyInstall();
-bindBuyPro();
+bindPayPalButtons();
 bindBuyStars();
 
 function resolveLandingApiOrigin() {
@@ -185,43 +186,61 @@ function bindBuyStars() {
   });
 }
 
-function bindBuyPro() {
-  const button = document.getElementById('buy-pro-button');
-  const status = document.getElementById('buy-pro-status');
-  if (!button || !status) return;
+function bindPayPalButtons() {
+  const container = document.getElementById('paypal-button-container');
+  const status = document.getElementById('paypal-status');
+  if (!container || typeof paypal === 'undefined') return;
 
-  button.addEventListener('click', () => {
-    sendLandingAnalytics('buy_crypto_clicked', { surface: 'pricing' });
-    buyPro(button, status);
-  });
+  paypal.Buttons({
+    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+    createOrder: function () {
+      sendLandingAnalytics('buy_paypal_clicked', { surface: 'pricing' });
+      return fetch(PAYPAL_CREATE_ORDER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source: 'landing-en' })
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.orderId) return data.orderId;
+          throw new Error('No orderId');
+        });
+    },
+    onApprove: function (data) {
+      if (status) status.textContent = 'Processing payment...';
+      return fetch(PAYPAL_CAPTURE_ORDER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId: data.orderID })
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (result) {
+          if (result.success && result.key) {
+            sendLandingAnalytics('paypal_payment_completed', { surface: 'pricing' });
+            showLicenseKey(result.key);
+          } else {
+            if (status) status.textContent = 'Payment issue. Contact support via Telegram.';
+          }
+        });
+    },
+    onError: function (err) {
+      console.error('PayPal error:', err);
+      if (status) status.textContent = 'Something went wrong. Please try again.';
+    },
+    onCancel: function () {
+      if (status) status.textContent = '';
+    }
+  }).render('#paypal-button-container');
 }
 
-function buyPro(button, status) {
-  button.disabled = true;
-  status.textContent = 'Creating payment...';
-
-  fetch(CREATE_PAYMENT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ source: 'landing-en' })
-  })
-    .then((response) => {
-      if (!response.ok) throw new Error('Payment request failed');
-      return response.json();
-    })
-    .then((data) => {
-      if (data.paymentUrl) {
-        status.textContent = 'Redirecting to payment...';
-        window.location.href = data.paymentUrl;
-      } else {
-        throw new Error('No payment URL in response');
-      }
-    })
-    .catch((error) => {
-      button.disabled = false;
-      status.textContent = 'Something went wrong. Please try again.';
-      console.error('buyPro error:', error);
-    });
+function showLicenseKey(key) {
+  var container = document.querySelector('.pricing-card');
+  if (!container) return;
+  container.innerHTML =
+    '<h2 style="color:#FFD700;margin-bottom:16px">Payment successful!</h2>' +
+    '<p style="color:#B0B0B0;margin-bottom:12px">Your license key:</p>' +
+    '<div style="font-family:monospace;font-size:18px;color:#FFD700;background:#1a1a2e;padding:16px;user-select:all;word-break:break-all;border-radius:8px;margin-bottom:16px">' + key + '</div>' +
+    '<p style="color:#B0B0B0;line-height:1.6">Copy this key and paste it into the Banana Clean extension popup to activate PRO.</p>';
 }
 
 // --- Аналитика ---
