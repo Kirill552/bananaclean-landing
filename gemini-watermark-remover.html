@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KF0MVFSPWW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KF0MVFSPWW');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+  <!-- SEO -->
+  <title>Gemini Watermark Remover Online — Free Tool | Banana Clean</title>
+  <meta name="description" content="Remove Gemini and Nano Banana watermarks from images online for free. No uploads — runs 100% in your browser. Drag, drop, download clean images instantly.">
+  <link rel="canonical" href="https://banana-clean.app/gemini-watermark-remover">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- OG -->
+  <meta property="og:title" content="Gemini Watermark Remover Online — Free Tool | Banana Clean">
+  <meta property="og:description" content="Remove Gemini and Nano Banana watermarks from images online. 100% free, no uploads, runs in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://banana-clean.app/gemini-watermark-remover">
+  <meta property="og:image" content="https://banana-clean.app/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Banana Clean">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gemini Watermark Remover Online — Free Tool | Banana Clean">
+  <meta name="twitter:description" content="Remove Gemini and Nano Banana watermarks from images online. 100% free, no uploads, runs in your browser.">
+  <meta name="twitter:image" content="https://banana-clean.app/og-image.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Schema.org: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Gemini Watermark Remover Online",
+    "url": "https://banana-clean.app/gemini-watermark-remover",
+    "description": "Free online tool to remove Gemini (Nano Banana) watermarks from AI-generated images. 100% client-side — no uploads, no server processing.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any (browser-based)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Banana Clean",
+      "url": "https://banana-clean.app/"
+    },
+    "browserRequirements": "Requires a modern browser with Canvas API support"
+  }
+  </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://banana-clean.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Gemini Watermark Remover",
+        "item": "https://banana-clean.app/gemini-watermark-remover"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does this Gemini watermark remover work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool uses reverse alpha blending to mathematically undo the watermark. The formula is: original = (watermarked - alpha * logo) / (1 - alpha). Pre-computed masks at 48x48 and 96x96 pixels match the Nano Banana logo exactly. All processing runs in your browser using the Canvas API — no images are uploaded to any server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this online Gemini watermark remover free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this online tool is completely free with no limits. For automatic watermark removal on every download from Gemini and AI Studio, install the Banana Clean Chrome extension — 15 free cleans included, then PRO from $2.99/month."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my images uploaded to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All processing happens locally in your browser using the Canvas API. Your images never leave your device. There are no server calls, no cookies, no tracking of image content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What image formats are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool accepts PNG, JPEG, and WebP images — all formats used by Gemini and Google AI Studio for image downloads. The cleaned image is saved as PNG for lossless quality."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I process multiple images at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can drag and drop or select multiple images. Each image is processed independently and you can download them all individually."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between this tool and the Chrome extension?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This online tool requires you to manually upload and download each image. The Banana Clean Chrome extension removes the watermark automatically every time you click Download in Gemini or AI Studio — no extra steps needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this remove the SynthID invisible watermark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Google embeds two watermarks: the visible Nano Banana logo in the corner (this tool removes it) and SynthID, an invisible watermark in pixel data by Google DeepMind. SynthID cannot be removed without destroying image quality."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this work on Nano Banana Pro watermarks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Both standard Nano Banana and Nano Banana Pro use the same visible watermark. The tool includes masks for both 48x48 and 96x96 pixel variants."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* === Gemini Watermark Remover Tool page styles === */
+
+    .tool-nav {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-accent);
+    }
+
+    .tool-nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tool-nav__logo {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .tool-nav__links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .tool-nav__links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .tool-nav__links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero section for tool page */
+    .tool-hero {
+      padding: 64px 0 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tool-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tool-hero h1 {
+      margin-bottom: 16px;
+    }
+
+    .tool-hero__intro {
+      max-width: 680px;
+      margin: 0 auto 12px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .tool-hero__privacy {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      margin: 0 auto;
+    }
+
+    /* Drop zone */
+    .dropzone-section {
+      padding: 40px 0 64px;
+    }
+
+    .dropzone {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 32px;
+      border: 2px dashed var(--border-accent);
+      background: var(--bg-elevated);
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .dropzone:hover,
+    .dropzone--active {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    .dropzone__icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+      color: var(--accent);
+      font-family: var(--font-heading);
+    }
+
+    .dropzone__text {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .dropzone__hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .dropzone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Results area */
+    .results {
+      max-width: 720px;
+      margin: 32px auto 0;
+      display: none;
+    }
+
+    .results--visible {
+      display: block;
+    }
+
+    .results__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .results__title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+
+    .results__clear {
+      background: none;
+      border: 1px solid var(--border-accent);
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .results__clear:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .result-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 20px;
+      border: 1px solid var(--border-accent);
+      background: var(--bg-elevated);
+      margin-bottom: 16px;
+    }
+
+    .result-card__col {
+      position: relative;
+    }
+
+    .result-card__label {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 2px 8px;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--text-primary);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .result-card__img {
+      width: 100%;
+      display: block;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      background: #0f1326;
+    }
+
+    .result-card__actions {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-accent);
+    }
+
+    .result-card__info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+    }
+
+    .result-card__download {
+      display: inline-block;
+      padding: 10px 24px;
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 3px 3px 0 var(--accent);
+    }
+
+    .result-card__download:hover {
+      background: var(--accent);
+      color: var(--bg-primary);
+      box-shadow: 1px 1px 0 var(--accent);
+      transform: translate(2px, 2px);
+    }
+
+    /* Processing spinner */
+    .result-card--processing {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border-accent);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 10px;
+    }
+
+    /* How-it-works on tool page */
+    .tool-steps {
+      padding: 64px 0;
+    }
+
+    .tool-steps h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .tool-steps__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tool-step {
+      padding: 24px;
+      border-left: 3px solid var(--accent);
+      background: var(--bg-primary);
+      transition: background 0.2s;
+    }
+
+    .tool-step:hover {
+      background: var(--bg-elevated);
+    }
+
+    .tool-step__num {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .tool-step h3 {
+      margin-bottom: 8px;
+    }
+
+    .tool-step p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Extension CTA */
+    .ext-cta {
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .ext-cta__box {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      border: 2px solid var(--accent);
+      background: var(--accent-glow);
+    }
+
+    .ext-cta__box h2 {
+      margin-bottom: 16px;
+    }
+
+    .ext-cta__box p {
+      margin: 0 auto 28px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .ext-cta__buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .tool-steps__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-card {
+        grid-template-columns: 1fr;
+      }
+
+      .ext-cta__buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .ext-cta__buttons .btn-primary,
+      .ext-cta__buttons .btn-secondary {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .tool-hero {
+        padding: 48px 0 32px;
+      }
+
+      .dropzone {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="tool-nav">
+    <div class="container tool-nav__inner">
+      <a href="/" class="tool-nav__logo">Banana Clean</a>
+      <div class="tool-nav__links">
+        <a href="/">Home</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumbs (visual) -->
+  <section style="padding: 12px 0 0;">
+    <div class="container">
+      <nav class="page-breadcrumbs">
+        <a href="/">Home</a> <span>/</span> <span>Gemini Watermark Remover</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="tool-hero">
+    <div class="container">
+      <h1><span class="accent">Gemini</span> Watermark Remover — Free Online Tool</h1>
+      <p class="tool-hero__intro">
+        Remove Gemini and Nano Banana watermarks from your images instantly.
+        100% free, no uploads to servers — everything runs in your browser.
+      </p>
+      <p class="tool-hero__privacy">No sign-up required. Your images never leave your device.</p>
+    </div>
+  </section>
+
+  <!-- Drag & drop tool -->
+  <section class="dropzone-section" id="tool">
+    <div class="container">
+      <div class="dropzone" id="dropzone">
+        <span class="dropzone__icon">&darr;</span>
+        <p class="dropzone__text">Drag &amp; drop images here, or click to select</p>
+        <p class="dropzone__hint">PNG, JPEG, WebP — up to 20 images at once</p>
+        <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp" multiple>
+      </div>
+
+      <div class="results" id="results">
+        <div class="results__header">
+          <span class="results__title" id="resultsTitle">Results</span>
+          <button class="results__clear" id="clearResults">Clear all</button>
+        </div>
+        <div id="resultsList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="tool-steps section-alt" id="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="tool-steps__grid">
+        <div class="tool-step">
+          <span class="tool-step__num accent">01</span>
+          <h3>Drop your image</h3>
+          <p>Drag and drop any Gemini-generated image into the tool above, or click to browse files.</p>
+        </div>
+        <div class="tool-step">
+          <span class="tool-step__num accent">02</span>
+          <h3>Automatic removal</h3>
+          <p>The tool detects the Nano Banana watermark and applies reverse alpha blending in under 100ms.</p>
+        </div>
+        <div class="tool-step">
+          <span class="tool-step__num accent">03</span>
+          <h3>Download clean image</h3>
+          <p>Preview the before/after and download your watermark-free image. No quality loss.</p>
+        </div>
+      </div>
+      <div class="steps__formula" style="display: block; text-align: center; margin-top: 32px;">
+        <code>original = (watermarked - &alpha; &times; logo) / (1 - &alpha;)</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extension CTA -->
+  <section class="ext-cta" id="extension">
+    <div class="container">
+      <div class="ext-cta__box">
+        <h2>Want <span class="accent">automatic</span> removal on every download?</h2>
+        <p>Install the Banana Clean Chrome extension. It intercepts downloads from Gemini and AI Studio and removes the watermark automatically — no extra steps.</p>
+        <div class="ext-cta__buttons">
+          <a href="https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah" class="btn-primary" target="_blank" rel="noopener noreferrer">Install Chrome Extension →</a>
+          <a href="/pricing" class="btn-secondary">View PRO plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section-alt" id="faq">
+    <div class="container">
+      <h2>FAQ — <span class="accent">Gemini</span> Watermark Remover</h2>
+      <div class="faq__list">
+        <details class="faq__item">
+          <summary>How does this Gemini watermark remover work?</summary>
+          <div class="faq__answer">
+            <p>The tool uses reverse alpha blending to mathematically undo the watermark. The formula is: <code>original = (watermarked - &alpha; &times; logo) / (1 - &alpha;)</code>. Pre-computed masks at 48x48 and 96x96 pixels match the Nano Banana logo exactly. All processing runs in your browser using the Canvas API — no images are uploaded anywhere.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Is this online Gemini watermark remover free?</summary>
+          <div class="faq__answer">
+            <p>Yes, this online tool is completely free with no limits. For automatic watermark removal on every download from Gemini and AI Studio, install the <a href="https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah" style="color: var(--accent);">Banana Clean Chrome extension</a> — 15 free cleans included, then PRO from $2.99/month.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Are my images uploaded to a server?</summary>
+          <div class="faq__answer">
+            <p>No. All processing happens locally in your browser using the Canvas API. Your images never leave your device. There are no server calls, no cookies, no tracking of image content.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>What image formats are supported?</summary>
+          <div class="faq__answer">
+            <p>The tool accepts PNG, JPEG, and WebP images — all formats used by Gemini and Google AI Studio for downloads. The cleaned image is saved as PNG for lossless quality.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Can I process multiple images at once?</summary>
+          <div class="faq__answer">
+            <p>Yes. Drag and drop or select multiple images. Each is processed independently and you can download them all individually.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>What is the difference between this tool and the Chrome extension?</summary>
+          <div class="faq__answer">
+            <p>This online tool requires you to manually upload and download each image. The <a href="/" style="color: var(--accent);">Banana Clean extension</a> removes the watermark automatically every time you click Download in Gemini or AI Studio — no extra steps. <a href="/blog/how-to-remove-gemini-watermark" style="color: var(--accent);">Read the full comparison</a>.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Does this remove the SynthID invisible watermark?</summary>
+          <div class="faq__answer">
+            <p>No. Google embeds two watermarks: the visible Nano Banana logo in the corner (this tool removes it) and SynthID — an invisible watermark in pixel data by Google DeepMind. SynthID cannot be removed without destroying image quality. <a href="/blog/what-is-synthid-watermark" style="color: var(--accent);">Learn about SynthID</a>.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>Does this work with Nano Banana Pro watermarks?</summary>
+          <div class="faq__answer">
+            <p>Yes. Both Nano Banana and Nano Banana Pro use the same visible watermark. The tool includes masks for both 48x48 and 96x96 pixel variants.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="cta" id="install">
+    <div class="container cta__inner">
+      <h2>One click — forget the banana</h2>
+      <p class="cta__sub">Install the extension. Automatic removal on every download.</p>
+      <div class="cta__buttons">
+        <a href="https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah" class="btn-primary" target="_blank" rel="noopener noreferrer">Install from Chrome Web Store →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Banana Clean</span>
+      <nav class="footer__links">
+        <a href="/pricing">Pricing</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/blog">Blog</a>
+        <a href="https://t.me/KroVik" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </nav>
+      <span class="footer__version">v2.0.0</span>
+    </div>
+  </footer>
+
+  <!-- Watermark removal algorithm (inline, same as extension) -->
+  <script>
+  (function() {
+    'use strict';
+
+    // --- Алгоритм reverse alpha blending (из extension/content/algorithm.js) ---
+    var LOGO_VALUE = 255;
+    var ALPHA_THRESHOLD = 0.002;
+    var MAX_ALPHA = 0.99;
+
+    function calculateAlphaFromMask(r, g, b) {
+      return Math.max(r, g, b) / 255;
+    }
+
+    function reverseAlphaBlendPixel(watermarked, alpha) {
+      if (alpha < ALPHA_THRESHOLD) return watermarked;
+      var clampedAlpha = Math.min(alpha, MAX_ALPHA);
+      var original = (watermarked - clampedAlpha * LOGO_VALUE) / (1 - clampedAlpha);
+      return Math.round(Math.min(255, Math.max(0, original)));
+    }
+
+    function getWatermarkConfig(imageWidth, imageHeight) {
+      if (imageWidth > 1024 && imageHeight > 1024) {
+        return { logoSize: 96, marginRight: 64, marginBottom: 64 };
+      }
+      return { logoSize: 48, marginRight: 32, marginBottom: 32 };
+    }
+
+    function applyReverseAlphaBlend(imagePixels, maskPixels) {
+      for (var i = 0; i < imagePixels.length; i += 4) {
+        var alpha = calculateAlphaFromMask(maskPixels[i], maskPixels[i + 1], maskPixels[i + 2]);
+        if (alpha < ALPHA_THRESHOLD) continue;
+        imagePixels[i] = reverseAlphaBlendPixel(imagePixels[i], alpha);
+        imagePixels[i + 1] = reverseAlphaBlendPixel(imagePixels[i + 1], alpha);
+        imagePixels[i + 2] = reverseAlphaBlendPixel(imagePixels[i + 2], alpha);
+      }
+    }
+
+    // --- Маски (из extension/content/masks.js) ---
+    var BANANA_MASK_48_BASE64 = 'data:image/png;base64,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';
+    var BANANA_MASK_96_BASE64 = 'data:image/png;base64,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';
+    var BANANA_MASK_96_BASE64 = 'data:image/png;base64,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';
+
+    // Загрузка маски из base64 в ImageData
+    function loadMaskImageData(base64Url) {
+      return new Promise(function(resolve, reject) {
+        var img = new Image();
+        img.onload = function() {
+          var canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          resolve(ctx.getImageData(0, 0, img.width, img.height));
+        };
+        img.onerror = function() { reject(new Error('Failed to load mask')); };
+        img.src = base64Url;
+      });
+    }
+
+    // Обработка изображения — удаление watermark
+    function processImage(file, mask48Data, mask96Data) {
+      return new Promise(function(resolve, reject) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var img = new Image();
+          img.onload = function() {
+            var config = getWatermarkConfig(img.width, img.height);
+            var logoSize = config.logoSize;
+            var marginRight = config.marginRight;
+            var marginBottom = config.marginBottom;
+
+            var canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+
+            // Если изображение слишком маленькое — возвращаем как есть
+            if (img.width < logoSize + marginRight || img.height < logoSize + marginBottom) {
+              canvas.toBlob(function(blob) {
+                resolve({
+                  originalUrl: e.target.result,
+                  cleanUrl: URL.createObjectURL(blob),
+                  fileName: file.name.replace(/\.[^.]+$/, '') + '_clean.png',
+                  width: img.width,
+                  height: img.height
+                });
+              }, 'image/png');
+              return;
+            }
+
+            // Координаты watermark (правый нижний угол)
+            var x = img.width - logoSize - marginRight;
+            var y = img.height - logoSize - marginBottom;
+            var regionData = ctx.getImageData(x, y, logoSize, logoSize);
+
+            var maskData = (logoSize === 96) ? mask96Data : mask48Data;
+            applyReverseAlphaBlend(regionData.data, maskData.data);
+            ctx.putImageData(regionData, x, y);
+
+            canvas.toBlob(function(blob) {
+              resolve({
+                originalUrl: e.target.result,
+                cleanUrl: URL.createObjectURL(blob),
+                fileName: file.name.replace(/\.[^.]+$/, '') + '_clean.png',
+                width: img.width,
+                height: img.height
+              });
+            }, 'image/png');
+          };
+          img.onerror = function() { reject(new Error('Failed to load image')); };
+          img.src = e.target.result;
+        };
+        reader.onerror = function() { reject(new Error('Failed to read file')); };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // --- UI ---
+    var mask48Data = null;
+    var mask96Data = null;
+    var processedCount = 0;
+
+    // Загрузка масок при старте
+    Promise.all([
+      loadMaskImageData(BANANA_MASK_48_BASE64),
+      loadMaskImageData(BANANA_MASK_96_BASE64)
+    ]).then(function(masks) {
+      mask48Data = masks[0];
+      mask96Data = masks[1];
+    });
+
+    var dropzone = document.getElementById('dropzone');
+    var fileInput = document.getElementById('fileInput');
+    var resultsEl = document.getElementById('results');
+    var resultsListEl = document.getElementById('resultsList');
+    var resultsTitleEl = document.getElementById('resultsTitle');
+    var clearBtn = document.getElementById('clearResults');
+
+    // Drag & drop
+    dropzone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      dropzone.classList.add('dropzone--active');
+    });
+
+    dropzone.addEventListener('dragleave', function() {
+      dropzone.classList.remove('dropzone--active');
+    });
+
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('dropzone--active');
+      var files = Array.from(e.dataTransfer.files).filter(function(f) {
+        return f.type.startsWith('image/');
+      });
+      if (files.length > 0) handleFiles(files);
+    });
+
+    fileInput.addEventListener('change', function() {
+      var files = Array.from(fileInput.files);
+      if (files.length > 0) handleFiles(files);
+      fileInput.value = '';
+    });
+
+    clearBtn.addEventListener('click', function() {
+      resultsListEl.innerHTML = '';
+      resultsEl.classList.remove('results--visible');
+      processedCount = 0;
+    });
+
+    function handleFiles(files) {
+      if (!mask48Data || !mask96Data) {
+        alert('Masks are still loading. Please try again in a moment.');
+        return;
+      }
+
+      resultsEl.classList.add('results--visible');
+
+      files.forEach(function(file) {
+        // Добавляем placeholder для загрузки
+        var placeholder = document.createElement('div');
+        placeholder.className = 'result-card result-card--processing';
+        placeholder.innerHTML = '<span class="spinner"></span> Processing ' + escapeHtml(file.name) + '...';
+        resultsListEl.insertBefore(placeholder, resultsListEl.firstChild);
+
+        processImage(file, mask48Data, mask96Data).then(function(result) {
+          processedCount++;
+          resultsTitleEl.textContent = processedCount + ' image' + (processedCount !== 1 ? 's' : '') + ' processed';
+
+          var card = document.createElement('div');
+          card.className = 'result-card';
+          card.innerHTML =
+            '<div class="result-card__col">' +
+              '<span class="result-card__label">Before</span>' +
+              '<img class="result-card__img" src="' + result.originalUrl + '" alt="Original image with watermark">' +
+            '</div>' +
+            '<div class="result-card__col">' +
+              '<span class="result-card__label">After</span>' +
+              '<img class="result-card__img" src="' + result.cleanUrl + '" alt="Cleaned image without watermark">' +
+            '</div>' +
+            '<div class="result-card__actions">' +
+              '<span class="result-card__info">' + result.width + ' x ' + result.height + 'px &middot; PNG</span>' +
+              '<a class="result-card__download" href="' + result.cleanUrl + '" download="' + escapeHtml(result.fileName) + '">Download clean →</a>' +
+            '</div>';
+
+          placeholder.replaceWith(card);
+        }).catch(function(err) {
+          placeholder.innerHTML = 'Error processing ' + escapeHtml(file.name) + ': ' + escapeHtml(err.message);
+          placeholder.style.color = '#ff6b6b';
+        });
+      });
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+  })();
+  </script>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
