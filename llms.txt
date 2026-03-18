@@ -5,7 +5,7 @@
 ## Pages
 
 - [Home](https://banana-clean.app/): Main landing page — how the Gemini watermark remover works, features, FAQ
-- [Pricing](https://banana-clean.app/pricing): 15 free cleans, then $4.99 one-time lifetime PRO license
+- [Pricing](https://banana-clean.app/pricing): 15 free cleans, then $2.99/mo or $24.99/yr PRO subscription, cancel anytime
 - [Privacy Policy](https://banana-clean.app/privacy): What data is collected, local processing details
 - [Blog](https://banana-clean.app/blog): Guides on Gemini watermarks, SynthID, and commercial use of AI images
 - [How to Remove the Gemini Watermark](https://banana-clean.app/blog/how-to-remove-gemini-watermark): Step-by-step guide to removing the Nano Banana watermark

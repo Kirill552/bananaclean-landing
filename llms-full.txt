@@ -49,8 +49,8 @@ Banana Clean removes only the visible watermark. SynthID cannot be removed by an
 ## Pricing
 
 - **Free tier**: 15 watermark removals per install, no sign-up or credit card required
-- **PRO ($4.99 one-time)**: Unlimited watermark removals forever. No subscriptions, no recurring charges.
-- Payment via NOWPayments (cryptocurrency: BTC, ETH, USDT, SOL, and 200+ other coins)
+- **PRO ($2.99/mo or $24.99/yr)**: Unlimited watermark removals. Cancel anytime.
+- Payment via PayPal (credit/debit cards accepted worldwide)
 
 ## Who Uses Banana Clean
 
@@ -79,7 +79,7 @@ Nano Banana is Google's image generation model built into Gemini and AI Studio. 
 Install Banana Clean from the Chrome Web Store. The extension intercepts downloads from Gemini and AI Studio and removes the watermark automatically. Generate an image, click Download, get a clean file.
 
 ### Is Banana Clean free?
-You get 15 free cleanings — no card, no sign-up. After that, a one-time $4.99 payment unlocks unlimited lifetime access. No subscriptions.
+You get 15 free cleanings — no card, no sign-up. After that, a PRO subscription ($2.99/mo or $24.99/yr) unlocks unlimited access. Cancel anytime.
 
 ### Which browsers are supported?
 Chrome, Edge, Opera, and Brave — any Chromium-based browser that supports extensions from the Chrome Web Store.
@@ -111,7 +111,7 @@ Watermark masks are bundled with the extension and updated through the Chrome We
 - The extension collects only anonymous usage events for product analytics (install, active day, clean count)
 - No logins, passwords, chat content, or personal data from Google accounts
 - No data is sold to third parties
-- Payments processed by NOWPayments — we do not store payment details
+- Payments processed by PayPal — we do not store payment details
 
 ## Blog
 
@@ -129,7 +129,7 @@ Three methods to remove it:
 
 3. Reverse alpha blending (Banana Clean): The Nano Banana watermark uses standard alpha compositing with a known, static mask. The formula to reverse it: original = (watermarked - alpha * 255) / (1 - alpha). This is mathematically exact — no guessing, no inpainting. Maximum error: 1/255 per channel per pixel (invisible). Banana Clean applies this formula automatically when you click Download in Gemini or AI Studio. Processing: under 100ms, fully local in the browser.
 
-Comparison: Photoshop (2-5 min, approximation, local, free/$$23/mo) vs Online tools (30-60 sec, inpainting, upload required, free/$10+/mo) vs Banana Clean (<100ms automatic, lossless, local, 15 free then $4.99 once).
+Comparison: Photoshop (2-5 min, approximation, local, free/$23/mo) vs Online tools (30-60 sec, inpainting, upload required, free/$10+/mo) vs Banana Clean (<100ms automatic, lossless, local, 15 free then $2.99/mo).
 
 ---
 
