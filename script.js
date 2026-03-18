@@ -9,8 +9,8 @@ const SLIDER_MIN_POSITION = 1;
 const SLIDER_MAX_POSITION = 99;
 const SLIDER_INITIAL_POSITION = 85;
 const PUBLIC_COUNTER_REFRESH_MS = 30000;
-const PAYPAL_CREATE_ORDER_URL = 'https://banana-clean.app/api/create-paypal-order';
-const PAYPAL_CAPTURE_ORDER_URL = 'https://banana-clean.app/api/capture-paypal-order';
+const PAYPAL_ACTIVATE_URL = 'https://banana-clean.app/api/activate-subscription';
+const PAYPAL_PLANS_URL = 'https://banana-clean.app/api/plans';
 
 bindFaqAccordion();
 bindStatsCounter();
@@ -187,39 +187,56 @@ function bindBuyStars() {
 }
 
 function bindPayPalButtons() {
-  const container = document.getElementById('paypal-button-container');
-  const status = document.getElementById('paypal-status');
-  if (!container || typeof paypal === 'undefined') return;
+  if (typeof paypal === 'undefined') return;
+
+  var monthlyContainer = document.getElementById('paypal-button-monthly');
+  var yearlyContainer = document.getElementById('paypal-button-yearly');
+  if (!monthlyContainer && !yearlyContainer) return;
+
+  fetch(PAYPAL_PLANS_URL)
+    .then(function (res) { return res.json(); })
+    .then(function (plans) {
+      var monthlyPlanId = plans.monthly && plans.monthly.planId;
+      var yearlyPlanId = plans.yearly && plans.yearly.planId;
+      if (monthlyPlanId && monthlyContainer) {
+        renderSubscriptionButton(monthlyPlanId, '#paypal-button-monthly', 'paypal-status-monthly', 'monthly');
+      }
+      if (yearlyPlanId && yearlyContainer) {
+        renderSubscriptionButton(yearlyPlanId, '#paypal-button-yearly', 'paypal-status-yearly', 'yearly');
+      }
+    })
+    .catch(function (err) {
+      console.error('Failed to load plans:', err);
+    });
+}
+
+function renderSubscriptionButton(planId, containerSelector, statusId, planName) {
+  var status = document.getElementById(statusId);
 
   paypal.Buttons({
-    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
-    createOrder: function () {
-      sendLandingAnalytics('buy_paypal_clicked', { surface: 'pricing' });
-      return fetch(PAYPAL_CREATE_ORDER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ source: 'landing-en' })
-      })
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-          if (data.orderId) return data.orderId;
-          throw new Error('No orderId');
-        });
+    style: { layout: 'vertical', color: planName === 'yearly' ? 'gold' : 'blue', shape: 'rect', label: 'subscribe', height: 45 },
+    createSubscription: function (data, actions) {
+      sendLandingAnalytics('buy_paypal_clicked', { surface: 'pricing', plan: planName });
+      return actions.subscription.create({ plan_id: planId });
     },
     onApprove: function (data) {
-      if (status) status.textContent = 'Processing payment...';
-      return fetch(PAYPAL_CAPTURE_ORDER_URL, {
+      if (status) status.textContent = 'Activating subscription...';
+      return fetch(PAYPAL_ACTIVATE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderId: data.orderID })
+        body: JSON.stringify({
+          subscriptionId: data.subscriptionID,
+          plan: planName,
+          source: 'landing-en'
+        })
       })
         .then(function (res) { return res.json(); })
         .then(function (result) {
           if (result.success && result.key) {
-            sendLandingAnalytics('paypal_payment_completed', { surface: 'pricing' });
-            showLicenseKey(result.key);
+            sendLandingAnalytics('paypal_subscription_activated', { surface: 'pricing', plan: planName });
+            showLicenseKey(result.key, result.plan, result.expiresAt);
           } else {
-            if (status) status.textContent = 'Payment issue. Contact support via Telegram.';
+            if (status) status.textContent = 'Activation issue. Contact support via Telegram.';
           }
         });
     },
@@ -230,17 +247,31 @@ function bindPayPalButtons() {
     onCancel: function () {
       if (status) status.textContent = '';
     }
-  }).render('#paypal-button-container');
+  }).render(containerSelector);
 }
 
-function showLicenseKey(key) {
-  var container = document.querySelector('.pricing-card');
-  if (!container) return;
-  container.innerHTML =
-    '<h2 style="color:#FFD700;margin-bottom:16px">Payment successful!</h2>' +
+function showLicenseKey(key, plan, expiresAt) {
+  var heroSection = document.querySelector('.pricing-cards');
+  if (!heroSection) return;
+
+  var planLabel = plan === 'yearly' ? 'Yearly' : plan === 'monthly' ? 'Monthly' : 'PRO';
+  var expiryText = '';
+  if (expiresAt) {
+    var expiryDate = new Date(expiresAt);
+    expiryText = '<p style="color:#B0B0B0;margin-bottom:12px">Plan: <strong style="color:#FFD700">' + planLabel + '</strong> · Renews: ' + expiryDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '</p>';
+  }
+
+  heroSection.innerHTML =
+    '<div class="pricing-card" style="max-width:560px;margin:0 auto">' +
+    '<h2 style="color:#FFD700;margin-bottom:16px">Subscription activated!</h2>' +
+    expiryText +
     '<p style="color:#B0B0B0;margin-bottom:12px">Your license key:</p>' +
     '<div style="font-family:monospace;font-size:18px;color:#FFD700;background:#1a1a2e;padding:16px;user-select:all;word-break:break-all;border-radius:8px;margin-bottom:16px">' + key + '</div>' +
-    '<p style="color:#B0B0B0;line-height:1.6">Copy this key and paste it into the Banana Clean extension popup to activate PRO.</p>';
+    '<p style="color:#B0B0B0;line-height:1.6">Copy this key and paste it into the Banana Clean extension popup to activate PRO.</p>' +
+    '</div>';
+
+  var starsAlt = document.querySelector('.pricing-stars-alt');
+  if (starsAlt) starsAlt.style.display = 'none';
 }
 
 // --- Аналитика ---

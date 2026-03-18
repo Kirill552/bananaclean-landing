@@ -14,7 +14,7 @@
   <meta name="robots" content="index,follow">
 
   <title>Pricing — Banana Clean PRO</title>
-  <meta name="description" content="15 free watermark removals, then $4.99 for unlimited lifetime access. One-time payment, no subscriptions.">
+  <meta name="description" content="15 free watermark removals included. Then choose Monthly ($2.99/mo) or Yearly ($24.99/yr, save 30%). Cancel anytime.">
   <link rel="canonical" href="https://banana-clean.app/pricing">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta property="og:title" content="Pricing — Banana Clean PRO">
-  <meta property="og:description" content="15 free cleans, then $4.99 for unlimited lifetime access.">
+  <meta property="og:description" content="15 free cleans included. Monthly $2.99/mo or Yearly $24.99/yr (save 30%).">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://banana-clean.app/pricing">
   <meta property="og:locale" content="en_US">
@@ -32,7 +32,7 @@
   <meta property="og:site_name" content="Banana Clean">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pricing — Banana Clean PRO">
-  <meta name="twitter:description" content="15 free cleans, then $4.99 for unlimited lifetime access.">
+  <meta name="twitter:description" content="15 free cleans included. Monthly $2.99/mo or Yearly $24.99/yr (save 30%).">
   <meta name="twitter:image" content="https://banana-clean.app/og-image.png">
 
   <!-- Fonts -->
@@ -50,30 +50,48 @@
       <span class="pricing-hero__eyebrow">Banana Clean PRO</span>
       <h1>Unlock <span class="accent">Unlimited</span><span class="cursor" aria-hidden="true">_</span></h1>
       <p class="pricing-hero__subtitle">
-        15 free cleans included with every install. When you hit the limit,
-        a single $4.99 payment gives you unlimited access — forever.
+        15 free cleans included. Then choose Monthly or Yearly.
       </p>
 
-      <div class="pricing-card">
-        <div class="pricing-card__price">$4.99</div>
-        <div class="pricing-card__price-note">one-time · lifetime access</div>
-        <ul class="pricing-card__features">
-          <li>Unlimited watermark removals</li>
-          <li>All future feature updates</li>
-          <li>Works on Gemini + AI Studio</li>
-          <li>No subscriptions, no recurring fees</li>
-        </ul>
-
-        <div id="paypal-button-container" style="margin-bottom:12px"></div>
-        <p class="pricing-card__status" id="paypal-status"></p>
-        <p class="pricing-card__hint" style="margin-top:10px">Pay with PayPal, credit card, or debit card. Instant delivery.</p>
-
-        <div class="pricing-card__divider" style="margin:20px 0;border-top:1px solid rgba(255,255,255,0.1);position:relative;text-align:center">
-          <span style="background:#1a1a2e;padding:0 12px;position:relative;top:-10px;font-size:12px;color:#666">or</span>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="pricing-card__label">Monthly</div>
+          <div class="pricing-card__price">$2.99<span class="pricing-card__period">/mo</span></div>
+          <div class="pricing-card__price-note">billed monthly · cancel anytime</div>
+          <ul class="pricing-card__features">
+            <li>Unlimited watermark removals</li>
+            <li>All feature updates included</li>
+            <li>Works on Gemini + AI Studio</li>
+            <li>Cancel anytime, no lock-in</li>
+          </ul>
+          <div id="paypal-button-monthly" style="margin-bottom:12px"></div>
+          <p class="pricing-card__status" id="paypal-status-monthly"></p>
         </div>
 
-        <a href="https://t.me/BananaCleanBot?start=pay" class="btn-secondary pricing-card__buy" id="buy-stars-button" target="_blank" rel="noopener noreferrer" style="background:transparent;border:1px solid #444;color:#B0B0B0;font-size:14px">Pay via Telegram — 250 Stars →</a>
-        <p class="pricing-card__hint" style="font-size:11px;color:#555">Pay with Apple Pay, Google Pay, or card through Telegram.</p>
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-card__badge">Save 30%</div>
+          <div class="pricing-card__label">Yearly</div>
+          <div class="pricing-card__price">$24.99<span class="pricing-card__period">/yr</span></div>
+          <div class="pricing-card__price-note">$2.08/mo · billed annually</div>
+          <ul class="pricing-card__features">
+            <li>Unlimited watermark removals</li>
+            <li>All feature updates included</li>
+            <li>Works on Gemini + AI Studio</li>
+            <li>Best value — save 30% vs monthly</li>
+          </ul>
+          <div id="paypal-button-yearly" style="margin-bottom:12px"></div>
+          <p class="pricing-card__status" id="paypal-status-yearly"></p>
+        </div>
+      </div>
+
+      <p class="pricing-card__hint" style="text-align:center;margin-top:16px">Pay with PayPal, credit card, or debit card. Instant activation.</p>
+
+      <div class="pricing-stars-alt">
+        <div class="pricing-card__divider" style="margin:24px 0;border-top:1px solid rgba(255,255,255,0.1);position:relative;text-align:center">
+          <span style="background:#1a1a2e;padding:0 12px;position:relative;top:-10px;font-size:12px;color:#666">or</span>
+        </div>
+        <a href="https://t.me/BananaCleanBot?start=pay" class="btn-secondary pricing-card__buy" id="buy-stars-button" target="_blank" rel="noopener noreferrer" style="background:transparent;border:1px solid #444;color:#B0B0B0;font-size:14px">Pay via Telegram — 250 Stars (30 days) →</a>
+        <p class="pricing-card__hint" style="font-size:11px;color:#555;text-align:center;margin-top:8px">Pay with Apple Pay, Google Pay, or card through Telegram.</p>
       </div>
 
       <div class="pricing-trial">
@@ -119,13 +137,15 @@
         <details class="faq__item">
           <summary>What happens after I pay?</summary>
           <div class="faq__answer">
-            <p>You receive a license key. Enter it in the extension popup to unlock unlimited access. The key is tied to your installation and works forever.</p>
+            <p>You receive a license key. Enter it in the extension popup to activate PRO. Your access stays active as long as your subscription is running. Cancel anytime.</p>
           </div>
         </details>
         <details class="faq__item">
-          <summary>Is this a subscription?</summary>
+          <summary>What subscription plans are available?</summary>
           <div class="faq__answer">
-            <p>No. It is a one-time payment. You pay $4.99 once and get lifetime access. No recurring charges, no renewal fees.</p>
+            <p><strong>Monthly — $2.99/mo:</strong> Full access to all features. Billed monthly, cancel anytime with no penalties.</p>
+            <p><strong>Yearly — $24.99/yr:</strong> Same features, 30% cheaper. Billed once per year ($2.08/mo effective). Cancel anytime.</p>
+            <p>Both plans activate instantly after payment. Your license key renews automatically.</p>
           </div>
         </details>
         <details class="faq__item">
@@ -165,7 +185,7 @@
         <a href="/blog">Blog</a>
         <a href="https://t.me/KroVik" target="_blank" rel="noopener noreferrer">Telegram</a>
       </nav>
-      <span class="footer__version">v1.4.0</span>
+      <span class="footer__version">v2.0.0</span>
     </div>
   </footer>
 
@@ -174,16 +194,40 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Banana Clean PRO",
-    "description": "Unlimited Gemini watermark removal. One-time payment, lifetime access. Removes the Nano Banana logo from AI-generated images automatically on download.",
+    "description": "Unlimited Gemini watermark removal. Monthly or yearly subscription. Removes the Nano Banana logo from AI-generated images automatically on download.",
     "brand": { "@type": "Organization", "name": "Banana Clean" },
-    "offers": {
-      "@type": "Offer",
-      "price": "4.99",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "priceValidUntil": "2027-12-31",
-      "url": "https://banana-clean.app/pricing"
-    }
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Monthly",
+        "price": "2.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2027-12-31",
+        "url": "https://banana-clean.app/pricing",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "2.99",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Yearly",
+        "price": "24.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2027-12-31",
+        "url": "https://banana-clean.app/pricing",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "24.99",
+          "priceCurrency": "USD",
+          "billingDuration": "P1Y"
+        }
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -213,8 +257,8 @@
       },
       {
         "@type": "Question",
-        "name": "Is this a subscription?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. It is a one-time payment. You pay $4.99 once and get lifetime access. No recurring charges, no renewal fees." }
+        "name": "What subscription plans are available?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Monthly plan at $2.99/mo billed monthly, cancel anytime. Yearly plan at $24.99/yr (save 30%, effective $2.08/mo) billed annually. Both plans activate instantly and renew automatically." }
       },
       {
         "@type": "Question",
@@ -229,7 +273,7 @@
     ]
   }
   </script>
-  <script src="https://www.paypal.com/sdk/js?client-id=Ae-G0TZ2sY3pqkG-fhOuBYfs0MacW7TT4adnZzWmda5vFDdGxEVq-P0mr2WPn3RdF9kvmPkj8VK52NSt&currency=USD&locale=en_US"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=Ae-G0TZ2sY3pqkG-fhOuBYfs0MacW7TT4adnZzWmda5vFDdGxEVq-P0mr2WPn3RdF9kvmPkj8VK52NSt&vault=true&intent=subscription&locale=en_US"></script>
   <script src="script.js" defer></script>
 
   <!-- Vercel Analytics -->
