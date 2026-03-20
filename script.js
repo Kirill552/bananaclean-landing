@@ -187,11 +187,15 @@ function bindBuyStars() {
 }
 
 function bindPayPalButtons() {
-  if (typeof paypal === 'undefined') return;
-
   var monthlyContainer = document.getElementById('paypal-button-monthly');
   var yearlyContainer = document.getElementById('paypal-button-yearly');
   if (!monthlyContainer && !yearlyContainer) return;
+
+  if (typeof paypal === 'undefined') {
+    showPayPalFallback(monthlyContainer, yearlyContainer);
+    sendLandingAnalytics('paypal_sdk_blocked', { surface: 'pricing' });
+    return;
+  }
 
   fetch(PAYPAL_PLANS_URL)
     .then(function (res) { return res.json(); })
@@ -207,7 +211,21 @@ function bindPayPalButtons() {
     })
     .catch(function (err) {
       console.error('Failed to load plans:', err);
+      showPayPalFallback(monthlyContainer, yearlyContainer);
     });
+}
+
+function showPayPalFallback(monthlyContainer, yearlyContainer) {
+  var fallbackHtml =
+    '<div style="text-align:center;padding:12px 0">' +
+    '<p style="color:#B0B0B0;font-size:13px;margin-bottom:12px">PayPal is unavailable in your region.</p>' +
+    '<a href="https://t.me/BananaCleanBot?start=pay" target="_blank" rel="noopener noreferrer" ' +
+    'style="display:block;padding:12px 16px;background:#FFD700;color:#1a1a2e;font-weight:700;font-size:14px;text-decoration:none;text-align:center">' +
+    'Pay via Telegram — 250 Stars (30 days)</a>' +
+    '<p style="color:#666;font-size:11px;margin-top:8px">Apple Pay, Google Pay, or card through Telegram.</p>' +
+    '</div>';
+  if (monthlyContainer) monthlyContainer.innerHTML = fallbackHtml;
+  if (yearlyContainer) yearlyContainer.innerHTML = fallbackHtml;
 }
 
 function renderSubscriptionButton(planId, containerSelector, statusId, planName) {
