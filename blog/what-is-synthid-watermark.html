@@ -11,21 +11,21 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SynthID vs Nano Banana: Which Gemini Watermark Can You Remove?</title>
-  <meta name="description" content="Gemini images have two watermarks: SynthID (invisible, permanent) and Nano Banana (visible, removable in &lt;100ms). Here's what each one does and how to handle them.">
+  <title>What Is SynthID? The Invisible Watermark on Every Gemini Image</title>
+  <meta name="description" content="Google's invisible AI watermark is baked into every Gemini image. It survives cropping, screenshots, and compression. Here's exactly how SynthID works and what it means for you.">
   <link rel="canonical" href="https://banana-clean.app/blog/what-is-synthid-watermark">
   <meta name="robots" content="index,follow">
 
-  <meta property="og:title" content="SynthID vs Nano Banana: Which Gemini Watermark Can You Remove?">
-  <meta property="og:description" content="Gemini images have two watermarks: SynthID (invisible, permanent) and Nano Banana (visible, removable). Here's the difference.">
+  <meta property="og:title" content="What Is SynthID? The Invisible Watermark on Every Gemini Image">
+  <meta property="og:description" content="Google's invisible AI watermark survives cropping, screenshots, and compression. Here's how SynthID works.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://banana-clean.app/blog/what-is-synthid-watermark">
   <meta property="og:image" content="https://banana-clean.app/og-image.png">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Banana Clean">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SynthID vs Nano Banana: Which Gemini Watermark Can You Remove?">
-  <meta name="twitter:description" content="Gemini images have two watermarks: SynthID (invisible, permanent) and Nano Banana (visible, removable). Here's the difference.">
+  <meta name="twitter:title" content="What Is SynthID? The Invisible Watermark on Every Gemini Image">
+  <meta name="twitter:description" content="Google's invisible AI watermark survives cropping, screenshots, and compression. Here's how SynthID works.">
   <meta name="twitter:image" content="https://banana-clean.app/og-image.png">
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -43,14 +43,62 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "What Is SynthID? How Google Watermarks Gemini Images",
-    "description": "SynthID is Google DeepMind's invisible watermark for AI-generated images. How it works and how it differs from the visible Nano Banana logo.",
+    "headline": "What Is SynthID? The Invisible Watermark on Every Gemini Image",
+    "description": "SynthID is Google DeepMind's invisible watermark embedded in every Gemini image. How it works, what it detects, and how it differs from the visible Nano Banana logo.",
     "datePublished": "2026-03-03",
-    "dateModified": "2026-03-03",
+    "dateModified": "2026-03-21",
     "author": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/" },
     "publisher": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/", "logo": { "@type": "ImageObject", "url": "https://banana-clean.app/logo-512.png" } },
     "mainEntityOfPage": "https://banana-clean.app/blog/what-is-synthid-watermark",
     "image": "https://banana-clean.app/og-image.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the SynthID watermark on Gemini images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SynthID is an invisible digital watermark developed by Google DeepMind. It is embedded directly into the pixel data during AI image generation — not applied on top like the visible Nano Banana logo. As of March 2026, over 20 billion pieces of content have been watermarked with SynthID."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can SynthID be removed from Gemini images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no reliable way to fully remove SynthID without degrading image quality. Some tools claim partial success (up to 79% detection bypass), but they work by re-processing images through diffusion models, which alters the image. The watermark is spread across every pixel, making clean removal impractical for real-world use."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does SynthID affect image quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. SynthID modifications are sub-pixel-level — typically less than 1/255 per color channel per pixel. Side-by-side comparison of watermarked and unwatermarked versions shows no visible difference to the human eye."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I check if an image has a SynthID watermark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Google launched SynthID Detector in the Gemini app in 2026. Upload any image, video, or audio file (under 100 MB) and ask Gemini whether it was created by Google AI. The app checks for SynthID and returns a confidence assessment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SynthID and the Nano Banana watermark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Nano Banana watermark is a visible logo in the corner of Gemini images — it can be removed with simple alpha blending. SynthID is an invisible watermark embedded in the pixel data itself. It survives cropping, resizing, JPEG compression, and screenshots. Tools like Banana Clean remove only the visible watermark; SynthID remains intact."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -69,8 +117,8 @@
   <article class="blog-article">
     <div class="container">
       <div class="blog-article__header">
-        <span class="blog-article__date">March 3, 2026</span>
-        <h1>What Is SynthID? How Google Watermarks Gemini Images</h1>
+        <span class="blog-article__date">Updated March 21, 2026</span>
+        <h1>What Is SynthID? The Invisible Watermark on Every Gemini Image</h1>
         <p class="blog-article__lead">Every image generated by Google Gemini carries two watermarks. One is visible &mdash; the Nano Banana logo in the corner. The other is invisible, baked into the pixel data itself. That second one is called SynthID, and it is far more interesting than the banana.</p>
       </div>
       <div class="blog-article__body">
@@ -120,7 +168,7 @@
 
         <h2>How SynthID works</h2>
 
-        <p>SynthID was developed by Google DeepMind and announced in August 2023. The core idea: embed a statistical signal into the image during generation, not after. The watermark is part of the image creation process, not an overlay applied on top.</p>
+        <p>SynthID was developed by Google DeepMind and <a href="https://deepmind.google/models/synthid/" target="_blank" rel="noopener">announced in August 2023</a>. The core idea: embed a statistical signal into the image during generation, not after. The watermark is part of the image creation process, not an overlay applied on top. As of March 2026, over 20 billion pieces of AI-generated content have been watermarked with SynthID across Google's products.</p>
 
         <h3>The technical approach</h3>
 
@@ -142,19 +190,21 @@
 
         <p>In internal testing reported by DeepMind, SynthID maintained detection accuracy above 95% after JPEG compression at quality 75, resizing to 50% of original dimensions, and even after screenshot-and-reupload cycles. The accuracy drops below 80% only under aggressive transformations like reducing to under 256px resolution or applying heavy artistic filters that fundamentally reshape the pixel distribution.</p>
 
-        <h2>Why SynthID cannot be removed</h2>
+        <h2>Can SynthID be removed?</h2>
 
         <p>The Nano Banana watermark sits in a known 48x48 or 96x96 pixel region. Its shape, position, and opacity are fixed. Because the blending formula is standard alpha compositing, you can reverse it with simple arithmetic: <code>original = (watermarked - alpha * 255) / (1 - alpha)</code>. The mask is the same for every image. The math is exact.</p>
 
         <p>SynthID is a fundamentally different problem. The signal is not localized &mdash; it touches every pixel in the image. It is not a fixed pattern &mdash; the encoding adapts to the content of each specific image. And the exact encoding parameters are secret.</p>
 
-        <p>Could you remove it by brute force? In theory, adding random noise to every pixel would degrade the SynthID signal. But you would need to add enough noise to overwhelm the watermark's statistical pattern, and that much noise would visibly degrade the image. You would be trading one problem (an invisible watermark) for a worse one (a noisy, damaged image).</p>
+        <p>Since 2024, several tools and research projects have attempted SynthID removal. The most documented approach (<a href="https://github.com/00quebec/Synthid-Bypass" target="_blank" rel="noopener">Synthid-Bypass on GitHub</a>) uses a diffusion model to re-render the image, using the original as a structural guide. Some commercial tools report up to 79% detection bypass rates. However, these methods do not cleanly remove the watermark &mdash; they re-generate the image, which introduces subtle differences in detail, texture, and color accuracy.</p>
 
-        <p>Some researchers have explored adversarial attacks against watermarking systems in general. A 2024 paper from the University of Maryland showed that with access to the detection model, you can craft perturbations that fool the detector while keeping the image visually intact. But this requires access to the detector itself (which Google does not provide publicly) and significant computational resources. It is an academic exercise, not a practical tool.</p>
+        <p>Adding random noise to every pixel can also degrade the SynthID signal, but you would need enough noise to overwhelm the statistical pattern. That much noise visibly degrades the image. You would be trading an invisible watermark for a noisy, damaged image.</p>
+
+        <p>The practical reality in 2026: SynthID removal tools exist but are unreliable for professional use. They work best on simple compositions and fail on detailed images. For most users, SynthID is effectively permanent &mdash; and for most use cases, it does not matter, because the watermark is invisible.</p>
 
         <h2>SynthID beyond images</h2>
 
-        <p>Google has expanded SynthID beyond image generation. As of 2025, SynthID watermarks are applied to:</p>
+        <p>Google has expanded SynthID well beyond image generation. As of 2026, SynthID watermarks are applied to:</p>
 
         <ul>
           <li>Text generated by Gemini models (using a technique that biases token selection toward detectable patterns)</li>
@@ -228,7 +278,7 @@
         <h2>FAQ</h2>
 
         <h3>Can any tool remove SynthID?</h3>
-        <p>No practical tool exists. Academic research has demonstrated adversarial attacks in controlled settings, but these require access to the detection model and produce visible artifacts. For real-world use, SynthID is effectively permanent.</p>
+        <p>Several tools claim partial success &mdash; the most effective approach uses diffusion models to re-render the image, achieving up to 79% detection bypass in controlled tests. But these tools alter the image rather than cleanly removing the watermark, and results vary widely by image complexity. For professional use, SynthID is effectively permanent.</p>
 
         <h3>Does SynthID affect image quality?</h3>
         <p>Not in any perceptible way. The modifications are sub-pixel-level &mdash; less than 1/255 per channel in most areas. Side-by-side comparison of watermarked and unwatermarked versions of the same image shows no visible difference.</p>
@@ -238,6 +288,9 @@
 
         <h3>If I screenshot a Gemini image instead of downloading it, does it still have SynthID?</h3>
         <p>In most cases, yes. SynthID is designed to survive screenshot-and-reupload cycles. Detection accuracy drops slightly compared to the original file, but remains above 90% in typical conditions (standard screenshot resolution, no heavy post-processing).</p>
+
+        <h3>Can I check if an image has SynthID?</h3>
+        <p>Yes. In 2026, Google launched <a href="https://support.google.com/gemini/answer/16722517" target="_blank" rel="noopener">SynthID Detector</a> in the Gemini app. Upload an image (up to 100 MB) and ask &ldquo;Was this created with Google AI?&rdquo; Gemini will check for SynthID and return a confidence assessment. This works for images, videos (under 90 seconds), and audio (under 1 hour).</p>
 
         <h3>Is SynthID open source?</h3>
         <p>Partially. Google released a <a href="https://github.com/google-deepmind/synthid-text" target="_blank" rel="noopener noreferrer">reference implementation for SynthID Text</a> on GitHub. The image watermarking system remains proprietary. The detection API is available to select partners but not to the general public.</p>
