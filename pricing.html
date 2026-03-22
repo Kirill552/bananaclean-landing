@@ -66,6 +66,11 @@
           </ul>
           <div id="paypal-button-monthly" style="margin-bottom:12px"></div>
           <p class="pricing-card__status" id="paypal-status-monthly"></p>
+          <div class="antom-checkout" data-plan="monthly" style="display:none; margin-top: 12px;">
+            <button onclick="startAntomCheckout('monthly')" style="width:100%; padding:12px; background:#1677FF; color:#fff; border:none; font-size:14px; font-weight:600; border-radius:6px; cursor:pointer;">
+              Pay with Alipay / WeChat Pay
+            </button>
+          </div>
         </div>
 
         <div class="pricing-card pricing-card--featured">
@@ -81,6 +86,11 @@
           </ul>
           <div id="paypal-button-yearly" style="margin-bottom:12px"></div>
           <p class="pricing-card__status" id="paypal-status-yearly"></p>
+          <div class="antom-checkout" data-plan="yearly" style="display:none; margin-top: 12px;">
+            <button onclick="startAntomCheckout('yearly')" style="width:100%; padding:12px; background:#1677FF; color:#fff; border:none; font-size:14px; font-weight:600; border-radius:6px; cursor:pointer;">
+              Pay with Alipay / WeChat Pay
+            </button>
+          </div>
         </div>
       </div>
 
@@ -275,6 +285,59 @@
   </script>
   <script src="https://www.paypal.com/sdk/js?client-id=Ae-G0TZ2sY3pqkG-fhOuBYfs0MacW7TT4adnZzWmda5vFDdGxEVq-P0mr2WPn3RdF9kvmPkj8VK52NSt&vault=true&intent=subscription&locale=en_US"></script>
   <script src="script.js" defer></script>
+
+  <!-- Antom (Alipay/WeChat Pay/KakaoPay) для азиатских юзеров -->
+  <script>
+  // Antom (Alipay/WeChat Pay/KakaoPay) для азиатских юзеров
+  (function() {
+    var isAsian = /^(zh|ko|ja)/.test(navigator.language);
+    var antomButtons = document.querySelectorAll('.antom-checkout');
+
+    if (isAsian) {
+      antomButtons.forEach(function(el) { el.style.display = 'block'; });
+    }
+
+    // Также показать Antom если PayPal SDK не загрузился через 5 секунд
+    setTimeout(function() {
+      var paypalContainers = document.querySelectorAll('[id^="paypal-button"]');
+      var paypalEmpty = true;
+      paypalContainers.forEach(function(el) {
+        if (el.children.length > 0) paypalEmpty = false;
+      });
+      if (paypalEmpty) {
+        antomButtons.forEach(function(el) { el.style.display = 'block'; });
+      }
+    }, 5000);
+  })();
+
+  function startAntomCheckout(plan) {
+    var btn = document.querySelector('.antom-checkout[data-plan="' + plan + '"] button');
+    if (btn) { btn.disabled = true; btn.textContent = 'Loading...'; }
+
+    fetch('/api/create-antom-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: plan })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else if (data.error === 'Antom payments not available yet') {
+        // Antom ещё не активирован — показать Stars вместо
+        if (btn) { btn.textContent = 'Coming soon! Redirecting to Telegram Stars...'; btn.disabled = false; }
+        setTimeout(function() {
+          window.open('https://t.me/BananaCleanBot?start=pay', '_blank');
+        }, 1500);
+      } else {
+        if (btn) { btn.textContent = 'Error — try again'; btn.disabled = false; }
+      }
+    })
+    .catch(function() {
+      if (btn) { btn.textContent = 'Error — try Telegram Stars'; btn.disabled = false; }
+    });
+  }
+  </script>
 
   <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
