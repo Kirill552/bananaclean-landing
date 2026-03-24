@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://85.208.85.104/api/:path*" },
-    { "source": "/collect", "destination": "https://85.208.85.104/collect" },
+    { "source": "/api/:path*", "destination": "https://nanobanana-clean.ru/api/:path*" },
+    { "source": "/collect", "destination": "https://nanobanana-clean.ru/collect" },
     { "source": "/pricing", "destination": "/pricing.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
