@@ -52,6 +52,11 @@
       <p class="pricing-hero__subtitle">
         15 free cleans included. Then choose Monthly or Yearly.
       </p>
+      <div class="pricing-social-proof" id="socialProof" style="display:none">
+        <span class="social-proof__item" id="proofUsers"></span>
+        <span class="social-proof__sep">·</span>
+        <span class="social-proof__item">★ <span id="proofRating"></span> on Chrome Web Store</span>
+      </div>
 
       <div class="pricing-cards">
         <div class="pricing-card">
@@ -337,6 +342,19 @@
       if (btn) { btn.textContent = 'Error — try Telegram Stars'; btn.disabled = false; }
     });
   }
+  </script>
+
+  <!-- Social proof -->
+  <script>
+  (function() {
+    fetch('/api/stats').then(function(r) { return r.json(); }).then(function(d) {
+      if (d.users > 0) {
+        document.getElementById('proofUsers').textContent = d.users.toLocaleString('en-US') + ' users';
+        document.getElementById('proofRating').textContent = d.rating.toFixed(2);
+        document.getElementById('socialProof').style.display = 'flex';
+      }
+    }).catch(function() {});
+  })();
   </script>
 
   <!-- Vercel Analytics -->

@@ -310,6 +310,11 @@
         <div class="hero__actions">
           <a href="#install" class="btn-primary" id="hero-install-link">Install Free →</a>
         </div>
+        <div class="pricing-social-proof" id="socialProof" style="display:none">
+          <span class="social-proof__item" id="proofUsers"></span>
+          <span class="social-proof__sep">·</span>
+          <span class="social-proof__item">★ <span id="proofRating"></span> on Chrome Web Store</span>
+        </div>
         <p class="hero__hint">Local processing — your images never leave your machine.</p>
       </div>
       <div class="hero__visual">
@@ -576,6 +581,19 @@
   </footer>
 
   <script src="script.js" defer></script>
+
+  <!-- Social proof -->
+  <script>
+  (function() {
+    fetch('/api/stats').then(function(r) { return r.json(); }).then(function(d) {
+      if (d.users > 0) {
+        document.getElementById('proofUsers').textContent = d.users.toLocaleString('en-US') + ' users';
+        document.getElementById('proofRating').textContent = d.rating.toFixed(2);
+        document.getElementById('socialProof').style.display = 'flex';
+      }
+    }).catch(function() {});
+  })();
+  </script>
 
   <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>

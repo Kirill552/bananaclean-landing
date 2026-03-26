@@ -909,6 +909,24 @@ section { position: relative; }
   text-align: center;
 }
 
+.pricing-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px auto 0;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+}
+.social-proof__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.social-proof__sep {
+  color: #555;
+}
+
 .pricing-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
