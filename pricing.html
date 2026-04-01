@@ -69,13 +69,8 @@
             <li>Works on Gemini + AI Studio</li>
             <li>Cancel anytime, no lock-in</li>
           </ul>
-          <div id="paypal-button-monthly" style="margin-bottom:12px"></div>
-          <p class="pricing-card__status" id="paypal-status-monthly"></p>
-          <div class="antom-checkout" data-plan="monthly" style="display:none; margin-top: 12px;">
-            <button onclick="startAntomCheckout('monthly')" style="width:100%; padding:12px; background:#1677FF; color:#fff; border:none; font-size:14px; font-weight:600; border-radius:6px; cursor:pointer;">
-              Pay with Alipay / WeChat Pay
-            </button>
-          </div>
+          <button class="stripe-checkout-btn" onclick="startStripeCheckout('monthly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $2.99/mo</button>
+          <p class="pricing-card__status" id="stripe-status-monthly"></p>
         </div>
 
         <div class="pricing-card pricing-card--featured">
@@ -89,17 +84,12 @@
             <li>Works on Gemini + AI Studio</li>
             <li>Best value — save 30% vs monthly</li>
           </ul>
-          <div id="paypal-button-yearly" style="margin-bottom:12px"></div>
-          <p class="pricing-card__status" id="paypal-status-yearly"></p>
-          <div class="antom-checkout" data-plan="yearly" style="display:none; margin-top: 12px;">
-            <button onclick="startAntomCheckout('yearly')" style="width:100%; padding:12px; background:#1677FF; color:#fff; border:none; font-size:14px; font-weight:600; border-radius:6px; cursor:pointer;">
-              Pay with Alipay / WeChat Pay
-            </button>
-          </div>
+          <button class="stripe-checkout-btn" onclick="startStripeCheckout('yearly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $24.99/yr</button>
+          <p class="pricing-card__status" id="stripe-status-yearly"></p>
         </div>
       </div>
 
-      <p class="pricing-card__hint" style="text-align:center;margin-top:16px">Pay with PayPal, credit card, or debit card. Instant activation.</p>
+      <p class="pricing-card__hint" style="text-align:center;margin-top:16px">Pay with credit card, debit card, Apple Pay, or Google Pay. Instant activation.</p>
 
       <div class="pricing-stars-alt">
         <div class="pricing-card__divider" style="margin:24px 0;border-top:1px solid rgba(255,255,255,0.1);position:relative;text-align:center">
@@ -144,7 +134,7 @@
         <details class="faq__item">
           <summary>How does payment work?</summary>
           <div class="faq__answer">
-            <p><strong>PayPal (recommended):</strong> Click the PayPal button on the pricing page. Pay with your PayPal account, credit card, or debit card. You get your license key instantly after payment.</p>
+            <p><strong>Credit/debit card (recommended):</strong> Click the Subscribe button on the pricing page. Pay with your credit card, debit card, Apple Pay, or Google Pay via Stripe. You get your license key instantly after payment.</p>
             <p><strong>Telegram Stars:</strong> Tap "Pay via Telegram", it opens @BananaCleanBot. Pay 250 Stars using Apple Pay, Google Pay, or card — right inside Telegram.</p>
           </div>
         </details>
@@ -329,7 +319,7 @@
       {
         "@type": "Question",
         "name": "How does payment work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "PayPal (recommended): click the PayPal button and pay with PayPal, credit card, or debit card. You get your license key instantly. Alternatively, pay via Telegram Stars (250 Stars) using Apple Pay, Google Pay, or card." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Click the Subscribe button and pay with credit card, debit card, Apple Pay, or Google Pay via Stripe. You get your license key instantly. Alternatively, pay via Telegram Stars (250 Stars) using Apple Pay, Google Pay, or card." }
       },
       {
         "@type": "Question",
@@ -354,60 +344,92 @@
     ]
   }
   </script>
-  <script src="https://www.paypal.com/sdk/js?client-id=Ae-G0TZ2sY3pqkG-fhOuBYfs0MacW7TT4adnZzWmda5vFDdGxEVq-P0mr2WPn3RdF9kvmPkj8VK52NSt&vault=true&intent=subscription&locale=en_US"></script>
   <script src="script.js" defer></script>
 
-  <!-- Antom (Alipay/WeChat Pay/KakaoPay) для азиатских юзеров -->
+  <!-- Stripe Checkout -->
   <script>
-  // Antom (Alipay/WeChat Pay/KakaoPay) для азиатских юзеров
-  (function() {
-    var isAsian = /^(zh|ko|ja)/.test(navigator.language);
-    var antomButtons = document.querySelectorAll('.antom-checkout');
+  function startStripeCheckout(plan) {
+    var btn = document.querySelector('.stripe-checkout-btn[onclick*="' + plan + '"]');
+    var statusEl = document.getElementById('stripe-status-' + plan);
+    if (btn) { btn.disabled = true; btn.textContent = 'Redirecting...'; }
+    if (statusEl) statusEl.textContent = '';
 
-    if (isAsian) {
-      antomButtons.forEach(function(el) { el.style.display = 'block'; });
-    }
-
-    // Также показать Antom если PayPal SDK не загрузился через 5 секунд
-    setTimeout(function() {
-      var paypalContainers = document.querySelectorAll('[id^="paypal-button"]');
-      var paypalEmpty = true;
-      paypalContainers.forEach(function(el) {
-        if (el.children.length > 0) paypalEmpty = false;
-      });
-      if (paypalEmpty) {
-        antomButtons.forEach(function(el) { el.style.display = 'block'; });
-      }
-    }, 5000);
-  })();
-
-  function startAntomCheckout(plan) {
-    var btn = document.querySelector('.antom-checkout[data-plan="' + plan + '"] button');
-    if (btn) { btn.disabled = true; btn.textContent = 'Loading...'; }
-
-    fetch('/api/create-antom-session', {
+    fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plan: plan })
+      body: JSON.stringify({ plan: plan, product: 'banana-clean' })
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {
-      if (data.checkoutUrl) {
-        window.location.href = data.checkoutUrl;
-      } else if (data.error === 'Antom payments not available yet') {
-        // Antom ещё не активирован — показать Stars вместо
-        if (btn) { btn.textContent = 'Coming soon! Redirecting to Telegram Stars...'; btn.disabled = false; }
-        setTimeout(function() {
-          window.open('https://t.me/BananaCleanBot?start=pay', '_blank');
-        }, 1500);
+      if (data.url) {
+        window.location.href = data.url;
       } else {
-        if (btn) { btn.textContent = 'Error — try again'; btn.disabled = false; }
+        if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
+        if (statusEl) statusEl.textContent = 'Something went wrong. Please try again.';
       }
     })
     .catch(function() {
-      if (btn) { btn.textContent = 'Error — try Telegram Stars'; btn.disabled = false; }
+      if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
+      if (statusEl) statusEl.textContent = 'Connection error. Please try again.';
     });
   }
+
+  // Обработка возврата с Stripe Checkout
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('checkout') !== 'success') return;
+    var sessionId = params.get('session_id');
+    if (!sessionId) return;
+
+    // Показать "Activating..." сразу
+    var cards = document.querySelector('.pricing-cards');
+    if (cards) {
+      cards.innerHTML =
+        '<div class="pricing-card" style="max-width:560px;margin:0 auto;text-align:center">' +
+        '<h2 style="color:#FFD700;margin-bottom:16px">Activating your subscription...</h2>' +
+        '<p style="color:#B0B0B0">Please wait a moment.</p></div>';
+    }
+    var starsAlt = document.querySelector('.pricing-stars-alt');
+    if (starsAlt) starsAlt.style.display = 'none';
+
+    fetch('/api/checkout-success?session_id=' + encodeURIComponent(sessionId))
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.success && data.key) {
+          var planLabel = data.plan === 'yearly' ? 'Yearly' : data.plan === 'monthly' ? 'Monthly' : 'PRO';
+          var expiryText = '';
+          if (data.expiresAt) {
+            var d = new Date(data.expiresAt);
+            expiryText = '<p style="color:#B0B0B0;margin-bottom:12px">Plan: <strong style="color:#FFD700">' + planLabel + '</strong> · Renews: ' + d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '</p>';
+          }
+          if (cards) {
+            cards.innerHTML =
+              '<div class="pricing-card" style="max-width:560px;margin:0 auto">' +
+              '<h2 style="color:#FFD700;margin-bottom:16px">Subscription activated!</h2>' +
+              expiryText +
+              '<p style="color:#B0B0B0;margin-bottom:12px">Your license key:</p>' +
+              '<div style="font-family:monospace;font-size:18px;color:#FFD700;background:#1a1a2e;padding:16px;user-select:all;word-break:break-all;border-radius:8px;margin-bottom:16px;cursor:pointer" onclick="navigator.clipboard.writeText(this.textContent)">' + data.key + '</div>' +
+              '<p style="color:#B0B0B0;line-height:1.6">Copy this key and paste it into the Banana Clean extension popup to activate PRO.</p>' +
+              '</div>';
+          }
+        } else if (data.status === 'processing') {
+          if (cards) {
+            cards.innerHTML =
+              '<div class="pricing-card" style="max-width:560px;margin:0 auto;text-align:center">' +
+              '<h2 style="color:#FFD700;margin-bottom:16px">Payment processing...</h2>' +
+              '<p style="color:#B0B0B0">Your key will appear shortly. Please refresh this page in a few seconds.</p></div>';
+          }
+        }
+      })
+      .catch(function() {
+        if (cards) {
+          cards.innerHTML =
+            '<div class="pricing-card" style="max-width:560px;margin:0 auto;text-align:center">' +
+            '<h2 style="color:#FFD700;margin-bottom:16px">Payment received!</h2>' +
+            '<p style="color:#B0B0B0">Your key is being generated. Please refresh this page in a minute.</p></div>';
+        }
+      });
+  })();
   </script>
 
   <!-- Social proof -->
