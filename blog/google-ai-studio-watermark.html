@@ -43,11 +43,51 @@
     "headline": "Google AI Studio Watermark: How to Remove It Free (2026 Guide)",
     "description": "Google AI Studio adds the same Nano Banana watermark as Gemini. How to remove it automatically with a Chrome extension or online tools.",
     "datePublished": "2026-03-06",
-    "dateModified": "2026-03-21",
+    "dateModified": "2026-04-02",
     "author": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/" },
     "publisher": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/", "logo": { "@type": "ImageObject", "url": "https://banana-clean.app/logo-512.png" } },
     "mainEntityOfPage": "https://banana-clean.app/blog/google-ai-studio-watermark",
     "image": "https://banana-clean.app/og-image.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Banana Clean work on both gemini.google.com and aistudio.google.com?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The extension monitors both domains. When you click Download on either site, the watermark is removed automatically before the file hits your downloads folder."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does AI Studio use a larger watermark than Gemini?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It does not always. The watermark size depends on image resolution, not the platform. AI Studio often produces higher-resolution outputs (up to 2048px), which triggers the 96x96 mask. Gemini web typically outputs at 1024px, which gets the 48x48 mask."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use the Gemini API free tier for image generation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google offers a free tier for the Gemini API with rate limits. Image generation is available on both free and paid tiers, but the free tier has lower quotas. The watermark is identical regardless of tier."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will Banana Clean work if Google changes the AI Studio URL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The extension matches against aistudio.google.com as declared in its manifest. The download URL pattern (lh3.googleusercontent.com/rd-gg) is the actual trigger for interception, and that has remained stable across both platforms."
+        }
+      }
+    ]
   }
   </script>
 </head>
