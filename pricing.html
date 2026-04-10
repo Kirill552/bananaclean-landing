@@ -114,14 +114,14 @@
   <section class="pricing-activate section-alt">
     <div class="container">
       <div class="pricing-activate__panel">
-        <h2>Already have a license key?</h2>
-        <p>After payment you will receive a license key. To activate it:</p>
+        <h2>How to activate your key</h2>
+        <p>After payment, your license key appears on screen and is sent to your email (from noreply@banana-clean.app).</p>
         <ol>
           <li>Click the Banana Clean icon in your browser toolbar</li>
-          <li>Open the extension popup</li>
-          <li>Tap "Enter license key" and paste your key</li>
-          <li>Done — unlimited access is now active</li>
+          <li>Paste your license key into the field</li>
+          <li>Click Activate — unlimited access is now active</li>
         </ol>
+        <p style="margin-top:16px;font-size:13px;color:#999">Didn't receive your key? Check your spam folder. Still missing? Contact <a href="https://t.me/BananaCleanBot" style="color:#FFD700">@BananaCleanBot</a> on Telegram — we reply within a few hours.</p>
       </div>
     </div>
   </section>
@@ -147,7 +147,13 @@
         <details class="faq__item">
           <summary>What happens after I pay?</summary>
           <div class="faq__answer">
-            <p>You receive a license key. Enter it in the extension popup to activate PRO. Your access stays active as long as your subscription is running. Cancel anytime.</p>
+            <p>After payment, your license key is shown on screen and sent to your email. Enter it in the extension popup to activate PRO. Your access stays active as long as your subscription is running. Cancel anytime.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary>I didn't receive my license key</summary>
+          <div class="faq__answer">
+            <p>Your key is sent to the email you used at checkout (from noreply@banana-clean.app). Check your spam/junk folder first. If it's still missing, contact <a href="https://t.me/BananaCleanBot">@BananaCleanBot</a> on Telegram — we'll resend it within a few hours.</p>
           </div>
         </details>
         <details class="faq__item">
@@ -408,8 +414,16 @@
               '<h2 style="color:#FFD700;margin-bottom:16px">Subscription activated!</h2>' +
               expiryText +
               '<p style="color:#B0B0B0;margin-bottom:12px">Your license key:</p>' +
-              '<div style="font-family:monospace;font-size:18px;color:#FFD700;background:#1a1a2e;padding:16px;user-select:all;word-break:break-all;border-radius:8px;margin-bottom:16px;cursor:pointer" onclick="navigator.clipboard.writeText(this.textContent)">' + data.key + '</div>' +
-              '<p style="color:#B0B0B0;line-height:1.6">Copy this key and paste it into the Banana Clean extension popup to activate PRO.</p>' +
+              '<div id="licenseKeyBox" style="font-family:monospace;font-size:18px;color:#FFD700;background:#1a1a2e;padding:16px;user-select:all;word-break:break-all;border-radius:8px;margin-bottom:12px;cursor:pointer" onclick="navigator.clipboard.writeText(this.textContent);document.getElementById(\'copyBtn\').textContent=\'Copied!\'">' + data.key + '</div>' +
+              '<button id="copyBtn" onclick="navigator.clipboard.writeText(document.getElementById(\'licenseKeyBox\').textContent);this.textContent=\'Copied!\'" style="background:#FFD700;color:#000;border:none;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:20px">Copy Key</button>' +
+              '<div style="background:#1a2a1a;border:1px solid #2a4a2a;border-radius:8px;padding:16px;margin-bottom:20px">' +
+              '<p style="color:#66bb6a;font-weight:600;margin-bottom:8px">We also sent this key to your email.</p>' +
+              '<p style="color:#999;font-size:13px">Check your inbox (and spam folder) for a message from noreply@banana-clean.app</p>' +
+              '</div>' +
+              '<div style="text-align:left;margin-bottom:16px">' +
+              '<p style="color:#B0B0B0;font-weight:600;margin-bottom:8px">How to activate:</p>' +
+              '<p style="color:#999;line-height:1.8;font-size:14px">1. Click the Banana Clean extension icon in your browser<br>2. Paste the key into the License Key field<br>3. Click Activate</p>' +
+              '</div>' +
               '</div>';
           }
         } else if (data.status === 'processing') {
