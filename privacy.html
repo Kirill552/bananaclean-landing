@@ -111,8 +111,9 @@
     <p>To evaluate product performance, we use minimal product analytics.</p>
     <ul>
       <li>Anonymous extension installation identifier.</li>
-      <li>Usage events: install, startup, active day, image clean, popup open, toggle state change, PRO interest.</li>
-      <li>Technical request data sent to the analytics server: event date/time, event source, technical IP address and request origin.</li>
+      <li>Usage events: install, startup, active day, image clean, popup open, toggle state change, PRO interest, checkout interest, and support issue signals.</li>
+      <li>Technical request data sent to the analytics server: event date/time, event source and request origin. We may derive approximate country and network/ASN from request IP for debugging regional watermark changes, checkout issues, and abuse prevention. Raw IP is not stored in the main analytics event record.</li>
+      <li>On the pricing page, the site may call <code>api.country.is</code> to choose the checkout currency and available payment methods.</li>
     </ul>
 
     <h2>How data is used</h2>
@@ -126,10 +127,10 @@
     <p>The extension stores technical metrics and settings in <code>chrome.storage.local</code>, for example: enabled/disabled state, cleaning count, active days count, local anonymous installation identifier, and license key.</p>
 
     <h2>Data transmission</h2>
-    <p>Analytics events are sent over HTTPS to our server. Images are never sent to the server for processing.</p>
+    <p>Analytics events are sent over HTTPS to our server. Images are never sent to the server for processing. If cleanup fails, the extension may show our email or Telegram bot; an image is received only if you manually send it to us.</p>
 
     <h2>Payment data</h2>
-    <p>Payments are processed by NOWPayments. We do not store your payment details. We only receive a confirmation that payment was completed and generate a license key.</p>
+    <p>Payments are processed by Stripe and Telegram Stars. We do not store your card or wallet details. We only receive payment/subscription status needed to generate and verify a license key.</p>
 
     <h2>Contact</h2>
     <p>If you have questions about this policy, reach out on Telegram: <a href="https://t.me/KroVik" target="_blank" rel="noopener noreferrer">@KroVik</a>.</p>
