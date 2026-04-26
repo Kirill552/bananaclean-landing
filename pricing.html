@@ -354,16 +354,33 @@
 
   <!-- Stripe Checkout -->
   <script>
+  // Определяем страну юзера один раз при загрузке pricing.html и кешируем.
+  // Нужно чтобы передать в /api/create-checkout-session — backend выберет
+  // правильную валюту (KRW для KR, JPY для JP, TWD для TW). Без этого
+  // корейцы не увидят KakaoPay/Naver Pay, и checkout остаётся в USD.
+  var __detectedCountry = null;
+  var __countryPromise = fetch('https://api.country.is', { cache: 'force-cache' })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(d) {
+      if (d && typeof d.country === 'string') { __detectedCountry = d.country; }
+      return __detectedCountry;
+    })
+    .catch(function() { return null; });
+
   function startStripeCheckout(plan) {
     var btn = document.querySelector('.stripe-checkout-btn[onclick*="' + plan + '"]');
     var statusEl = document.getElementById('stripe-status-' + plan);
     if (btn) { btn.disabled = true; btn.textContent = 'Redirecting...'; }
     if (statusEl) statusEl.textContent = '';
 
-    fetch('/api/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plan: plan, product: 'banana-clean' })
+    __countryPromise.then(function(country) {
+      var payload = { plan: plan, product: 'banana-clean' };
+      if (country) payload.country = country;
+      return fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {
