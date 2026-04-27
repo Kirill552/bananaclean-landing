@@ -58,6 +58,13 @@
         <span class="social-proof__item">★ <span id="proofRating"></span> on Chrome Web Store</span>
       </div>
 
+      <div class="pricing-payment-notice" style="max-width:720px;margin:16px auto 24px;padding:14px 18px;background:#2a1f0a;border:1px solid #FFD700;border-radius:10px;color:#FFE680;font-size:14px;line-height:1.5;text-align:center;">
+        <strong style="color:#FFD700;">⚠️ Card payments are temporarily unavailable</strong> while we resolve a payment processor issue (April 27, 2026).
+        <br>Please use <a href="https://t.me/BananaCleanBot?start=pay" target="_blank" rel="noopener" style="color:#FFD700;text-decoration:underline;font-weight:600;">Telegram Stars</a> for instant activation,
+        or email <a href="mailto:novikn552ta@gmail.com" style="color:#FFD700;text-decoration:underline;">novikn552ta@gmail.com</a> if urgent.
+        <br>Existing subscriptions remain fully active.
+      </div>
+
       <div class="pricing-cards">
         <div class="pricing-card">
           <div class="pricing-card__label">Monthly</div>
@@ -380,16 +387,29 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
+      }).then(function(res) {
+        return res.json().then(function(data) {
+          return { status: res.status, data: data };
+        });
       });
     })
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
+    .then(function(result) {
+      var data = result.data || {};
       if (data.url) {
         window.location.href = data.url;
-      } else {
-        if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
-        if (statusEl) statusEl.textContent = 'Something went wrong. Please try again.';
+        return;
       }
+      if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
+      // Card payments paused — направить юзера на Telegram Stars вместо общей ошибки.
+      if (data.error === 'payments_paused') {
+        if (statusEl) {
+          statusEl.innerHTML = 'Card payments are temporarily unavailable. ' +
+            '<a href="https://t.me/BananaCleanBot" target="_blank" rel="noopener" style="text-decoration:underline;font-weight:600;">Pay via Telegram Stars</a> ' +
+            'for instant activation, or email <a href="mailto:novikn552ta@gmail.com" style="text-decoration:underline;">novikn552ta@gmail.com</a>.';
+        }
+        return;
+      }
+      if (statusEl) statusEl.textContent = 'Something went wrong. Please try again.';
     })
     .catch(function() {
       if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
