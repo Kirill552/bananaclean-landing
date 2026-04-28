@@ -14,7 +14,8 @@
 - [Google AI Studio Watermark](https://banana-clean.app/blog/google-ai-studio-watermark): How to remove the watermark from AI Studio images
 - [Nano Banana Pro Watermark](https://banana-clean.app/blog/nano-banana-pro-watermark): Nano Banana model versions and watermark removal
 - [Best Gemini Watermark Remover Tools](https://banana-clean.app/blog/best-gemini-watermark-remover-tools): 7 tools compared — extensions, online tools, GitHub scripts
-- [Gemini Watermark Remover (Online Tool)](https://banana-clean.app/gemini-watermark-remover): Free browser-based Gemini watermark removal tool
+- [Gemini Watermark Remover Online](https://banana-clean.app/gemini-watermark-remover): Free no-upload browser tool for removing the visible Gemini watermark from images
+- [Nano Banana Watermark Remover](https://banana-clean.app/nano-banana-watermark-remover): Free no-upload browser tool for removing the visible Nano Banana logo from Gemini and AI Studio images
 - [Chrome Web Store](https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah): Install the extension
 
 ## Optional

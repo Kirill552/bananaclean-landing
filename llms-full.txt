@@ -105,6 +105,18 @@ No. Banana Clean intercepts the official Download button in Gemini and AI Studio
 ### What if Google changes the watermark?
 Watermark masks are bundled with the extension and updated through the Chrome Web Store. New pattern — new update.
 
+## Gemini Watermark Remover Online
+
+URL: https://banana-clean.app/gemini-watermark-remover
+
+Free no-upload browser tool for removing the visible Gemini watermark from saved images. It accepts PNG, JPEG, and WebP files, runs the same reverse alpha blending math locally in the browser, and downloads a clean PNG. Use it when you need manual removal without installing the Chrome extension.
+
+## Nano Banana Watermark Remover
+
+URL: https://banana-clean.app/nano-banana-watermark-remover
+
+Free no-upload browser tool for removing the visible Nano Banana logo from Gemini, Google AI Studio, Nano Banana Pro, and Nano Banana 2 images. The tool uses pre-computed 48x48 and 96x96 masks and does not attempt to remove SynthID.
+
 ## Privacy
 
 - Images are processed locally in the browser and never sent to any server
@@ -219,6 +231,8 @@ If Google changes the watermark in future models, updated masks would be shipped
 ## Links
 
 - Website: https://banana-clean.app/
+- Gemini Watermark Remover Online: https://banana-clean.app/gemini-watermark-remover
+- Nano Banana Watermark Remover: https://banana-clean.app/nano-banana-watermark-remover
 - Chrome Web Store: https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah
 - Pricing: https://banana-clean.app/pricing
 - Privacy Policy: https://banana-clean.app/privacy

@@ -11,6 +11,7 @@
     { "source": "/blog/google-ai-studio-watermark", "destination": "/blog/google-ai-studio-watermark.html" },
     { "source": "/blog/nano-banana-pro-watermark", "destination": "/blog/nano-banana-pro-watermark.html" },
     { "source": "/blog/best-gemini-watermark-remover-tools", "destination": "/blog/best-gemini-watermark-remover-tools.html" },
-    { "source": "/gemini-watermark-remover", "destination": "/gemini-watermark-remover.html" }
+    { "source": "/gemini-watermark-remover", "destination": "/gemini-watermark-remover.html" },
+    { "source": "/nano-banana-watermark-remover", "destination": "/nano-banana-watermark-remover.html" }
   ]
 }
