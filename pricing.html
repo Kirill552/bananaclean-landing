@@ -59,10 +59,10 @@
       </div>
 
       <div class="pricing-payment-notice" style="max-width:720px;margin:16px auto 24px;padding:14px 18px;background:#2a1f0a;border:1px solid #FFD700;border-radius:10px;color:#FFE680;font-size:14px;line-height:1.5;text-align:center;">
-        <strong style="color:#FFD700;">⚠️ Card payments are temporarily unavailable</strong> while we resolve a payment processor issue (April 27, 2026).
-        <br>Please use <a href="https://t.me/BananaCleanBot?start=pay" target="_blank" rel="noopener" style="color:#FFD700;text-decoration:underline;font-weight:600;">Telegram Stars</a> for instant activation,
-        or email <a href="mailto:novikn552ta@gmail.com" style="color:#FFD700;text-decoration:underline;">novikn552ta@gmail.com</a> if urgent.
-        <br>Existing subscriptions remain fully active.
+        <strong style="color:#FFD700;">Card checkout is moving to Square.</strong>
+        If checkout is unavailable during rollout, use <a href="https://t.me/BananaCleanBot?start=pay" target="_blank" rel="noopener" style="color:#FFD700;text-decoration:underline;font-weight:600;">Telegram Stars</a> for instant activation
+        or email <a href="mailto:novikn552ta@gmail.com" style="color:#FFD700;text-decoration:underline;">novikn552ta@gmail.com</a>.
+        Existing subscriptions remain fully active.
       </div>
 
       <div class="pricing-cards">
@@ -76,8 +76,8 @@
             <li>Works on Gemini + AI Studio</li>
             <li>Cancel anytime, no lock-in</li>
           </ul>
-          <button class="stripe-checkout-btn" onclick="startStripeCheckout('monthly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $2.99/mo</button>
-          <p class="pricing-card__status" id="stripe-status-monthly"></p>
+          <button class="square-checkout-btn" onclick="startSquareCheckout('monthly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $2.99/mo</button>
+          <p class="pricing-card__status" id="square-status-monthly"></p>
         </div>
 
         <div class="pricing-card pricing-card--featured">
@@ -91,8 +91,8 @@
             <li>Works on Gemini + AI Studio</li>
             <li>Best value — save 30% vs monthly</li>
           </ul>
-          <button class="stripe-checkout-btn" onclick="startStripeCheckout('yearly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $24.99/yr</button>
-          <p class="pricing-card__status" id="stripe-status-yearly"></p>
+          <button class="square-checkout-btn" onclick="startSquareCheckout('yearly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $24.99/yr</button>
+          <p class="pricing-card__status" id="square-status-yearly"></p>
         </div>
       </div>
 
@@ -141,7 +141,7 @@
         <details class="faq__item">
           <summary>How does payment work?</summary>
           <div class="faq__answer">
-            <p><strong>Credit/debit card (recommended):</strong> Click the Subscribe button on the pricing page. Pay with your credit card, debit card, Apple Pay, or Google Pay via Stripe. You get your license key instantly after payment.</p>
+            <p><strong>Credit/debit card (recommended):</strong> Click the Subscribe button on the pricing page. Pay with your credit card, debit card, Apple Pay, or Google Pay via Square. You get your license key instantly after payment.</p>
             <p><strong>Telegram Stars:</strong> Tap "Pay via Telegram", it opens @BananaCleanBot. Pay 250 Stars using Apple Pay, Google Pay, or card — right inside Telegram.</p>
           </div>
         </details>
@@ -332,7 +332,7 @@
       {
         "@type": "Question",
         "name": "How does payment work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Click the Subscribe button and pay with credit card, debit card, Apple Pay, or Google Pay via Stripe. You get your license key instantly. Alternatively, pay via Telegram Stars (250 Stars) using Apple Pay, Google Pay, or card." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Click the Subscribe button and pay with credit card, debit card, Apple Pay, or Google Pay via Square. You get your license key instantly. Alternatively, pay via Telegram Stars (250 Stars) using Apple Pay, Google Pay, or card." }
       },
       {
         "@type": "Question",
@@ -359,38 +359,22 @@
   </script>
   <script src="script.js" defer></script>
 
-  <!-- Stripe Checkout -->
+  <!-- Square Checkout -->
   <script>
-  // Определяем страну юзера один раз при загрузке pricing.html и кешируем.
-  // Нужно чтобы передать в /api/create-checkout-session — backend выберет
-  // правильную валюту (KRW для KR, JPY для JP, TWD для TW). Без этого
-  // корейцы не увидят KakaoPay/Naver Pay, и checkout остаётся в USD.
-  var __detectedCountry = null;
-  var __countryPromise = fetch('https://api.country.is', { cache: 'force-cache' })
-    .then(function(r) { return r.ok ? r.json() : null; })
-    .then(function(d) {
-      if (d && typeof d.country === 'string') { __detectedCountry = d.country; }
-      return __detectedCountry;
-    })
-    .catch(function() { return null; });
-
-  function startStripeCheckout(plan) {
-    var btn = document.querySelector('.stripe-checkout-btn[onclick*="' + plan + '"]');
-    var statusEl = document.getElementById('stripe-status-' + plan);
+  function startSquareCheckout(plan) {
+    var btn = document.querySelector('.square-checkout-btn[onclick*="' + plan + '"]');
+    var statusEl = document.getElementById('square-status-' + plan);
     if (btn) { btn.disabled = true; btn.textContent = 'Redirecting...'; }
     if (statusEl) statusEl.textContent = '';
 
-    __countryPromise.then(function(country) {
-      var payload = { plan: plan, product: 'banana-clean' };
-      if (country) payload.country = country;
-      return fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).then(function(res) {
-        return res.json().then(function(data) {
-          return { status: res.status, data: data };
-        });
+    fetch('/api/create-square-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: plan, product: 'banana-clean' })
+    })
+    .then(function(res) {
+      return res.json().then(function(data) {
+        return { status: res.status, data: data };
       });
     })
     .then(function(result) {
@@ -400,16 +384,11 @@
         return;
       }
       if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
-      // Card payments paused — направить юзера на Telegram Stars вместо общей ошибки.
-      if (data.error === 'payments_paused') {
-        if (statusEl) {
-          statusEl.innerHTML = 'Card payments are temporarily unavailable. ' +
-            '<a href="https://t.me/BananaCleanBot" target="_blank" rel="noopener" style="text-decoration:underline;font-weight:600;">Pay via Telegram Stars</a> ' +
-            'for instant activation, or email <a href="mailto:novikn552ta@gmail.com" style="text-decoration:underline;">novikn552ta@gmail.com</a>.';
-        }
-        return;
+      if (statusEl) {
+        statusEl.innerHTML = 'Card checkout is temporarily unavailable. ' +
+          '<a href="https://t.me/BananaCleanBot?start=pay" target="_blank" rel="noopener" style="text-decoration:underline;font-weight:600;">Pay via Telegram Stars</a> ' +
+          'for instant activation, or email <a href="mailto:novikn552ta@gmail.com" style="text-decoration:underline;">novikn552ta@gmail.com</a>.';
       }
-      if (statusEl) statusEl.textContent = 'Something went wrong. Please try again.';
     })
     .catch(function() {
       if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
@@ -417,12 +396,12 @@
     });
   }
 
-  // Обработка возврата с Stripe Checkout
+  // Обработка возврата с Square Checkout
   (function() {
     var params = new URLSearchParams(window.location.search);
-    if (params.get('checkout') !== 'success') return;
-    var sessionId = params.get('session_id');
-    if (!sessionId) return;
+    if (params.get('square') !== 'success') return;
+    var squareRef = params.get('square_ref');
+    if (!squareRef) return;
 
     // Показать "Activating..." сразу
     var cards = document.querySelector('.pricing-cards');
@@ -435,7 +414,7 @@
     var starsAlt = document.querySelector('.pricing-stars-alt');
     if (starsAlt) starsAlt.style.display = 'none';
 
-    fetch('/api/checkout-success?session_id=' + encodeURIComponent(sessionId))
+    fetch('/api/square-checkout-success?square_ref=' + encodeURIComponent(squareRef))
       .then(function(res) { return res.json(); })
       .then(function(data) {
         if (data.success && data.key) {
