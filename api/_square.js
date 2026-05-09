@@ -43,7 +43,7 @@ function buildPaymentLinkRequest(ref, plan) {
   return {
     idempotency_key: ref,
     quick_pay: {
-      name: 'Banana Clean PRO ' + planLabel,
+      name: 'Banana Clean PRO ' + planLabel + ' - Gemini image cleanup',
       location_id: process.env.SQUARE_LOCATION_ID,
       price_money: {
         amount: planConfig.amount,
@@ -55,7 +55,7 @@ function buildPaymentLinkRequest(ref, plan) {
       redirect_url: appendQuery(process.env.SQUARE_SUCCESS_URL || 'https://banana-clean.app/pricing?square=success', 'square_ref', ref),
       merchant_support_email: process.env.SQUARE_SUPPORT_EMAIL || 'novikn552ta@gmail.com'
     },
-    payment_note: 'Banana Clean PRO ' + planLabel + ' subscription'
+    payment_note: 'Banana Clean PRO ' + planLabel + ' - Gemini image export cleanup subscription'
   };
 }
 function json(res, status, data) {
