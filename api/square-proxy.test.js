@@ -29,13 +29,13 @@ test('buildPaymentLinkRequest creates production subscription checkout payload',
   var payload = squareProxy.buildPaymentLinkRequest('ref-123', 'monthly');
 
   assert.strictEqual(payload.idempotency_key, 'ref-123');
-  assert.strictEqual(payload.quick_pay.name, 'Banana Clean PRO Monthly - Gemini image cleanup');
+  assert.strictEqual(payload.quick_pay.name, 'Banana Clean Prompt Guide Monthly');
   assert.strictEqual(payload.quick_pay.location_id, 'loc_123');
   assert.strictEqual(payload.quick_pay.price_money.amount, 299);
   assert.strictEqual(payload.checkout_options.subscription_plan_id, 'monthly-var');
   assert.strictEqual(payload.checkout_options.redirect_url, 'https://banana-clean.app/pricing?square=success&square_ref=ref-123');
   assert.strictEqual(payload.checkout_options.merchant_support_email, 'support@example.com');
-  assert.strictEqual(payload.payment_note, 'Banana Clean PRO Monthly - Gemini image export cleanup subscription');
+  assert.strictEqual(payload.payment_note, 'Banana Clean Prompt Guide Monthly - PDF prompt pack subscription');
 });
 
 test('getPlanConfig maps Square variation ids to Banana Clean plans', function () {

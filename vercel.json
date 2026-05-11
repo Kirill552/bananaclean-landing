@@ -1,17 +1,16 @@
 {
+  "redirects": [
+    { "source": "/blog", "destination": "/", "permanent": false },
+    { "source": "/blog/:path*", "destination": "/", "permanent": false },
+    { "source": "/gemini-watermark-remover", "destination": "/", "permanent": false },
+    { "source": "/gemini-watermark-remover.html", "destination": "/", "permanent": false },
+    { "source": "/nano-banana-watermark-remover", "destination": "/", "permanent": false },
+    { "source": "/nano-banana-watermark-remover.html", "destination": "/", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "https://nanobanana-clean.ru/api/:path*" },
     { "source": "/collect", "destination": "https://nanobanana-clean.ru/collect" },
     { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/blog/how-to-remove-gemini-watermark", "destination": "/blog/how-to-remove-gemini-watermark.html" },
-    { "source": "/blog/what-is-synthid-watermark", "destination": "/blog/what-is-synthid-watermark.html" },
-    { "source": "/blog/gemini-images-copyright-commercial-use", "destination": "/blog/gemini-images-copyright-commercial-use.html" },
-    { "source": "/blog/google-ai-studio-watermark", "destination": "/blog/google-ai-studio-watermark.html" },
-    { "source": "/blog/nano-banana-pro-watermark", "destination": "/blog/nano-banana-pro-watermark.html" },
-    { "source": "/blog/best-gemini-watermark-remover-tools", "destination": "/blog/best-gemini-watermark-remover-tools.html" },
-    { "source": "/gemini-watermark-remover", "destination": "/gemini-watermark-remover.html" },
-    { "source": "/nano-banana-watermark-remover", "destination": "/nano-banana-watermark-remover.html" }
+    { "source": "/privacy", "destination": "/privacy.html" }
   ]
 }
