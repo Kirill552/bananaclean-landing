@@ -92,7 +92,7 @@ async function squareRequest(apiPath, options) {
 }
 async function backendRequest(path, options) {
   var opts = options || {};
-  var baseUrl = process.env.BACKEND_INTERNAL_BASE_URL || 'https://nanobanana-clean.ru';
+  var baseUrl = process.env.BACKEND_INTERNAL_BASE_URL || 'https://api.banana-clean.app';
   var response = await fetch(baseUrl + path, {
     method: opts.method || 'GET',
     headers: {
