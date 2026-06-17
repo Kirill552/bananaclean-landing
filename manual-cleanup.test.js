@@ -42,6 +42,7 @@ assertIncludes('manual-cleanup.html', 'FAQPage');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/config.js');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/data-collector.js');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/migan-engine.js');
+assertIncludes('manual-cleanup.html', 'manual-cleanup/migan-engine.js?v=20260617-runtime-fallback');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/manual-cleanup.js');
 assertNotIncludes('manual-cleanup.html', 'manual-cleanup/lama-engine.js');
 assertNotIncludes('manual-cleanup.html', '<form');
@@ -73,5 +74,8 @@ assertNotIncludes('manual-cleanup/manual-cleanup.js', 'compareRange');
 assertFileExists('models/migan/migan.onnx');
 assertFileExists('manual-cleanup/ort/ort.webgpu.min.js');
 assertFileExists('manual-cleanup/ort/ort-wasm-simd-threaded.jsep.wasm');
+assertFileExists('manual-cleanup/ort/ort-wasm-simd-threaded.mjs');
+assertFileExists('manual-cleanup/ort/ort-wasm-simd-threaded.wasm');
+assertFileExists('manual-cleanup/ort/ort.wasm.min.js');
 
 console.log('manual cleanup EN contract passed');

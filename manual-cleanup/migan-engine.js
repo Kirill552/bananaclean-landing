@@ -10,9 +10,12 @@
   var DEFAULT_MODEL_VERSION = '2026-06-16';
   var DEFAULT_MODEL_URL = '/models/migan/migan.onnx';
   var DEFAULT_ORT_BASE_URL = '/manual-cleanup/ort/';
+  var ORT_RUNTIME_WEBGPU = 'webgpu';
+  var ORT_RUNTIME_WASM = 'wasm';
   var sessionPromise = null;
   var sessionCacheKey = null;
   var ortScriptPromise = null;
+  var ortScriptRuntime = null;
 
   function inpaint(imageCanvas, maskImageData, config) {
     if (!imageCanvas || !maskImageData) return Promise.reject(new Error('manual_cleanup_input_missing'));
@@ -27,10 +30,10 @@
     var cacheKey = getModelRequestUrl(modelUrl, config) + '|' + ortBaseUrl;
     if (sessionPromise && sessionCacheKey === cacheKey) return sessionPromise;
     sessionCacheKey = cacheKey;
-    sessionPromise = loadOrt(ortBaseUrl).then(function (ort) {
-      configureOrt(ort, ortBaseUrl);
+    sessionPromise = loadPreferredOrtRuntime(ortBaseUrl).then(function (runtimeState) {
+      configureOrt(runtimeState.ort, ortBaseUrl, runtimeState.runtime);
       return loadModelBuffer(modelUrl, config).then(function (modelBuffer) {
-        return createSessionWithFallback(ort, modelBuffer);
+        return createSessionWithFallback(runtimeState, modelBuffer, ortBaseUrl);
       });
     }).catch(function (error) { sessionPromise = null; sessionCacheKey = null; throw error; });
     return sessionPromise;
@@ -91,30 +94,56 @@
     });
   }
 
-  function createSessionWithFallback(ort, modelBuffer) {
-    var webGpuCapable = root.navigator && root.navigator.gpu && typeof root.navigator.gpu.requestAdapter === 'function';
-    var webGpuSession = webGpuCapable
-      ? ort.InferenceSession.create(modelBuffer, { executionProviders: ['webgpu'] })
-      : Promise.reject(new Error('manual_cleanup_webgpu_unavailable'));
-    return webGpuSession.then(function (session) {
-      return { ort: ort, provider: 'webgpu', session: session };
+  function createSessionWithFallback(runtimeState, modelBuffer, ortBaseUrl) {
+    if (runtimeState.runtime !== ORT_RUNTIME_WEBGPU) {
+      return createWasmSession(runtimeState.ort, modelBuffer);
+    }
+
+    return runtimeState.ort.InferenceSession.create(modelBuffer, { executionProviders: ['webgpu'] }).then(function (session) {
+      return { ort: runtimeState.ort, provider: 'webgpu', session: session };
     }).catch(function () {
-      return ort.InferenceSession.create(modelBuffer, { executionProviders: ['wasm'] }).then(function (session) {
-        return { ort: ort, provider: 'wasm', session: session };
+      return loadOrtRuntime(ortBaseUrl, ORT_RUNTIME_WASM, true).then(function (wasmState) {
+        configureOrt(wasmState.ort, ortBaseUrl, ORT_RUNTIME_WASM);
+        return createWasmSession(wasmState.ort, modelBuffer);
       });
     });
   }
 
-  function loadOrt(ortBaseUrl) {
-    if (root.ort && root.ort.InferenceSession) return Promise.resolve(root.ort);
-    if (ortScriptPromise) return ortScriptPromise;
+  function createWasmSession(ort, modelBuffer) {
+    return ort.InferenceSession.create(modelBuffer, { executionProviders: ['wasm'] }).then(function (session) {
+      return { ort: ort, provider: 'wasm', session: session };
+    });
+  }
+
+  function loadPreferredOrtRuntime(ortBaseUrl) {
+    return loadOrtRuntime(ortBaseUrl, shouldUseWebGpuRuntime() ? ORT_RUNTIME_WEBGPU : ORT_RUNTIME_WASM, false);
+  }
+
+  function shouldUseWebGpuRuntime() {
+    return !!(root.navigator &&
+      root.navigator.gpu &&
+      typeof root.navigator.gpu.requestAdapter === 'function' &&
+      !isProblematicWebGpuBrowser());
+  }
+
+  function isProblematicWebGpuBrowser() {
+    var userAgent = root.navigator && root.navigator.userAgent ? root.navigator.userAgent : '';
+    return /YaBrowser|Yowser|YaApp_Android/i.test(userAgent);
+  }
+
+  function loadOrtRuntime(ortBaseUrl, runtime, forceReload) {
+    if (!forceReload && root.ort && root.ort.InferenceSession && ortScriptRuntime === runtime) {
+      return Promise.resolve({ ort: root.ort, runtime: runtime });
+    }
+    if (!forceReload && ortScriptPromise && ortScriptRuntime === runtime) return ortScriptPromise;
+    ortScriptRuntime = runtime;
     ortScriptPromise = new Promise(function (resolve, reject) {
       if (!root.document || !root.document.createElement) { reject(new Error('manual_cleanup_dom_unavailable')); return; }
       var script = root.document.createElement('script');
       script.async = true;
-      script.src = resolveSameOriginAssetUrl(ortBaseUrl || DEFAULT_ORT_BASE_URL, 'ort.webgpu.min.js');
+      script.src = resolveSameOriginAssetUrl(ortBaseUrl || DEFAULT_ORT_BASE_URL, getOrtScriptName(runtime));
       script.onload = function () {
-        if (root.ort && root.ort.InferenceSession) resolve(root.ort);
+        if (root.ort && root.ort.InferenceSession) resolve({ ort: root.ort, runtime: runtime });
         else reject(new Error('manual_cleanup_ort_missing'));
       };
       script.onerror = function () { reject(new Error('manual_cleanup_ort_load_failed')); };
@@ -123,13 +152,25 @@
     return ortScriptPromise;
   }
 
-  function configureOrt(ort, ortBaseUrl) {
+  function getOrtScriptName(runtime) {
+    return runtime === ORT_RUNTIME_WASM ? 'ort.wasm.min.js' : 'ort.webgpu.min.js';
+  }
+
+  function configureOrt(ort, ortBaseUrl, runtime) {
     if (!ort.env) return;
     ort.env.logLevel = 'warning';
     if (!ort.env.wasm) return;
     ort.env.wasm.numThreads = 1;
     ort.env.wasm.proxy = false;
-    ort.env.wasm.wasmPaths = resolveSameOriginAssetUrl(ortBaseUrl || DEFAULT_ORT_BASE_URL, '');
+    ort.env.wasm.wasmPaths = runtime === ORT_RUNTIME_WASM
+      ? {
+        mjs: resolveSameOriginAssetUrl(ortBaseUrl || DEFAULT_ORT_BASE_URL, 'ort-wasm-simd-threaded.mjs'),
+        wasm: resolveSameOriginAssetUrl(ortBaseUrl || DEFAULT_ORT_BASE_URL, 'ort-wasm-simd-threaded.wasm')
+      }
+      : {
+        mjs: resolveSameOriginAssetUrl(ortBaseUrl || DEFAULT_ORT_BASE_URL, 'ort-wasm-simd-threaded.jsep.mjs'),
+        wasm: resolveSameOriginAssetUrl(ortBaseUrl || DEFAULT_ORT_BASE_URL, 'ort-wasm-simd-threaded.jsep.wasm')
+      };
   }
 
   function loadModelBuffer(modelUrl, config) {
