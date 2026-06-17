@@ -7,7 +7,7 @@
 - [Home](https://banana-clean.app/): Nano Banana Prompt Guide — curated prompts for AI image generation
 - [Pricing](https://banana-clean.app/pricing): Full guide access — $2.99/mo or $24.99/yr, cancel anytime
 - [Privacy Policy](https://banana-clean.app/privacy): What data is collected, how the guide and bonus tool work
-- [Manual Gemini watermark remover](https://banana-clean.app/manual-cleanup): Brush cleanup for leftover Gemini and Nano Banana watermarks
+- [Manual Gemini watermark remover](https://banana-clean.app/manual-cleanup): Free in-browser tool to remove watermarks, logos, text, date stamps and unwanted objects from any image — brush the area and AI rebuilds the background locally. Also clears leftover Gemini and Nano Banana traces.
 - [Blog](https://banana-clean.app/blog): Guides on AI image generation, prompt engineering, and creative workflows
 
 ## Optional

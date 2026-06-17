@@ -22,7 +22,7 @@ function assertFileExists(relativePath) {
   assert(fs.existsSync(path.join(root, relativePath)), relativePath + ' must exist');
 }
 
-assertIncludes('manual-cleanup.html', '<title>Manual Gemini Watermark Remover');
+assertIncludes('manual-cleanup.html', '<title>Free AI Watermark &amp; Object Remover');
 assertIncludes('manual-cleanup.html', 'Brush out leftover Gemini and Nano Banana watermarks');
 assertIncludes('manual-cleanup.html', 'property="og:title"');
 assertIncludes('manual-cleanup.html', 'application/ld+json');
