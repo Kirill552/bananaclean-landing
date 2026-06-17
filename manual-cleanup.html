@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow">
+  <title>Manual Gemini Watermark Remover — Brush Cleanup Online</title>
+  <meta name="description" content="Brush out leftover Gemini and Nano Banana watermarks online. Upload an image, paint the mark, clean it in your browser, and download the result.">
+  <link rel="canonical" href="https://banana-clean.app/manual-cleanup">
+  <meta property="og:title" content="Manual Gemini Watermark Remover">
+  <meta property="og:description" content="Brush out leftover Gemini and Nano Banana watermarks with a local AI cleanup page from Banana Clean.">
+  <meta property="og:url" content="https://banana-clean.app/manual-cleanup">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://banana-clean.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="manual-cleanup/manual-cleanup.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Banana Clean Manual Gemini Watermark Remover",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Web browser",
+        "url": "https://banana-clean.app/manual-cleanup",
+        "description": "A browser-based manual cleanup page for brushing out remaining Gemini and Nano Banana watermarks from AI images.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I remove a leftover Gemini watermark manually?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upload the image, paint only the visible watermark with the brush, run cleanup, then download the cleaned PNG."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this manual watermark remover upload my image?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cleanup runs in the browser. Sending the original image and mask is optional and starts only after explicit consent."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body data-locale="en">
+  <main id="manualCleanupApp" class="manual-cleanup" data-manual-cleanup-app>
+    <section class="manual-cleanup__hero">
+      <div class="manual-cleanup__hero-copy">
+        <p class="manual-cleanup__eyebrow">Manual Gemini watermark remover</p>
+        <h1><span>Brush out</span> leftover Gemini and Nano Banana watermarks.</h1>
+        <p>When automatic cleanup leaves a tiny trace, upload the image, paint only the mark, erase it locally, and download the cleaned file.</p>
+        <div class="manual-cleanup__badges" aria-label="Tool details">
+          <span>Gemini image watermark cleanup</span>
+          <span>Browser-based AI inpainting</span>
+          <span>PNG, JPEG, WebP</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="manual-cleanup__workspace" aria-label="Manual cleanup workspace">
+      <label id="uploadPanel" class="manual-cleanup__dropzone" for="fileInput">
+        <strong>Drop image here</strong>
+        <span>or Browse files</span>
+        <small>PNG, JPEG, WebP · up to 20 MB</small>
+        <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp">
+      </label>
+
+      <div id="editorPanel" class="manual-cleanup__editor" hidden>
+        <div id="fileMeta" class="manual-cleanup__file-meta"></div>
+
+        <div id="canvasWrap" class="manual-cleanup__canvas-wrap">
+          <canvas id="imageCanvas"></canvas>
+          <canvas id="maskCanvas" aria-label="Brush mask"></canvas>
+          <div id="brushCursor" class="manual-cleanup__brush-cursor" hidden></div>
+        </div>
+
+        <div id="toolbar" class="manual-cleanup__toolbar" aria-label="Mask tools">
+          <label for="brushSize">Brush</label>
+          <input id="brushSize" type="range" min="5" max="150" value="44">
+          <output id="brushSizeValue" for="brushSize">44px</output>
+          <button id="undoMask" type="button" disabled>Undo</button>
+          <button id="redoMask" type="button" disabled>Redo</button>
+          <button id="clearMask" type="button" disabled>Clear paint</button>
+          <button id="runCleanup" class="manual-cleanup__primary" type="button" disabled>Erase painted area</button>
+        </div>
+      </div>
+
+      <section id="resultPanel" class="manual-cleanup__result" hidden aria-label="Manual cleanup result">
+        <div id="resultMeta" class="manual-cleanup__file-meta"></div>
+        <div class="manual-cleanup__result-grid">
+          <figure>
+            <span>Before</span>
+            <img id="beforePreview" alt="Original image before manual Gemini watermark removal">
+          </figure>
+          <figure>
+            <span>After</span>
+            <img id="afterPreview" alt="Cleaned image after manual Gemini watermark removal">
+          </figure>
+        </div>
+      </section>
+
+      <div id="resultActions" class="manual-cleanup__result-actions" hidden>
+        <button id="downloadResult" class="manual-cleanup__download" type="button" disabled>Download</button>
+        <button id="newImage" type="button">New image</button>
+      </div>
+
+      <details id="samplePanel" class="manual-cleanup__sample" hidden>
+        <summary>Help improve automatic cleanup</summary>
+        <label>
+          <input id="sampleConsent" type="checkbox">
+          <span>Send the original image and mask. Upload starts only after you click Send sample.</span>
+        </label>
+        <button id="sendSample" type="button" disabled>Send sample</button>
+      </details>
+
+      <p id="statusText" class="manual-cleanup__status" role="status" aria-live="polite">Load an image to start.</p>
+    </section>
+
+    <section class="manual-cleanup__seo">
+      <div>
+        <p class="manual-cleanup__eyebrow">Why this page exists</p>
+        <h2>A fallback for hard Gemini watermark cases</h2>
+      </div>
+      <p>Banana Clean removes the Gemini watermark automatically during download. Some generated images still need a manual pass: busy wood texture, marble, glass, water reflections, or a watermark placed over high-detail pixels. This page is built for those edge cases.</p>
+      <div class="manual-cleanup__seo-grid">
+        <article>
+          <h3>Target the exact pixels</h3>
+          <p>Paint only the remaining mark instead of reprocessing the whole image.</p>
+        </article>
+        <article>
+          <h3>Review the cleaned file</h3>
+          <p>The result card shows the original and cleaned image without leaving the workspace.</p>
+        </article>
+        <article>
+          <h3>Keep automatic cleanup separate</h3>
+          <p>The extension stays local and lightweight. This page is the opt-in fallback for difficult images.</p>
+        </article>
+        <article>
+          <h3>Share hard cases by choice</h3>
+          <p>Original image and mask upload is off by default and requires a separate checkbox.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="manual-cleanup__faq">
+      <h2>Manual Gemini watermark remover FAQ</h2>
+      <details>
+        <summary>When should I use this instead of the extension?</summary>
+        <p>Use it when the extension removes most of the Gemini watermark but leaves a visible trace on texture, reflections, marble, water, wood, or clothing.</p>
+      </details>
+      <details>
+        <summary>Is this the same as a generic AI watermark remover?</summary>
+        <p>No. The page is tuned as a Banana Clean fallback for Gemini and Nano Banana image watermarks, with manual brush control for the remaining visible area.</p>
+      </details>
+      <details>
+        <summary>Will the page upload my image?</summary>
+        <p>The cleanup run is local. Optional sample upload is separate, visible, and requires a checkbox plus a Send sample click.</p>
+      </details>
+    </section>
+  </main>
+
+  <script src="manual-cleanup/config.js"></script>
+  <script src="manual-cleanup/uploader.js"></script>
+  <script src="manual-cleanup/mask-editor.js"></script>
+  <script src="manual-cleanup/migan-engine.js"></script>
+  <script src="manual-cleanup/data-collector.js"></script>
+  <script src="manual-cleanup/manual-cleanup.js"></script>
+</body>
+</html>

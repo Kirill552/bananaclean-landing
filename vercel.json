@@ -8,6 +8,8 @@
     { "source": "/nano-banana-watermark-remover.html", "destination": "/", "permanent": false }
   ],
   "rewrites": [
+    { "source": "/manual-cleanup", "destination": "/manual-cleanup.html" },
+    { "source": "/api/manual-cleanup-sample", "destination": "https://api.banana-clean.app/api/manual-cleanup-sample" },
     { "source": "/api/:path*", "destination": "https://api.banana-clean.app/api/:path*" },
     { "source": "/collect", "destination": "https://api.banana-clean.app/collect" },
     { "source": "/pricing", "destination": "/pricing.html" },

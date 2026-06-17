@@ -78,3 +78,10 @@ Payment methods: credit cards, debit cards, Apple Pay, Google Pay, and Telegram 
 
 Banana Clean is operated by USA CHECK NY INC
 17011 N Bay Rd Unit 612, Sunny Isles, FL 33160, USA
+---
+
+## Manual Gemini watermark remover
+
+The manual watermark remover is a browser-based fallback for difficult Gemini and Nano Banana image watermarks. Upload an image, paint the remaining visible mark with a circular brush, run local MI-GAN inpainting, and download the cleaned result.
+
+Use it when automatic cleanup leaves a trace on wood, marble, glass, water, fabric, product photos, or other detailed textures. Cleanup runs in the browser. Optional sample upload is separate and requires explicit consent.
