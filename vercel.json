@@ -1,18 +1,14 @@
 {
-  "redirects": [
-    { "source": "/blog", "destination": "/", "permanent": false },
-    { "source": "/blog/:path*", "destination": "/", "permanent": false },
-    { "source": "/gemini-watermark-remover", "destination": "/", "permanent": false },
-    { "source": "/gemini-watermark-remover.html", "destination": "/", "permanent": false },
-    { "source": "/nano-banana-watermark-remover", "destination": "/", "permanent": false },
-    { "source": "/nano-banana-watermark-remover.html", "destination": "/", "permanent": false }
-  ],
   "rewrites": [
     { "source": "/manual-cleanup", "destination": "/manual-cleanup.html" },
     { "source": "/api/manual-cleanup-sample", "destination": "https://api.banana-clean.app/api/manual-cleanup-sample" },
     { "source": "/api/:path*", "destination": "https://api.banana-clean.app/api/:path*" },
     { "source": "/collect", "destination": "https://api.banana-clean.app/collect" },
     { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/privacy", "destination": "/privacy.html" }
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/blog/:slug", "destination": "/blog/:slug.html" },
+    { "source": "/gemini-watermark-remover", "destination": "/gemini-watermark-remover.html" },
+    { "source": "/nano-banana-watermark-remover", "destination": "/nano-banana-watermark-remover.html" }
   ]
 }

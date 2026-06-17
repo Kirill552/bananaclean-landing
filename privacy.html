@@ -12,10 +12,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Banana Clean</title>
-  <meta name="description" content="Privacy policy for Banana Clean: what anonymous data the website and bonus tool use, how local processing works, and what events are sent for product analytics.">
+  <meta name="description" content="Privacy policy for Banana Clean: what anonymous data the website and extension use, how local image processing works, and what events are sent for product analytics.">
   <meta name="robots" content="index,follow">
   <meta property="og:title" content="Privacy Policy — Banana Clean">
-  <meta property="og:description" content="Privacy policy for Banana Clean: local processing, anonymous analytics, zero data collection.">
+  <meta property="og:description" content="Privacy policy for Banana Clean: local image processing, anonymous analytics, zero data collection.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://banana-clean.app/privacy">
   <meta property="og:image" content="https://banana-clean.app/og-image.png">
@@ -94,11 +94,11 @@
     <h1>Privacy Policy <span class="accent">Banana Clean</span></h1>
     <div class="panel">
       <p>Last updated: March 3, 2026.</p>
-      <p>Banana Clean provides a paid Nano Banana Prompt Guide, a website at <a href="https://banana-clean.app/">banana-clean.app</a>, and a free bonus browser tool for subscribers. This page describes what data is used by the guide website and bonus tool.</p>
+      <p>Banana Clean is a browser extension and the website <a href="https://banana-clean.app/">banana-clean.app</a>. This page describes what data is used by the extension and the website.</p>
     </div>
 
-    <h2>What the bonus tool does</h2>
-    <p>Banana Clean includes a free bonus browser tool that enhances AI image workflows. Processing happens locally in your browser. Image contents are never sent to our server.</p>
+    <h2>What the extension does</h2>
+    <p>Banana Clean removes the watermark from images when you download them on supported Google websites. Image processing happens locally in your browser. Image contents are never sent to our server.</p>
 
     <h2>What we do NOT collect</h2>
     <ul>
@@ -110,35 +110,29 @@
     <h2>What technical data is used</h2>
     <p>To evaluate product performance, we use minimal product analytics.</p>
     <ul>
-      <li>Anonymous bonus tool installation identifier.</li>
-      <li>Usage events: install, startup, active day, local processing count, popup open, toggle state change, PRO interest, checkout interest, and support issue signals.</li>
-      <li>Technical request data sent to the analytics server: event date/time, event source and request origin. We may derive approximate country and network/ASN from request IP for debugging regional behavior, checkout issues, and abuse prevention. Raw IP is not stored in the main analytics event record.</li>
+      <li>Anonymous extension installation identifier.</li>
+      <li>Usage events: install, startup, active day, image clean, popup open, toggle state change, PRO interest.</li>
+      <li>Technical request data sent to the analytics server: event date/time, event source, technical IP address and request origin.</li>
     </ul>
 
     <h2>How data is used</h2>
     <ul>
-      <li>To count local processing events and assess bonus tool stability.</li>
+      <li>To count cleanings and assess extension stability.</li>
       <li>To understand which features users actually need.</li>
       <li>To measure website traffic, install button clicks, and interest in future features.</li>
     </ul>
 
     <h2>What is stored locally in the browser</h2>
-    <p>The bonus browser tool stores technical metrics and settings in <code>chrome.storage.local</code>, for example: enabled/disabled state, local processing count, active days count, local anonymous installation identifier, and bonus key.</p>
+    <p>The extension stores technical metrics and settings in <code>chrome.storage.local</code>, for example: enabled/disabled state, cleaning count, active days count, local anonymous installation identifier, and license key.</p>
 
     <h2>Data transmission</h2>
-    <p>Analytics events are sent over HTTPS to our server. Images are never sent to the server for processing. If you request support, an image is received only if you manually send it to us.</p>
+    <p>Analytics events are sent over HTTPS to our server. Images are never sent to the server for processing.</p>
 
     <h2>Payment data</h2>
-    <p>Payments are processed by Square and Telegram Stars. We do not store your card or wallet details. We only receive payment/subscription status needed to generate the PDF access link and bonus key.</p>
+    <p>Plisio invoice status is checked through provider webhooks after the user pays on the hosted crypto checkout page. Telegram Stars payments are handled inside Telegram. We do not store card details, and we only keep the data needed to issue and verify a license key.</p>
 
     <h2>Contact</h2>
     <p>If you have questions about this policy, reach out on Telegram: <a href="https://t.me/KroVik" target="_blank" rel="noopener noreferrer">@KroVik</a>.</p>
-
-    <h2>Company information</h2>
-    <p>
-      Banana Clean is operated by <strong>USA CHECK NY INC</strong><br>
-      17011 N Bay Rd Unit 612, Sunny Isles, FL 33160, USA
-    </p>
   </main>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>

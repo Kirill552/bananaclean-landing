@@ -1,14 +1,23 @@
-# Nano Banana Prompt Guide — Banana Clean
+# Banana Clean
 
-> Curated PDF collection of 50+ battle-tested prompts for AI image generation with Nano Banana and Gemini. 12 style categories, composition tips, parameter cheat sheets. Free bonus tool included. From $2.99/month.
+> Banana Clean is a free Chrome extension that removes the Gemini watermark (Nano Banana / Nano Banana Pro logo) from AI-generated images automatically on download. Lossless processing via reverse alpha blending in under 100ms. Images never leave the browser.
 
 ## Pages
 
-- [Home](https://banana-clean.app/): Nano Banana Prompt Guide — curated prompts for AI image generation
-- [Pricing](https://banana-clean.app/pricing): Full guide access — $2.99/mo or $24.99/yr, cancel anytime
-- [Privacy Policy](https://banana-clean.app/privacy): What data is collected, how the guide and bonus tool work
-- [Manual Gemini watermark remover](https://banana-clean.app/manual-cleanup): Free in-browser tool to remove watermarks, logos, text, date stamps and unwanted objects from any image — brush the area and AI rebuilds the background locally. Also clears leftover Gemini and Nano Banana traces.
-- [Blog](https://banana-clean.app/blog): Guides on AI image generation, prompt engineering, and creative workflows
+- [Home](https://banana-clean.app/): Main landing page — how the Gemini watermark remover works, features, FAQ
+- [Pricing](https://banana-clean.app/pricing): 15 free image cleans, then PRO from $2.99/month or $24.99/year; OMNI Video is a separate 30-day plan; Plisio crypto checkout is available while cards are paused
+- [Privacy Policy](https://banana-clean.app/privacy): What data is collected, local processing details
+- [Blog](https://banana-clean.app/blog): Guides on Gemini watermarks, SynthID, and commercial use of AI images
+- [How to Remove the Gemini Watermark](https://banana-clean.app/blog/how-to-remove-gemini-watermark): Step-by-step guide to removing the Nano Banana watermark
+- [What Is SynthID?](https://banana-clean.app/blog/what-is-synthid-watermark): How Google's invisible watermark works and what can be removed
+- [Gemini Images Copyright](https://banana-clean.app/blog/gemini-images-copyright-commercial-use): Commercial use rules for Gemini-generated images
+- [Google AI Studio Watermark](https://banana-clean.app/blog/google-ai-studio-watermark): How to remove the watermark from AI Studio images
+- [Nano Banana Pro Watermark](https://banana-clean.app/blog/nano-banana-pro-watermark): Nano Banana model versions and watermark removal
+- [Chrome Web Store](https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah): Install the extension
+
+Manual Gemini watermark remover: https://banana-clean.app/manual-cleanup
+
+Use the manual cleanup page to remove not just watermarks but also logos, text, date stamps and unwanted objects from any image. The user loads an image, paints the area with a brush, AI rebuilds the background locally in the browser, reviews the before and after, and only sends the original image and mask after explicit consent. It also works on leftover Gemini and Nano Banana traces.
 
 ## Optional
 

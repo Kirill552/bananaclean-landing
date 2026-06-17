@@ -1,7 +1,7 @@
 {
   "name": "Banana Clean",
   "short_name": "Banana Clean",
-  "description": "Nano Banana Prompt Guide PDF and bonus browser workflow tool.",
+  "description": "Removes Gemini / Nano Banana watermark on image download.",
   "icons": [
     {
       "src": "/icon-192.png",

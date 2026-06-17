@@ -13,8 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index,follow">
 
-  <title>Pricing — Nano Banana Prompt Guide | Banana Clean</title>
-  <meta name="description" content="Full access to the Nano Banana Prompt Guide. Monthly $2.99/mo or Yearly $24.99/yr (save 30%). 50+ prompts, 12 categories, free bonus tool.">
+  <title>Pricing — Banana Clean PRO</title>
+  <meta name="description" content="15 free image watermark removals included. Image PRO unlocks unlimited cleanup and export tools. OMNI Video is a separate 30-day plan for supported Gemini MP4 files. Pay with Telegram Stars or Plisio crypto checkout while cards are paused.">
   <link rel="canonical" href="https://banana-clean.app/pricing">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -23,16 +23,16 @@
   <link rel="icon" type="image/png" sizes="120x120" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <meta property="og:title" content="Pricing — Nano Banana Prompt Guide | Banana Clean">
-  <meta property="og:description" content="Full access to the prompt guide. Monthly $2.99/mo or Yearly $24.99/yr (save 30%). 50+ prompts, 12 categories.">
+  <meta property="og:title" content="Pricing — Banana Clean PRO">
+  <meta property="og:description" content="15 free cleans included. Image PRO unlocks watermark removal and export tools. OMNI Video is a separate 30-day plan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://banana-clean.app/pricing">
   <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://banana-clean.app/og-image.png">
   <meta property="og:site_name" content="Banana Clean">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Pricing — Nano Banana Prompt Guide | Banana Clean">
-  <meta name="twitter:description" content="Full access to the prompt guide. Monthly $2.99/mo or Yearly $24.99/yr (save 30%). 50+ prompts, 12 categories.">
+  <meta name="twitter:title" content="Pricing — Banana Clean PRO">
+  <meta name="twitter:description" content="15 free cleans included. Image PRO unlocks watermark removal and export tools. OMNI Video is a separate 30-day plan.">
   <meta name="twitter:image" content="https://banana-clean.app/og-image.png">
 
   <!-- Fonts -->
@@ -48,14 +48,23 @@
   <section class="pricing-hero">
     <div class="container">
       <span class="pricing-hero__eyebrow">Banana Clean PRO</span>
-      <h1>Full guide access.<br><span class="accent">50+ prompts</span>, 12 categories<span class="cursor" aria-hidden="true">_</span></h1>
+      <h1>Unlock <span class="accent">Unlimited</span><span class="cursor" aria-hidden="true">_</span></h1>
       <p class="pricing-hero__subtitle">
-        Complete PDF prompt guide with composition tips and parameter cheat sheets. Free bonus tool included.
+        15 free cleans included. PRO adds unlimited image cleanup and export tools. OMNI Video is a separate 30-day plan for supported Gemini MP4 files.
       </p>
       <div class="pricing-social-proof" id="socialProof" style="display:none">
         <span class="social-proof__item" id="proofUsers"></span>
         <span class="social-proof__sep">·</span>
-        <span class="social-proof__item">★ <span id="proofRating"></span> creator rating</span>
+        <span class="social-proof__item">★ <span id="proofRating"></span> Chrome Web Store rating</span>
+      </div>
+
+      <div class="pricing-alert" role="status" aria-live="polite">
+        <div class="pricing-alert__content">
+          <span class="pricing-alert__label">Payment update</span>
+          <p class="pricing-alert__title">Telegram Stars and crypto are available right now.</p>
+          <p>Card checkout is temporarily paused while we resolve a provider-side issue. Stars opens in Telegram; crypto opens a hosted Plisio checkout.</p>
+        </div>
+        <a href="https://t.me/BananaCleanBot?start=pay" class="pricing-alert__button" data-stars-plan="stars_30d" target="_blank" rel="noopener noreferrer">Pay with Stars</a>
       </div>
 
       <div class="pricing-cards">
@@ -64,13 +73,13 @@
           <div class="pricing-card__price">$2.99<span class="pricing-card__period">/mo</span></div>
           <div class="pricing-card__price-note">billed monthly · cancel anytime</div>
           <ul class="pricing-card__features">
-            <li>Full PDF prompt guide access</li>
-            <li>All 12 style categories</li>
-            <li>Regular updates & new prompts</li>
-            <li>Free bonus tool included</li>
+            <li>Unlimited watermark removals</li>
+            <li>Image cleanup and export tools</li>
+            <li>Format conversion and crop presets</li>
+            <li>Works on Gemini + AI Studio</li>
           </ul>
-          <button class="square-checkout-btn" onclick="startSquareCheckout('monthly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $2.99/mo</button>
-          <p class="pricing-card__status" id="square-status-monthly"></p>
+          <button type="button" class="square-checkout-btn square-checkout-btn--disabled" disabled aria-disabled="true">Card checkout paused</button>
+          <p class="pricing-card__status" id="square-status-monthly">Use Telegram Stars below while the card provider issue is being resolved.</p>
         </div>
 
         <div class="pricing-card pricing-card--featured">
@@ -79,24 +88,68 @@
           <div class="pricing-card__price">$24.99<span class="pricing-card__period">/yr</span></div>
           <div class="pricing-card__price-note">$2.08/mo · billed annually</div>
           <ul class="pricing-card__features">
-            <li>Full PDF prompt guide access</li>
-            <li>All 12 style categories</li>
-            <li>Regular updates & new prompts</li>
+            <li>Unlimited watermark removals</li>
+            <li>Image cleanup and export tools</li>
+            <li>Format conversion and crop presets</li>
             <li>Best value — save 30% vs monthly</li>
           </ul>
-          <button class="square-checkout-btn" onclick="startSquareCheckout('yearly')" style="width:100%; padding:14px; background:#FFD700; color:#1a1a2e; border:none; font-size:15px; font-weight:700; border-radius:8px; cursor:pointer; margin-bottom:12px;">Subscribe — $24.99/yr</button>
-          <p class="pricing-card__status" id="square-status-yearly"></p>
+          <button type="button" class="square-checkout-btn square-checkout-btn--disabled" disabled aria-disabled="true">Card checkout paused</button>
+          <p class="pricing-card__status" id="square-status-yearly">Use Telegram Stars below while the card provider issue is being resolved.</p>
+        </div>
+
+        <div class="pricing-card pricing-card--video">
+          <div class="pricing-card__label">OMNI Video</div>
+          <div class="pricing-card__price">$9.99<span class="pricing-card__period">/30 days</span></div>
+          <div class="pricing-card__price-note">separate video access · cancel anytime</div>
+          <ul class="pricing-card__features">
+            <li>Supported Gemini MP4 files</li>
+            <li>Visible sparkle mark cleanup</li>
+            <li>Audio preserved</li>
+            <li>If no mark is found, the file is saved as is</li>
+          </ul>
+          <button type="button" class="square-checkout-btn square-checkout-btn--disabled" disabled aria-disabled="true">Card checkout paused</button>
+          <p class="pricing-card__status">Use Telegram Stars or crypto checkout below.</p>
         </div>
       </div>
 
-      <p class="pricing-card__hint" style="text-align:center;margin-top:16px">Pay with credit card, debit card, Apple Pay, or Google Pay. Instant activation.</p>
+      <p class="pricing-card__hint" style="text-align:center;margin-top:16px">Card checkout is temporarily paused. Please use Telegram Stars while we resolve the provider issue.</p>
 
-      <div class="pricing-stars-alt">
-        <div class="pricing-card__divider" style="margin:24px 0;border-top:1px solid rgba(255,255,255,0.1);position:relative;text-align:center">
-          <span style="background:#1a1a2e;padding:0 12px;position:relative;top:-10px;font-size:12px;color:#666">or</span>
+      <div class="pricing-stars-alt pricing-stars-alt--primary">
+        <span class="pricing-stars-alt__label">Available now</span>
+        <a href="https://t.me/BananaCleanBot?start=pay" class="btn-primary pricing-card__buy" data-stars-plan="stars_30d" target="_blank" rel="noopener noreferrer">Image PRO — 250 Stars</a>
+        <a href="https://t.me/BananaCleanBot?start=video" class="btn-primary pricing-card__buy" data-stars-plan="stars_video_30d" target="_blank" rel="noopener noreferrer">OMNI Video — 500 Stars</a>
+        <p class="pricing-card__hint">Pay with Apple Pay, Google Pay, or card through Telegram. No crypto required. OMNI Video uses a separate 30-day Stars payment.</p>
+      </div>
+
+      <div class="pricing-stars-alt pricing-stars-alt--crypto" id="crypto-checkout">
+        <span class="pricing-stars-alt__label">Plisio crypto checkout</span>
+        <div class="crypto-plan-switch" id="crypto-plan-switch" role="group" aria-label="Crypto plan">
+          <button type="button" class="crypto-plan-option crypto-plan-option--active" data-crypto-plan="crypto_30d" aria-pressed="true">
+            <span>30 days</span>
+            <strong>$2.99</strong>
+          </button>
+          <button type="button" class="crypto-plan-option" data-crypto-plan="crypto_yearly" aria-pressed="false">
+            <span>Yearly</span>
+            <strong>$24.99</strong>
+          </button>
+          <button type="button" class="crypto-plan-option" data-crypto-plan="crypto_video_30d" aria-pressed="false">
+            <span>OMNI Video</span>
+            <strong>$9.99</strong>
+          </button>
         </div>
-        <a href="https://t.me/BananaCleanBot?start=pay" class="btn-secondary pricing-card__buy" id="buy-stars-button" target="_blank" rel="noopener noreferrer" style="background:transparent;border:1px solid #444;color:#B0B0B0;font-size:14px">Pay via Telegram — 250 Stars (30 days) →</a>
-        <p class="pricing-card__hint" style="font-size:11px;color:#555;text-align:center;margin-top:8px">Pay with Apple Pay, Google Pay, or card through Telegram.</p>
+        <div class="crypto-payment-box" id="crypto-payment-box">
+          <div class="crypto-payment-row">
+            <span>Selected plan</span>
+            <strong id="crypto-amount">Loading...</strong>
+          </div>
+          <p class="crypto-payment-note">Plisio lets you choose from the supported coins enabled for Banana Clean. The license key appears here after the webhook confirms payment and is also sent by email.</p>
+        </div>
+        <form class="crypto-checkout-form" id="crypto-checkout-form">
+          <label class="crypto-checkout-label" for="crypto-email">Email for your access key</label>
+          <input class="crypto-checkout-input" id="crypto-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="btn-primary crypto-checkout-button" type="submit" id="crypto-pay-button" disabled>Open Plisio checkout</button>
+          <p class="crypto-checkout-status" id="crypto-status" role="status" aria-live="polite">Choose image PRO or OMNI Video, enter your email, then pay on Plisio.</p>
+        </form>
       </div>
 
       <div class="pricing-early" style="text-align:center;margin-top:24px;padding:16px 20px;border:1px solid rgba(255,215,0,0.2);border-radius:10px;background:rgba(255,215,0,0.04)">
@@ -105,7 +158,7 @@
       </div>
 
       <div class="pricing-trial">
-        <p>Every subscription starts with a <strong>free 5-prompt sample</strong> — no payment required.</p>
+        <p>Every new install starts with <strong>15 free cleans</strong> — no payment required.</p>
       </div>
     </div>
   </section>
@@ -114,12 +167,13 @@
   <section class="pricing-activate section-alt">
     <div class="container">
       <div class="pricing-activate__panel">
-        <h2>How to access your guide</h2>
-        <p>After payment, your PDF download link and bonus tool key appear on screen and are sent to your email (from noreply@banana-clean.app).</p>
+        <h2>Already have a license key?</h2>
+        <p>After payment, your license key appears on screen and is sent to your email. To activate it:</p>
         <ol>
-          <li>Download the PDF guide using the link</li>
-          <li>Activate your free bonus tool with the key</li>
-          <li>Start creating with 50+ tested prompts</li>
+          <li>Click the Banana Clean icon in your browser toolbar</li>
+          <li>Open the extension popup</li>
+          <li>Tap "Enter license key" and paste your key</li>
+          <li>Done — the plan you paid for is active</li>
         </ol>
         <p style="margin-top:16px;font-size:13px;color:#999">Didn't receive your email? Check your spam folder. Still missing? Contact <a href="https://t.me/BananaCleanBot" style="color:#FFD700">@BananaCleanBot</a> on Telegram — we reply within a few hours.</p>
       </div>
@@ -134,46 +188,47 @@
         <details class="faq__item">
           <summary>How does payment work?</summary>
           <div class="faq__answer">
-            <p><strong>Credit/debit card (recommended):</strong> Click the Subscribe button on the pricing page. Pay with your credit card, debit card, Apple Pay, or Google Pay via Square. You get your PDF download link and bonus tool key instantly after payment.</p>
-            <p><strong>Telegram Stars:</strong> Tap "Pay via Telegram", it opens @BananaCleanBot. Pay 250 Stars using Apple Pay, Google Pay, or card — right inside Telegram.</p>
+            <p><strong>Telegram Stars:</strong> Telegram Stars is the available payment method right now. Tap the Image PRO or OMNI Video Stars button, then pay inside @BananaCleanBot.</p>
+            <p><strong>Crypto:</strong> Choose Image PRO 30 days ($2.99), Image PRO yearly ($24.99), or OMNI Video 30 days ($9.99). Plisio opens a hosted invoice page, then the key is issued after the webhook confirms payment.</p>
+            <p><strong>Card checkout:</strong> Card checkout is temporarily paused while we resolve a provider-side issue. It will return after the provider flow is stable again.</p>
           </div>
         </details>
         <details class="faq__item">
           <summary>What are Telegram Stars?</summary>
           <div class="faq__answer">
-            <p>Stars are Telegram's in-app currency. You buy them with Apple Pay, Google Pay, or your bank card — no crypto needed. 250 Stars cost approximately $4.99.</p>
+            <p>Stars are Telegram's in-app currency. You buy them with Apple Pay, Google Pay, or your bank card — no crypto needed. Image PRO is 250 Stars for 30 days; OMNI Video is 500 Stars for 30 days.</p>
           </div>
         </details>
         <details class="faq__item">
           <summary>What happens after I pay?</summary>
           <div class="faq__answer">
-            <p>After payment, your PDF download link is shown on screen and sent to your email. You also receive a bonus tool key included with your subscription. Your guide access stays active as long as your subscription is running. Cancel anytime.</p>
+            <p>After payment, your license key appears on screen and is sent to your email. Enter it in the extension popup to activate the plan you paid for. Cancel anytime.</p>
           </div>
         </details>
         <details class="faq__item">
-          <summary>I didn't receive my access email</summary>
+          <summary>I didn't receive my license key email</summary>
           <div class="faq__answer">
-            <p>Your guide link and bonus tool key are sent to the email you used at checkout (from noreply@banana-clean.app). Check your spam/junk folder first. If it's still missing, contact <a href="https://t.me/BananaCleanBot">@BananaCleanBot</a> on Telegram — we'll resend it within a few hours.</p>
+            <p>Your license key is sent to the email you used at checkout (from noreply@banana-clean.app). Check your spam/junk folder first. If it's still missing, contact <a href="https://t.me/BananaCleanBot">@BananaCleanBot</a> on Telegram — we'll resend it within a few hours.</p>
           </div>
         </details>
         <details class="faq__item">
           <summary>What subscription plans are available?</summary>
           <div class="faq__answer">
-            <p><strong>Monthly — $2.99/mo:</strong> Full access to the PDF guide, updates, and bonus tool. Billed monthly, cancel anytime with no penalties.</p>
-            <p><strong>Yearly — $24.99/yr:</strong> Same access, 30% cheaper. Billed once per year ($2.08/mo effective). Cancel anytime.</p>
-            <p>Both plans activate instantly after payment. Your guide access renews automatically.</p>
+            <p><strong>Image PRO:</strong> 250 Stars or $2.99 crypto for 30 days; $24.99 crypto yearly.</p>
+            <p><strong>OMNI Video:</strong> 500 Stars or $9.99 crypto for 30 days. This is separate from Image PRO.</p>
+            <p><strong>Monthly and yearly card plans:</strong> Temporarily paused while we resolve the provider-side issue.</p>
           </div>
         </details>
         <details class="faq__item">
-          <summary>Can I use the bonus tool key on multiple devices?</summary>
+          <summary>Can I use the license key on multiple devices?</summary>
           <div class="faq__answer">
-            <p>Each bonus key activates one browser installation. If you need access on a second device, you will need a second key.</p>
+            <p>Each key activates one browser installation. If you need access on a second device, you will need a second key.</p>
           </div>
         </details>
         <details class="faq__item">
           <summary>What if I reinstall the browser?</summary>
           <div class="faq__answer">
-            <p>Save your bonus tool key. After reinstalling, enter it again in the bonus tool and your PRO access will be restored.</p>
+            <p>Save your license key. After reinstalling, enter it again in the extension popup and your PRO access will be restored.</p>
           </div>
         </details>
       </div>
@@ -184,9 +239,9 @@
   <section class="cta" id="install">
     <div class="container cta__inner">
       <h2>Not ready for PRO yet?</h2>
-      <p class="cta__sub">Try 5 free sample prompts — no payment required.</p>
+      <p class="cta__sub">Try 15 free watermark removals — no payment required.</p>
       <div class="cta__buttons">
-        <a href="/" class="btn-primary" id="chrome-link">Get Free Sample →</a>
+        <a href="https://chromewebstore.google.com/detail/banana-clean-%E2%80%94-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah" class="btn-primary" id="chrome-link">Install Banana Clean →</a>
       </div>
     </div>
   </section>
@@ -199,6 +254,7 @@
         <a href="/">Home</a>
         <a href="/privacy">Privacy</a>
         <a href="/blog">Blog</a>
+        <a href="/manual-cleanup">Manual cleanup</a>
         <a href="https://t.me/KroVik" target="_blank" rel="noopener noreferrer">Telegram</a>
       </nav>
       <span class="footer__version">v2.0.0</span>
@@ -210,7 +266,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Banana Clean PRO",
-    "description": "Subscription for the Nano Banana Prompt Guide — a curated PDF collection of 50+ tested prompts for AI image generation. Includes composition tips, parameter references, and a free bonus tool.",
+    "description": "Banana Clean PRO unlocks unlimited Gemini image watermark removals and export tools. OMNI Video is sold as a separate 30-day plan for supported Gemini MP4 files.",
     "image": "https://banana-clean.app/og-image.png",
     "brand": { "@type": "Brand", "name": "Banana Clean" },
     "aggregateRating": {
@@ -222,10 +278,10 @@
     },
     "review": {
       "@type": "Review",
-      "author": { "@type": "Person", "name": "Guide subscriber" },
+      "author": { "@type": "Person", "name": "Banana Clean user" },
       "datePublished": "2026-03-15",
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "The prompt guide saved me hours of trial and error. Every prompt just works."
+      "reviewBody": "Banana Clean removed the visible Gemini watermark and kept the download workflow fast."
     },
     "offers": [
       {
@@ -303,6 +359,44 @@
           "priceCurrency": "USD",
           "billingDuration": "P1Y"
         }
+      },
+      {
+        "@type": "Offer",
+        "name": "OMNI Video 30 days",
+        "price": "9.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2027-12-31",
+        "url": "https://banana-clean.app/pricing?plan=crypto_video_30d&feature=video",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "merchantReturnDays": 0
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "USD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "US"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d" },
+            "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d" }
+          }
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "9.99",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
       }
     ]
   }
@@ -325,27 +419,27 @@
       {
         "@type": "Question",
         "name": "How does payment work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Click the Subscribe button and pay with credit card, debit card, Apple Pay, or Google Pay via Square. You get your PDF guide link and bonus tool key instantly. Alternatively, pay via Telegram Stars (250 Stars) using Apple Pay, Google Pay, or card." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Telegram Stars is available right now. Crypto payment opens a hosted Plisio checkout: choose Image PRO 30 days for $2.99, Image PRO yearly for $24.99, or OMNI Video 30 days for $9.99. The key is issued after the Plisio webhook confirms payment. Card checkout is temporarily paused while we resolve a provider-side issue." }
       },
       {
         "@type": "Question",
         "name": "What are Telegram Stars?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Stars are Telegram's in-app currency. You buy them with Apple Pay, Google Pay, or your bank card — no crypto needed. 250 Stars cost approximately $4.99." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Stars are Telegram's in-app currency. You buy them with Apple Pay, Google Pay, or your bank card — no crypto needed. Image PRO is 250 Stars for 30 days; OMNI Video is 500 Stars for 30 days." }
       },
       {
         "@type": "Question",
         "name": "What subscription plans are available?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Monthly plan at $2.99/mo billed monthly, cancel anytime. Yearly plan at $24.99/yr (save 30%, effective $2.08/mo) billed annually. Both plans activate instantly and renew automatically." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Image PRO is 250 Stars or $2.99 crypto for 30 days, with $24.99 crypto yearly. OMNI Video is a separate 30-day plan for 500 Stars or $9.99 crypto. Monthly and yearly card plans are temporarily paused while we resolve the provider-side issue." }
       },
       {
         "@type": "Question",
-        "name": "Can I use the bonus tool key on multiple devices?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Each bonus key activates one browser installation. If you need access on a second device, you will need a second key." }
+        "name": "Can I use the license key on multiple devices?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each key activates one browser installation. If you need access on a second device, you will need a second key." }
       },
       {
         "@type": "Question",
         "name": "What if I reinstall the browser?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Save your bonus tool key. After reinstalling, enter it again in the bonus tool and your PRO access will be restored." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Save your license key. After reinstalling, enter it again in the extension popup and your PRO access will be restored." }
       }
     ]
   }
@@ -355,38 +449,11 @@
   <!-- Square Checkout -->
   <script>
   function startSquareCheckout(plan) {
-    var btn = document.querySelector('.square-checkout-btn[onclick*="' + plan + '"]');
     var statusEl = document.getElementById('square-status-' + plan);
-    if (btn) { btn.disabled = true; btn.textContent = 'Redirecting...'; }
-    if (statusEl) statusEl.textContent = '';
-
-    fetch('/api/create-square-checkout-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plan: plan, product: 'banana-clean' })
-    })
-    .then(function(res) {
-      return res.json().then(function(data) {
-        return { status: res.status, data: data };
-      });
-    })
-    .then(function(result) {
-      var data = result.data || {};
-      if (data.url) {
-        window.location.href = data.url;
-        return;
-      }
-      if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
-      if (statusEl) {
-        statusEl.innerHTML = 'Card checkout is temporarily unavailable. ' +
-          '<a href="https://t.me/BananaCleanBot?start=pay" target="_blank" rel="noopener" style="text-decoration:underline;font-weight:600;">Pay via Telegram Stars</a> ' +
-          'for instant activation, or email <a href="mailto:novikn552ta@gmail.com" style="text-decoration:underline;">novikn552ta@gmail.com</a>.';
-      }
-    })
-    .catch(function() {
-      if (btn) { btn.disabled = false; btn.textContent = plan === 'yearly' ? 'Subscribe — $24.99/yr' : 'Subscribe — $2.99/mo'; }
-      if (statusEl) statusEl.textContent = 'Connection error. Please try again.';
-    });
+    if (!statusEl) return;
+    statusEl.innerHTML = 'Card checkout is temporarily paused. ' +
+      '<a href="https://t.me/BananaCleanBot?start=pay" target="_blank" rel="noopener" style="text-decoration:underline;font-weight:600;">Pay via Telegram Stars</a> ' +
+      'while we resolve the provider issue.';
   }
 
   // Обработка возврата с Square Checkout
@@ -418,23 +485,21 @@
             expiryText = '<p style="color:#B0B0B0;margin-bottom:12px">Plan: <strong style="color:#FFD700">' + planLabel + '</strong> · Renews: ' + d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '</p>';
           }
           if (cards) {
-            var guideUrl = '/api/download-guide?key=' + encodeURIComponent(data.key);
             cards.innerHTML =
               '<div class="pricing-card" style="max-width:560px;margin:0 auto">' +
-              '<h2 style="color:#FFD700;margin-bottom:16px">Your guide is ready</h2>' +
+              '<h2 style="color:#FFD700;margin-bottom:16px">Your PRO access is active</h2>' +
               expiryText +
-              '<p style="color:#B0B0B0;margin-bottom:16px">Download your 25-page Nano Banana Prompt Guide PDF now. The same link was sent to your email.</p>' +
-              '<a href="' + guideUrl + '" style="display:inline-block;background:#FFD700;color:#111;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:8px;margin-bottom:22px">Download PDF guide</a>' +
-              '<p style="color:#B0B0B0;margin-bottom:12px">Your bonus tool key:</p>' +
+              '<p style="color:#B0B0B0;margin-bottom:16px">We also sent this license key to your email.</p>' +
+              '<p style="color:#B0B0B0;margin-bottom:12px">Your license key:</p>' +
               '<div id="licenseKeyBox" style="font-family:monospace;font-size:18px;color:#FFD700;background:#1a1a2e;padding:16px;user-select:all;word-break:break-all;border-radius:8px;margin-bottom:12px;cursor:pointer" onclick="navigator.clipboard.writeText(this.textContent);document.getElementById(\'copyBtn\').textContent=\'Copied!\'">' + data.key + '</div>' +
               '<button id="copyBtn" onclick="navigator.clipboard.writeText(document.getElementById(\'licenseKeyBox\').textContent);this.textContent=\'Copied!\'" style="background:#FFD700;color:#000;border:none;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:20px">Copy Key</button>' +
               '<div style="background:#1a2a1a;border:1px solid #2a4a2a;border-radius:8px;padding:16px;margin-bottom:20px">' +
-              '<p style="color:#66bb6a;font-weight:600;margin-bottom:8px">We also sent the PDF link and key to your email.</p>' +
+              '<p style="color:#66bb6a;font-weight:600;margin-bottom:8px">We also sent the key to your email.</p>' +
               '<p style="color:#999;font-size:13px">Check your inbox and spam folder for a message from noreply@banana-clean.app</p>' +
               '</div>' +
               '<div style="text-align:left;margin-bottom:16px">' +
               '<p style="color:#B0B0B0;font-weight:600;margin-bottom:8px">Next steps:</p>' +
-              '<p style="color:#999;line-height:1.8;font-size:14px">1. Download the PDF guide<br>2. Save your bonus tool key<br>3. Start creating with 50+ tested prompts</p>' +
+              '<p style="color:#999;line-height:1.8;font-size:14px">1. Save your license key<br>2. Open the Banana Clean popup<br>3. Paste the key to activate your paid plan</p>' +
               '</div>' +
               '</div>';
           }

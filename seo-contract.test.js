@@ -29,16 +29,20 @@ const publicPages = [
   'llms.txt',
   'llms-full.txt',
   'site.webmanifest',
+  'script.js',
 ];
 
 const legacyTerms = [
-  /\bwatermark\b/i,
-  /\bremover\b/i,
-  /Chrome Web Store/i,
-  /extension popup/i,
-  /license key/i,
   /Gemini image cleanup/i,
   /export cleanup/i,
+  /Nano Banana Prompt Guide/i,
+  /PDF guide/i,
+  /50\+ prompts/i,
+  /parameter cheat sheets/i,
+  /download-guide/i,
+  /NOWPayments/i,
+  /one-time.*\$4\.99/i,
+  /\$4\.99.*lifetime/i,
 ];
 
 for (const page of publicPages) {
@@ -50,24 +54,35 @@ for (const page of publicPages) {
 assertJson('site.webmanifest');
 assertJson('vercel.json');
 
-assertIncludes('index.html', '<title>Nano Banana Prompt Guide');
-assertIncludes('index.html', 'Instant PDF download');
-assertIncludes('index.html', 'Free bonus tool included');
-assertIncludes('pricing.html', 'Download PDF guide');
-assertIncludes('pricing.html', '/api/download-guide?key=');
-assertIncludes('pricing.html', 'Your bonus tool key');
-assertIncludes('privacy.html', 'paid Nano Banana Prompt Guide');
-assertIncludes('llms.txt', 'Nano Banana Prompt Guide');
-assertIncludes('llms-full.txt', 'The PDF guide is delivered as a direct download');
+assertIncludes('index.html', '<title>Gemini Watermark Remover');
+assertIncludes('index.html', 'Removes the Nano Banana logo');
+assertIncludes('pricing.html', 'Unlimited watermark removals');
+assertIncludes('pricing.html', 'OMNI Video is a separate 30-day plan');
+assertIncludes('pricing.html', '$9.99');
+assertIncludes('pricing.html', 'Your license key');
+assertIncludes('pricing.html', 'Telegram Stars is the available payment method right now');
+assertIncludes('pricing.html', 'Card checkout is temporarily paused');
+assertIncludes('pricing.html', 'Plisio crypto checkout');
+assertIncludes('pricing.html', 'Open Plisio checkout');
+assertIncludes('pricing.html', 'square-checkout-btn--disabled');
+assertIncludes('script.js', 'bindBeforeAfterSlider');
+assertIncludes('script.js', 'SLIDER_INITIAL_POSITION');
+assertIncludes('script.js', '/api/plisio/create-invoice');
+assertIncludes('script.js', '/api/plisio/status');
+assertIncludes('style.css', '.pricing-alert');
+assertIncludes('privacy.html', 'Banana Clean is a browser extension');
+assertIncludes('privacy.html', 'Plisio invoice');
+assertIncludes('llms.txt', 'Gemini watermark');
+assertIncludes('llms.txt', 'Plisio crypto checkout');
+assertIncludes('llms-full.txt', 'removes the Gemini watermark');
+assertIncludes('llms-full.txt', 'Plisio crypto checkout');
 
 assertIncludes('sitemap.xml', '<loc>https://banana-clean.app/</loc>');
 assertIncludes('sitemap.xml', '<loc>https://banana-clean.app/pricing</loc>');
 assertIncludes('sitemap.xml', '<loc>https://banana-clean.app/privacy</loc>');
-assertNotMatches('sitemap.xml', /\/blog/i);
-assertNotMatches('sitemap.xml', /watermark|remover/i);
+assertIncludes('sitemap.xml', '<loc>https://banana-clean.app/blog/');
 
-assertIncludes('vercel.json', '"source": "/blog/:path*"');
-assertIncludes('vercel.json', '"destination": "/"');
-assertNotMatches('vercel.json', /"destination": "\/blog/i);
+assertIncludes('vercel.json', '"source": "/blog"');
+assertIncludes('vercel.json', '"destination": "/blog/index.html"');
 
-console.log('Prompt guide contract passed');
+console.log('Banana Clean extension contract passed');

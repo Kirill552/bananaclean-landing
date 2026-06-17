@@ -935,6 +935,62 @@ section { position: relative; }
   color: #555;
 }
 
+.pricing-alert {
+  max-width: 740px;
+  margin: 28px auto 0;
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  border-radius: 8px;
+  background: rgba(255, 215, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: left;
+}
+
+.pricing-alert__content {
+  min-width: 0;
+}
+
+.pricing-alert__label,
+.pricing-stars-alt__label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pricing-alert__title {
+  margin: 0 0 6px;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.pricing-alert p:last-child {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.pricing-alert__button {
+  flex: 0 0 auto;
+  padding: 12px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--bg-primary);
+  background: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 .pricing-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -947,6 +1003,17 @@ section { position: relative; }
   .pricing-cards {
     grid-template-columns: 1fr;
     max-width: 400px;
+  }
+
+  .pricing-alert {
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  .pricing-alert__button {
+    text-align: center;
+    white-space: normal;
   }
 }
 
@@ -961,6 +1028,13 @@ section { position: relative; }
 .pricing-card--featured {
   border-color: var(--accent);
   box-shadow: 0 0 24px rgba(255, 215, 0, 0.12);
+}
+
+.pricing-card--video {
+  grid-column: 1 / -1;
+  max-width: 520px;
+  width: 100%;
+  justify-self: center;
 }
 
 .pricing-card__label {
@@ -994,8 +1068,162 @@ section { position: relative; }
 
 .pricing-stars-alt {
   max-width: 740px;
-  margin: 0 auto;
+  margin: 24px auto 0;
   text-align: center;
+}
+
+.pricing-stars-alt--primary {
+  padding: 24px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.pricing-stars-alt--crypto {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(10, 15, 34, 0.68);
+}
+
+.crypto-plan-switch {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 720px;
+  margin: 14px auto 0;
+}
+
+.crypto-plan-option {
+  min-height: 70px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: left;
+}
+
+.crypto-plan-option span,
+.crypto-plan-option strong {
+  display: block;
+}
+
+.crypto-plan-option span {
+  margin-bottom: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.crypto-plan-option strong {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.crypto-plan-option--active {
+  border-color: var(--accent);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.crypto-plan-option--active strong {
+  color: var(--accent);
+}
+
+.crypto-payment-box {
+  max-width: 520px;
+  margin: 14px auto 18px;
+  padding: 14px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  text-align: left;
+}
+
+.crypto-payment-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+}
+
+.crypto-payment-row strong {
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.crypto-payment-note {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 520px) {
+  .crypto-plan-switch {
+    grid-template-columns: 1fr;
+  }
+}
+
+.crypto-checkout-form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.crypto-checkout-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
+  text-align: left;
+}
+
+.crypto-checkout-input {
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 12px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.crypto-checkout-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.crypto-checkout-button {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 22px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.crypto-checkout-button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.crypto-checkout-status {
+  min-height: 22px;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.crypto-checkout-status[data-tone="error"] {
+  color: #ff8a80;
 }
 
 .pricing-card__price {
@@ -1036,6 +1264,35 @@ section { position: relative; }
 
 .pricing-card__buy {
   width: 100%;
+}
+
+.pricing-stars-alt .pricing-card__buy {
+  max-width: 440px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.square-checkout-btn {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.square-checkout-btn--disabled,
+.square-checkout-btn[disabled] {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: #777;
+  cursor: not-allowed;
+  opacity: 1;
 }
 
 .pricing-card__status {
