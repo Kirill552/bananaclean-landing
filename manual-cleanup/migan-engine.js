@@ -1,7 +1,7 @@
 'use strict';
 
-// MI-GAN pipeline_v2 engine: 2 входа uint8 (image[1,3,H,W] + mask[1,1,H,W]),
-// ДИНАМИЧЕСКОЕ разрешение — прогон в нативном размере без ужатия в 512.
+// MI-GAN pipeline_v2 engine: 2 входа uint8 (image[1,3,H,W] + mask[1,1,H,W]).
+// Дефолт — нативное разрешение; для мелкой фактуры возможен внутренний 1024 fallback.
 // Маска: 0 = дырка (чистить), 255 = оставить. Выход result[1,3,H,W] uint8
 // композитится обратно ТОЛЬКО в зону мазка (остальной кадр не трогаем).
 
@@ -42,16 +42,25 @@
     var imageData = get2dContext(imageCanvas).getImageData(0, 0, width, height).data;
     var holeCanvas = expandMaskCanvas(maskImageDataToCanvas(maskImageData, width, height), config.miganMaskExpand);
     var holeData = get2dContext(holeCanvas).getImageData(0, 0, width, height).data;
+    var workingSize = getWorkingSize(width, height, imageData, holeData, bounds, config);
+    var workingImageCanvas = workingSize.width === width && workingSize.height === height
+      ? imageCanvas
+      : createScaledCanvas(imageCanvas, workingSize.width, workingSize.height);
+    var workingHoleCanvas = workingSize.width === width && workingSize.height === height
+      ? holeCanvas
+      : createScaledCanvas(holeCanvas, workingSize.width, workingSize.height);
+    var workingImageData = get2dContext(workingImageCanvas).getImageData(0, 0, workingSize.width, workingSize.height).data;
+    var workingHoleData = get2dContext(workingHoleCanvas).getImageData(0, 0, workingSize.width, workingSize.height).data;
 
     var feeds = {};
-    feeds[session.inputNames[0]] = buildImageTensor(ort, imageData, width, height);
-    feeds[session.inputNames[1]] = buildMaskTensor(ort, holeData, width, height);
+    feeds[session.inputNames[0]] = buildImageTensor(ort, workingImageData, workingSize.width, workingSize.height);
+    feeds[session.inputNames[1]] = buildMaskTensor(ort, workingHoleData, workingSize.width, workingSize.height);
     return runSession(session, feeds).then(function (resultTensor) {
-      var dims = resultTensor.dims || [1, 3, height, width];
-      var outW = dims[3] || width;
-      var outH = dims[2] || height;
+      var dims = resultTensor.dims || [1, 3, workingSize.height, workingSize.width];
+      var outW = dims[3] || workingSize.width;
+      var outH = dims[2] || workingSize.height;
       if (outW !== width || outH !== height) {
-        compositeResultBack(imageCanvas, imageData, holeData, resizeChwToFull(resultTensor.data, outW, outH, width, height), width, height, config);
+        compositeResultBack(imageCanvas, imageData, holeData, resizeChwToFullBilinear(resultTensor.data, outW, outH, width, height), width, height, config);
       } else {
         compositeResultBack(imageCanvas, imageData, holeData, resultTensor.data, width, height, config);
       }
@@ -131,23 +140,100 @@
     return out;
   }
 
-  // запасной ресайз result CHW->full (модель почти всегда возвращает тот же размер)
-  function resizeChwToFull(data, srcW, srcH, dstW, dstH) {
+  function getWorkingSize(width, height, imageData, holeData, bounds, config) {
+    var fallbackLongSide = Math.max(0, Math.round(Number(config.miganTextureFallbackLongSide) || 0));
+    var longSide = Math.max(width, height);
+    if (!fallbackLongSide || longSide <= fallbackLongSide) return { width: width, height: height };
+    if (!shouldUseTextureFallback(imageData, holeData, width, height, bounds, config)) {
+      return { width: width, height: height };
+    }
+    var scale = fallbackLongSide / longSide;
+    return {
+      width: Math.max(1, Math.round(width * scale)),
+      height: Math.max(1, Math.round(height * scale))
+    };
+  }
+
+  function shouldUseTextureFallback(imageData, holeData, width, height, bounds, config) {
+    if (!bounds) return false;
+    if (Math.max(bounds.width, bounds.height) > Math.min(width, height) * 0.22) return false;
+    var minEdge = typeof config.miganTextureFallbackMinEdge === 'number'
+      ? config.miganTextureFallbackMinEdge
+      : 10;
+    return measureLocalTextureEdge(imageData, holeData, width, height, bounds) >= minEdge;
+  }
+
+  function measureLocalTextureEdge(imageData, holeData, width, height, bounds) {
+    var pad = Math.max(24, Math.round(Math.max(bounds.width, bounds.height) * 0.7));
+    var x0 = Math.max(1, bounds.x - pad);
+    var y0 = Math.max(1, bounds.y - pad);
+    var x1 = Math.min(width - 2, bounds.x + bounds.width + pad);
+    var y1 = Math.min(height - 2, bounds.y + bounds.height + pad);
+    var step = Math.max(1, Math.floor(Math.max(x1 - x0, y1 - y0) / 180));
+    var sum = 0;
+    var count = 0;
+    for (var y = y0; y <= y1; y += step) {
+      for (var x = x0; x <= x1; x += step) {
+        var index = y * width + x;
+        if (holeData[index * 4 + 3] > HOLE_ALPHA_THRESHOLD) continue;
+        var center = pixelBrightness(imageData, index);
+        var edge = Math.abs(center - pixelBrightness(imageData, index - 1)) +
+          Math.abs(center - pixelBrightness(imageData, index + 1)) +
+          Math.abs(center - pixelBrightness(imageData, index - width)) +
+          Math.abs(center - pixelBrightness(imageData, index + width));
+        sum += edge / 4;
+        count += 1;
+      }
+    }
+    return count ? sum / count : 0;
+  }
+
+  function pixelBrightness(imageData, pixelIndex) {
+    var offset = pixelIndex * 4;
+    return (imageData[offset] + imageData[offset + 1] + imageData[offset + 2]) / 3;
+  }
+
+  function createScaledCanvas(sourceCanvas, width, height) {
+    var canvas = createCanvas(width, height);
+    var ctx = get2dContext(canvas);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(sourceCanvas, 0, 0, width, height);
+    return canvas;
+  }
+
+  function resizeChwToFullBilinear(data, srcW, srcH, dstW, dstH) {
     var srcArea = srcW * srcH;
     var dstArea = dstW * dstH;
     var out = new Uint8Array(3 * dstArea);
     for (var y = 0; y < dstH; y += 1) {
-      var sy = Math.min(srcH - 1, Math.floor(y * srcH / dstH));
+      var sy = (y + 0.5) * srcH / dstH - 0.5;
+      var y0 = Math.max(0, Math.min(srcH - 1, Math.floor(sy)));
+      var y1 = Math.max(0, Math.min(srcH - 1, y0 + 1));
+      var fy = sy - y0;
       for (var x = 0; x < dstW; x += 1) {
-        var sx = Math.min(srcW - 1, Math.floor(x * srcW / dstW));
-        var s = sy * srcW + sx;
+        var sx = (x + 0.5) * srcW / dstW - 0.5;
+        var x0 = Math.max(0, Math.min(srcW - 1, Math.floor(sx)));
+        var x1 = Math.max(0, Math.min(srcW - 1, x0 + 1));
+        var fx = sx - x0;
         var d = y * dstW + x;
-        out[d] = data[s];
-        out[dstArea + d] = data[srcArea + s];
-        out[dstArea * 2 + d] = data[srcArea * 2 + s];
+        out[d] = sampleChwBilinear(data, 0, srcW, x0, x1, y0, y1, fx, fy);
+        out[dstArea + d] = sampleChwBilinear(data, srcArea, srcW, x0, x1, y0, y1, fx, fy);
+        out[dstArea * 2 + d] = sampleChwBilinear(data, srcArea * 2, srcW, x0, x1, y0, y1, fx, fy);
       }
     }
     return out;
+  }
+
+  function sampleChwBilinear(data, channelOffset, width, x0, x1, y0, y1, fx, fy) {
+    var p00 = data[channelOffset + y0 * width + x0];
+    var p10 = data[channelOffset + y0 * width + x1];
+    var p01 = data[channelOffset + y1 * width + x0];
+    var p11 = data[channelOffset + y1 * width + x1];
+    var top = p00 + (p10 - p00) * fx;
+    var bottom = p01 + (p11 - p01) * fx;
+    var value = top + (bottom - top) * fy;
+    return Math.max(0, Math.min(255, Math.round(value)));
   }
 
   function maskImageDataToCanvas(maskImageData, width, height) {
@@ -363,6 +449,8 @@
   app.buildImageTensor = buildImageTensor;
   app.buildMaskTensor = buildMaskTensor;
   app.compositeResultBack = compositeResultBack;
+  app.getWorkingSize = getWorkingSize;
+  app.shouldUseTextureFallback = shouldUseTextureFallback;
   app.expandMaskCanvas = expandMaskCanvas;
   app.loadMiganSession = loadMiganSession;
   app.runMiganInpaint = runMiganInpaint;
