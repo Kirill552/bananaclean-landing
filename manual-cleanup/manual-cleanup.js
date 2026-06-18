@@ -16,6 +16,7 @@
     resultReady: false,
     userConsented: false
   };
+  var manualUid = null;
 
   function $(id) {
     return root.document.getElementById(id);
@@ -47,15 +48,59 @@
     els.statusText.textContent = text;
   }
 
+  function getManualSource() {
+    var source = 'direct';
+    try {
+      source = new URLSearchParams(root.location.search).get('from') || 'direct';
+    } catch (e) {}
+    source = String(source || 'direct').trim().toLowerCase();
+    return source ? source.slice(0, 64) : 'direct';
+  }
+
+  function generateManualUid() {
+    if (root.crypto && typeof root.crypto.randomUUID === 'function') {
+      return 'manual-cleanup-' + config.locale + '-' + root.crypto.randomUUID();
+    }
+    return 'manual-cleanup-' + config.locale + '-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+  }
+
+  function getManualUid() {
+    if (manualUid) return manualUid;
+    var storageKey = 'bananaManualCleanupUid:' + config.locale;
+    try {
+      var stored = root.localStorage && root.localStorage.getItem(storageKey);
+      if (stored) {
+        manualUid = stored;
+        return manualUid;
+      }
+      manualUid = generateManualUid();
+      if (root.localStorage) root.localStorage.setItem(storageKey, manualUid);
+      return manualUid;
+    } catch (e) {
+      manualUid = generateManualUid();
+      return manualUid;
+    }
+  }
+
+  function buildManualProperties(properties) {
+    var manualProperties = {};
+    var input = properties || {};
+    Object.keys(input).forEach(function (key) {
+      manualProperties[key] = input[key];
+    });
+    manualProperties.from = getManualSource();
+    return manualProperties;
+  }
+
   function sendManualAnalytics(eventType, properties) {
     var payload = JSON.stringify({
-      uid: 'manual-cleanup-' + config.locale,
+      uid: getManualUid(),
       event: eventType,
       source: 'manual-cleanup',
       ts: Date.now(),
       v: 1,
       locale: config.locale,
-      properties: properties || {}
+      properties: buildManualProperties(properties)
     });
     if (root.navigator && root.navigator.sendBeacon) {
       root.navigator.sendBeacon(config.analyticsEndpoint, new Blob([payload], { type: 'application/json' }));
@@ -218,14 +263,13 @@
   }
 
   function buildSampleMeta() {
-    var params = new URLSearchParams(root.location.search);
     return {
       width: state.imageCanvas.width,
       height: state.imageCanvas.height,
       mimeType: state.imageInfo && state.imageInfo.mimeType,
       fileSize: state.imageInfo && state.imageInfo.size,
       brushVersion: 'manual-cleanup-v1',
-      from: params.get('from') || 'direct'
+      from: getManualSource()
     };
   }
 
@@ -324,9 +368,7 @@
     });
     updateSendSampleState();
     bind();
-    sendManualAnalytics('manual_cleanup_view', {
-      from: new URLSearchParams(root.location.search).get('from') || 'direct'
-    });
+    sendManualAnalytics('manual_cleanup_view', {});
   }
 
   root.addEventListener('DOMContentLoaded', init);

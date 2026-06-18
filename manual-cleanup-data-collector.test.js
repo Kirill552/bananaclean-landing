@@ -67,7 +67,7 @@ function testConfigContract() {
 
   assert.strictEqual(config.sampleEndpoint, '/api/manual-cleanup-sample');
   assert.strictEqual(config.engine, 'migan');
-  assert.strictEqual(config.miganModelUrl, '/models/migan/migan.onnx');
+  assert.strictEqual(config.miganModelUrl, '/models/migan/migan-pipeline-v2.onnx');
   assert.strictEqual(config.analyticsEndpoint, '/collect');
   assert(config.acceptedTypes.includes('image/png'));
   assert(config.acceptedTypes.includes('image/jpeg'));
@@ -80,6 +80,11 @@ function testStaticOrchestratorContract() {
   const sendSampleBody = getFunctionBody(source, 'function sendSample()', 'function bind()');
 
   assert(source.includes('manual_cleanup_view'));
+  assert(source.includes('function getManualSource()'), 'manual analytics must normalize the from source once');
+  assert(source.includes('function getManualUid()'), 'manual analytics must use a stable anonymous visitor id');
+  assert(source.includes('uid: getManualUid()'), 'manual analytics must not collapse all users into one locale uid');
+  assert(!source.includes("uid: 'manual-cleanup-' + config.locale"), 'manual analytics must not use a shared locale uid');
+  assert(source.includes('manualProperties.from = getManualSource()'), 'all manual analytics events must include popup/toast/direct attribution');
   assert(source.includes('sendSample'));
   assert(source.includes('originalCanvas'), 'orchestrator must keep an immutable original canvas');
   assert(!runCleanupBody.includes('collector.collect'), 'runCleanup must not upload samples');
