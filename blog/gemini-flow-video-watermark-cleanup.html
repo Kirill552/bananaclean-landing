@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KF0MVFSPWW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KF0MVFSPWW');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini and Google Flow Video Watermark Cleanup | Banana Clean</title>
+  <meta name="description" content="Banana Clean now supports OMNI Video cleanup for supported Gemini and Google Flow MP4 downloads. Clean visible Gemini, Flow, Omni and Veo video marks from the extension.">
+  <link rel="canonical" href="https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+
+  <meta property="og:title" content="Gemini and Google Flow Video Watermark Cleanup">
+  <meta property="og:description" content="OMNI Video cleanup in Banana Clean handles supported Gemini and Google Flow MP4 downloads from the extension.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup">
+  <meta property="og:image" content="https://banana-clean.app/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Banana Clean">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../blog.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Gemini and Google Flow Video Watermark Cleanup",
+    "description": "Banana Clean now supports OMNI Video cleanup for supported Gemini and Google Flow MP4 downloads.",
+    "datePublished": "2026-06-19",
+    "dateModified": "2026-06-19",
+    "author": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/" },
+    "publisher": { "@type": "Organization", "name": "Banana Clean", "url": "https://banana-clean.app/", "logo": { "@type": "ImageObject", "url": "https://banana-clean.app/logo-512.png" } },
+    "mainEntityOfPage": "https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup",
+    "image": "https://banana-clean.app/og-image.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://banana-clean.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://banana-clean.app/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Gemini and Google Flow Video Watermark Cleanup", "item": "https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can Banana Clean remove a Gemini video watermark?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, the extension has a separate OMNI Video cleanup workflow for supported Gemini and Google Flow MP4 downloads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with Google Flow videos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, supported MP4 downloads from Google Flow can be cleaned by the extension when OMNI Video access is active."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does video cleanup take longer than image cleanup?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A video has many frames. Banana Clean cleans the visible mark across the video, so processing can take about a minute on short clips and longer for larger files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does video cleanup remove SynthID?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Banana Clean removes visible marks only. Invisible AI provenance systems such as SynthID are separate."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="blog-nav">
+    <div class="container blog-nav__inner">
+      <a href="/" class="blog-nav__logo">Banana Clean</a>
+      <div class="blog-nav__links">
+        <a href="/">Home</a>
+        <a href="/gemini-watermark-remover">Online Tool</a>
+        <a href="/manual-cleanup">Manual Cleanup</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="blog-article">
+    <div class="container">
+      <div class="blog-article__header">
+        <div class="page-breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/blog">Blog</a>
+          <span>/</span>
+          <span>Gemini and Flow video cleanup</span>
+        </div>
+        <span class="blog-article__date">June 19, 2026</span>
+        <h1>Gemini and Google Flow video watermark cleanup is now in Banana Clean</h1>
+        <p class="blog-article__lead">Gemini video generation moved from a small experiment into a daily tool. People now export clips from Gemini, Google Flow, Gemini Omni and Veo models, then run into the same problem: a visible mark in the corner of the video. Banana Clean now has an OMNI Video workflow for supported MP4 downloads.</p>
+      </div>
+
+      <div class="blog-article__body">
+        <p>The short version: if you use Banana Clean in Chrome, the extension can catch supported Gemini and Google Flow video downloads and clean the visible mark before saving the final MP4.</p>
+
+        <p>It is not the same as image cleanup. Images finish almost instantly. Video takes longer because a clip has many frames. But the workflow is still simple: click Download, wait for the cleanup toast, and save the cleaned file.</p>
+
+        <h2>Why video cleanup matters now</h2>
+
+        <p>Gemini is no longer only an image tool. Google has Gemini video generation in the Gemini app, Google Flow for creative projects, and models such as Gemini Omni and Veo. The names change depending on the page and plan, but the user problem is the same: you create a useful clip, download it, and the visible mark is still there.</p>
+
+        <p>That mark is fine for drafts. It is not always fine for client previews, mockups, mood videos, social posts, internal pitch decks or short ad concepts. People want the clip to look like the final visual, not like a screenshot from a generator.</p>
+
+        <p>That is the gap OMNI Video fills inside Banana Clean.</p>
+
+        <h2>What Banana Clean does</h2>
+
+        <p>When OMNI Video access is active, the extension watches supported Gemini and Flow MP4 downloads. If it sees a visible video mark, it runs the cleanup flow and gives you a cleaned file. If the clip does not have a visible mark, it should leave the video alone instead of adding a patch that was not needed.</p>
+
+        <p>The goal is not to crop the corner or zoom the whole video. Cropping is fast, but it changes the composition. Banana Clean keeps the frame and cleans the visible mark where it appears.</p>
+
+        <p>That matters most on short AI clips, because framing is often the whole point. A portrait video, a product shot, a character close-up or a wide cinematic scene can all look worse after a forced crop.</p>
+
+        <h2>Where it works best</h2>
+
+        <p>OMNI Video cleanup is best for short Gemini and Google Flow MP4 downloads where the mark is visible and stable enough to clean frame by frame.</p>
+
+        <p>Typical good cases:</p>
+
+        <ul>
+          <li>Gemini app video downloads with a small visible mark</li>
+          <li>Google Flow 720p MP4 exports</li>
+          <li>Short concept clips for social, ads, decks and mockups</li>
+          <li>Videos where the mark sits on fabric, wall, sky, floor, road, water or other textured backgrounds</li>
+        </ul>
+
+        <p>More difficult cases:</p>
+
+        <ul>
+          <li>High-motion backgrounds like leaves, feathers, waves or moving hair</li>
+          <li>Large 1080p or upscaled clips that take longer to process</li>
+          <li>Videos where the mark disappears on the final frame</li>
+          <li>Very bright or very dark backgrounds where the mark is barely visible</li>
+        </ul>
+
+        <p>The last case is important. If the source video has no mark on the final still frame, a cleanup tool should not leave a dark patch behind. Banana Clean now treats that as part of the video workflow, not as a user problem.</p>
+
+        <h2>How long it takes</h2>
+
+        <p>For a short 720p clip, expect roughly a minute on a normal desktop browser. Some clips finish faster. Some take longer. The extension shows a toast so you know cleanup has started, and the toolbar badge can show a small time counter while work is running.</p>
+
+        <p>1080p is heavier. It has more pixels per frame, and the cleanup cost grows with resolution. That is why Banana Clean treats higher quality video as a slower path instead of promising instant results.</p>
+
+        <p>For now, the honest rule is simple: 720p is the practical default. 1080p can work, but it needs patience and more local processing time.</p>
+
+        <h2>How to use it</h2>
+
+        <ol>
+          <li>Install Banana Clean from the Chrome Web Store.</li>
+          <li>Open Gemini or Google Flow in the same browser.</li>
+          <li>Make sure your OMNI Video access is active in the extension popup.</li>
+          <li>Download a supported MP4 from Gemini or Flow.</li>
+          <li>Wait for the cleanup toast and save the cleaned file.</li>
+        </ol>
+
+        <p>If you download from Google Flow, use the normal Flow download menu. If you download from the Gemini editor, use the normal export flow. The extension is built around those browser downloads, not random video files from disk.</p>
+
+        <h2>Why it is separate from image cleanup</h2>
+
+        <p>Image cleanup is cheap. Video cleanup is not. A single image has one frame. A short clip can have hundreds. The extension has to keep the video usable, preserve audio when present, keep timing intact and avoid adding a visible patch when there is no mark.</p>
+
+        <p>That is why OMNI Video is a separate 30-day plan in Banana Clean. Image PRO and video cleanup solve related problems, but they do not cost the same amount of processing time.</p>
+
+        <h2>What it does not promise</h2>
+
+        <p>Banana Clean removes visible marks. It does not remove SynthID or other invisible AI provenance signals. It also does not turn every possible video on the internet into a clean file. The target is narrower: supported Gemini and Google Flow MP4 downloads.</p>
+
+        <p>That narrower target is intentional. A focused cleaner can be better than a generic video watermark remover that asks you to upload any file and hopes an AI model guesses the missing pixels.</p>
+
+        <h2>What to use for images</h2>
+
+        <p>If you are cleaning images, use the image workflow instead. The extension handles Gemini and AI Studio image downloads automatically. For saved images, shifted marks or hard leftovers, open <a href="/manual-cleanup">Manual Cleanup</a> and brush over the area yourself.</p>
+
+        <p>For image-specific keywords, start with <a href="/gemini-watermark-remover">Gemini Watermark Remover</a> or <a href="/nano-banana-watermark-remover">Nano Banana Watermark Remover</a>.</p>
+      </div>
+
+      <div class="blog-article__cta">
+        <h2>Try OMNI Video cleanup</h2>
+        <p>Install Banana Clean, open Gemini or Google Flow, and use the normal MP4 download flow. Image cleanup and OMNI Video are separate plans.</p>
+        <a href="https://chromewebstore.google.com/detail/banana-clean-%E2%80%94-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah" class="btn-primary">Install from Chrome Web Store</a>
+        <a href="/pricing" class="btn-secondary">See video plan</a>
+      </div>
+    </div>
+  </article>
+
+  <section class="blog-related">
+    <div class="container">
+      <h2>Related articles</h2>
+      <ul class="blog-related__list">
+        <li><a href="/blog/manual-ai-watermark-cleanup">Manual AI cleanup for saved images</a></li>
+        <li><a href="/blog/google-ai-studio-watermark">Google AI Studio watermark guide</a></li>
+        <li><a href="/gemini-watermark-remover">Gemini Watermark Remover Online</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Banana Clean<br><small class="footer__legal">USA CHECK NY INC &middot; 17011 N Bay Rd Unit 612 &middot; Sunny Isles, FL 33160, USA</small></span>
+      <nav class="footer__links">
+        <a href="/">Home</a>
+        <a href="/manual-cleanup">Manual Cleanup</a>
+        <a href="/gemini-watermark-remover">Gemini Remover</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/blog">Blog</a>
+      </nav>
+    </div>
+  </footer>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

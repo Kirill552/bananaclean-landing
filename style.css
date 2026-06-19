@@ -328,6 +328,10 @@ section { position: relative; }
   gap: 20px;
 }
 
+.materials__grid--four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .material-card {
   display: block;
   padding: 24px;
@@ -671,6 +675,19 @@ section { position: relative; }
   list-style: decimal;
 }
 
+.page-card a:not(.btn-primary):not(.btn-secondary),
+.page-note a:not(.btn-primary):not(.btn-secondary),
+.faq__answer a:not(.btn-primary):not(.btn-secondary) {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.page-card a:not(.btn-primary):not(.btn-secondary):hover,
+.page-note a:not(.btn-primary):not(.btn-secondary):hover,
+.faq__answer a:not(.btn-primary):not(.btn-secondary):hover {
+  text-decoration: underline;
+}
+
 
 /* ========================================
    CTA
@@ -813,6 +830,10 @@ section { position: relative; }
   .page-grid {
     grid-template-columns: 1fr;
   }
+
+  .materials__grid--four {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 700px) {
@@ -832,6 +853,10 @@ section { position: relative; }
   }
 
   .steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .materials__grid--four {
     grid-template-columns: 1fr;
   }
 
@@ -1270,29 +1295,6 @@ section { position: relative; }
   max-width: 440px;
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.square-checkout-btn {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 14px;
-  border: none;
-  border-radius: 8px;
-  background: var(--accent);
-  color: var(--bg-primary);
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.square-checkout-btn--disabled,
-.square-checkout-btn[disabled] {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.08);
-  color: #777;
-  cursor: not-allowed;
-  opacity: 1;
 }
 
 .pricing-card__status {

@@ -5,9 +5,13 @@
 ## Pages
 
 - [Home](https://banana-clean.app/): Main landing page — how the Gemini watermark remover works, features, FAQ
-- [Pricing](https://banana-clean.app/pricing): 15 free image cleans, then PRO from $2.99/month or $24.99/year; OMNI Video is a separate 30-day plan; Plisio crypto checkout is available while cards are paused
+- [Gemini Watermark Remover Online](https://banana-clean.app/gemini-watermark-remover): Image page for saved Gemini files, automatic extension cleanup, and manual cleanup fallback
+- [Nano Banana Watermark Remover](https://banana-clean.app/nano-banana-watermark-remover): Dedicated page for Nano Banana, Nano Banana Pro, shifted visible marks, and saved image cleanup
+- [Pricing](https://banana-clean.app/pricing): 15 free image cleans, then PRO from $2.99/month or $24.99/year; OMNI Video is a separate 30-day plan; Telegram Stars and Plisio crypto checkout are supported while card checkout is unavailable
 - [Privacy Policy](https://banana-clean.app/privacy): What data is collected, local processing details
 - [Blog](https://banana-clean.app/blog): Guides on Gemini watermarks, SynthID, and commercial use of AI images
+- [Gemini and Google Flow Video Watermark Cleanup](https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup): OMNI Video cleanup guide for supported Gemini and Google Flow MP4 downloads
+- [Manual AI Watermark Cleanup](https://banana-clean.app/blog/manual-ai-watermark-cleanup): Brush cleanup guide for leftover marks, logos, captions, date stamps, and small objects
 - [How to Remove the Gemini Watermark](https://banana-clean.app/blog/how-to-remove-gemini-watermark): Step-by-step guide to removing the Nano Banana watermark
 - [What Is SynthID?](https://banana-clean.app/blog/what-is-synthid-watermark): How Google's invisible watermark works and what can be removed
 - [Gemini Images Copyright](https://banana-clean.app/blog/gemini-images-copyright-commercial-use): Commercial use rules for Gemini-generated images

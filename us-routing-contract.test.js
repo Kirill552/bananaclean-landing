@@ -6,7 +6,6 @@ var path = require('path');
 
 var landingRoot = __dirname;
 var vercelJson = fs.readFileSync(path.join(landingRoot, 'vercel.json'), 'utf8');
-var squareProxyJs = fs.readFileSync(path.join(landingRoot, 'api', '_square.js'), 'utf8');
 
 assert(
   vercelJson.indexOf('85.208.85.104') === -1,
@@ -21,12 +20,22 @@ assert(
   'EN analytics rewrite must point to the US analytics origin'
 );
 assert(
-  squareProxyJs.indexOf("BACKEND_INTERNAL_BASE_URL || 'https://api.banana-clean.app'") !== -1,
-  'Square proxy default backend must be the US API origin'
+  vercelJson.indexOf('"source": "/gemini-watermark-remover"') !== -1 &&
+  vercelJson.indexOf('"destination": "/gemini-watermark-remover.html"') !== -1,
+  'Gemini remover URL must rewrite to its SEO page'
 );
 assert(
-  squareProxyJs.indexOf("BACKEND_INTERNAL_BASE_URL || 'https://nanobanana-clean.ru'") === -1,
-  'Square proxy must not default to the RU backend'
+  vercelJson.indexOf('"source": "/nano-banana-watermark-remover"') !== -1 &&
+  vercelJson.indexOf('"destination": "/nano-banana-watermark-remover.html"') !== -1,
+  'Nano Banana remover URL must rewrite to its SEO page'
+);
+assert(
+  vercelJson.indexOf('"destination": "/manual-cleanup"') === -1,
+  'SEO remover URLs must not redirect to manual cleanup'
+);
+assert(
+  vercelJson.indexOf('https://nanobanana-clean.ru') === -1,
+  'EN landing must not route API traffic to the RU backend'
 );
 
 console.log('US routing contract passed');

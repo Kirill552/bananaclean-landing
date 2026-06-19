@@ -28,6 +28,17 @@ Manual Gemini watermark remover: https://banana-clean.app/manual-cleanup
 
 The manual cleanup workflow is for images where a small Gemini or Nano Banana watermark trace remains after automatic cleanup. The user loads an image, paints the affected area with a brush, runs local cleanup in the browser, reviews the original and cleaned files in the result card, and can explicitly choose whether to send the original image and mask to Banana Clean for sample analysis.
 
+Dedicated image pages:
+
+- Gemini Watermark Remover Online: https://banana-clean.app/gemini-watermark-remover
+- Nano Banana Watermark Remover: https://banana-clean.app/nano-banana-watermark-remover
+
+These pages connect the automatic extension, the manual browser cleaner, and image-specific search intent. They explain when to use automatic Gemini download cleanup, when to open Manual Cleanup for a saved file, and when OMNI Video is the right path for supported MP4 downloads.
+
+OMNI Video cleanup: https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup
+
+Banana Clean has a separate OMNI Video cleanup workflow for supported Gemini and Google Flow MP4 downloads. It targets visible video marks in short AI clips. Image cleanup and video cleanup are separate plans because video has many frames and takes longer to process. Banana Clean removes visible marks only and does not remove SynthID or invisible provenance systems.
+
 ## SynthID vs Visible Watermark
 
 Google embeds two types of watermarks into Gemini-generated images:
@@ -56,7 +67,7 @@ Banana Clean removes only the visible watermark. SynthID cannot be removed by an
 - **PRO monthly**: Unlimited image watermark removals, export tools, and crop presets from $2.99/month.
 - **PRO yearly**: Same image access for $24.99/year.
 - **OMNI Video**: Separate 30-day plan for supported Gemini MP4 files, $9.99 or 500 Telegram Stars.
-- Payment via Telegram Stars or Plisio crypto checkout while card payments are paused.
+- Payment via Telegram Stars or Plisio crypto checkout while card checkout is unavailable.
 
 ## Who Uses Banana Clean
 
@@ -120,6 +131,30 @@ Watermark masks are bundled with the extension and updated through the Chrome We
 - Telegram Stars payments are handled inside Telegram. Plisio crypto payments are confirmed through hosted invoice webhooks.
 
 ## Blog
+
+### Gemini and Google Flow Video Watermark Cleanup
+
+URL: https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup
+
+Banana Clean supports OMNI Video cleanup for supported Gemini and Google Flow MP4 downloads. The extension catches supported video downloads, cleans the visible mark across frames, and saves the cleaned file. It is meant for Gemini app videos, Google Flow 720p exports, and short concept clips for social posts, ad drafts, presentations and client previews.
+
+Video cleanup takes longer than image cleanup because a clip has many frames. Short 720p clips can take about a minute on a normal desktop browser. 1080p can work, but it needs more local processing time. Banana Clean does not crop or zoom the video corner as a shortcut. It keeps the frame and removes the visible mark when it can detect it.
+
+OMNI Video does not remove SynthID or invisible AI provenance. It targets visible marks in supported Gemini and Flow MP4 downloads.
+
+---
+
+### Manual AI Watermark Cleanup for Images
+
+URL: https://banana-clean.app/blog/manual-ai-watermark-cleanup
+
+Manual Cleanup is the browser-based AI cleanup flow for saved images, shifted Gemini marks, faint Nano Banana leftovers, small logos, captions, date stamps and small unwanted objects. The user loads an image, brushes over the area to fix, runs cleanup locally in the browser, compares the result and downloads the cleaned PNG.
+
+Automatic cleanup is the best path for fresh Gemini and AI Studio downloads. Manual Cleanup is better when the image is already saved, the visible mark moved, or a faint trace remains on hard backgrounds such as marble, leather, fabric, sky, water or dark product shots.
+
+The cleanup model runs locally. Sample sharing is optional and requires explicit consent before sending the original image and mask to Banana Clean for product improvement.
+
+---
 
 ### How to Remove the Gemini Watermark (Nano Banana) from Images
 
@@ -226,6 +261,11 @@ If Google changes the watermark in future models, updated masks would be shipped
 
 - Website: https://banana-clean.app/
 - Chrome Web Store: https://chromewebstore.google.com/detail/banana-clean-—-remove-gem/kodhinmeeokhkhelmmpnflnhapifgfah
+- Gemini Watermark Remover Online: https://banana-clean.app/gemini-watermark-remover
+- Nano Banana Watermark Remover: https://banana-clean.app/nano-banana-watermark-remover
+- Manual Cleanup: https://banana-clean.app/manual-cleanup
+- OMNI Video Cleanup Guide: https://banana-clean.app/blog/gemini-flow-video-watermark-cleanup
+- Manual AI Cleanup Guide: https://banana-clean.app/blog/manual-ai-watermark-cleanup
 - Pricing: https://banana-clean.app/pricing
 - Privacy Policy: https://banana-clean.app/privacy
 - Blog: https://banana-clean.app/blog
