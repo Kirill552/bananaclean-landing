@@ -14,7 +14,7 @@
   <meta name="robots" content="index,follow">
 
   <title>Pricing — Banana Clean PRO</title>
-  <meta name="description" content="15 free image watermark removals included. Image PRO unlocks unlimited cleanup and export tools. OMNI Video is a separate 30-day plan for supported Gemini MP4 files. Pay with Telegram Stars or Plisio crypto checkout while card checkout is unavailable.">
+  <meta name="description" content="15 free image watermark removals included. Image PRO unlocks unlimited cleanup and export tools. OMNI Video is a separate 30-day plan for supported Gemini MP4 files. Pay with Visa / Mastercard card checkout, Telegram Stars, or Plisio crypto checkout.">
   <link rel="canonical" href="https://banana-clean.app/pricing">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -61,8 +61,8 @@
       <div class="pricing-alert" role="status" aria-live="polite">
         <div class="pricing-alert__content">
           <span class="pricing-alert__label">Payment update</span>
-          <p class="pricing-alert__title">Telegram Stars and crypto are available right now.</p>
-          <p>Card checkout is unavailable while the provider account is pending. Stars opens in Telegram; crypto opens a hosted Plisio checkout.</p>
+          <p class="pricing-alert__title">Visa / Mastercard card checkout is available.</p>
+          <p>Card payments open on the hosted RollyPay checkout. Telegram Stars and Plisio crypto checkout stay available as fallback options.</p>
         </div>
         <a href="https://t.me/BananaCleanBot?start=pay" class="pricing-alert__button" data-stars-plan="stars_30d" target="_blank" rel="noopener noreferrer">Pay with Stars</a>
       </div>
@@ -78,7 +78,10 @@
             <li>Format conversion and crop presets</li>
             <li>Works on Gemini + AI Studio</li>
           </ul>
-          <p class="pricing-card__status">Use Telegram Stars or Plisio checkout below.</p>
+          <label class="pricing-card__email-label" for="rollypay-email-monthly">Email for your access key</label>
+          <input class="pricing-card__email" id="rollypay-email-monthly" data-rollypay-email="crypto_30d" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+          <button type="button" class="card-checkout-btn" data-rollypay-plan="crypto_30d" disabled aria-disabled="true">Loading card checkout...</button>
+          <p class="pricing-card__status" data-rollypay-status="crypto_30d">Visa / Mastercard checkout opens on RollyPay after you enter your email.</p>
         </div>
 
         <div class="pricing-card pricing-card--featured">
@@ -92,7 +95,10 @@
             <li>Format conversion and crop presets</li>
             <li>Best value — save 30% vs monthly</li>
           </ul>
-          <p class="pricing-card__status">Use Telegram Stars or Plisio checkout below.</p>
+          <label class="pricing-card__email-label" for="rollypay-email-yearly">Email for your access key</label>
+          <input class="pricing-card__email" id="rollypay-email-yearly" data-rollypay-email="crypto_yearly" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+          <button type="button" class="card-checkout-btn" data-rollypay-plan="crypto_yearly" disabled aria-disabled="true">Loading card checkout...</button>
+          <p class="pricing-card__status" data-rollypay-status="crypto_yearly">Visa / Mastercard checkout opens on RollyPay after you enter your email.</p>
         </div>
 
         <div class="pricing-card pricing-card--video">
@@ -105,11 +111,14 @@
             <li>Audio preserved</li>
             <li>If no mark is found, the file is saved as is</li>
           </ul>
-          <p class="pricing-card__status">Use Telegram Stars or Plisio checkout below.</p>
+          <label class="pricing-card__email-label" for="rollypay-email-video">Email for your access key</label>
+          <input class="pricing-card__email" id="rollypay-email-video" data-rollypay-email="crypto_video_30d" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+          <button type="button" class="card-checkout-btn" data-rollypay-plan="crypto_video_30d" disabled aria-disabled="true">Loading card checkout...</button>
+          <p class="pricing-card__status" data-rollypay-status="crypto_video_30d">Visa / Mastercard checkout opens on RollyPay after you enter your email.</p>
         </div>
       </div>
 
-      <p class="pricing-card__hint" style="text-align:center;margin-top:16px">Card checkout is unavailable while the provider account is pending. Use Telegram Stars or Plisio checkout below.</p>
+      <p class="pricing-card__hint" style="text-align:center;margin-top:16px">Visa / Mastercard card checkout is handled by RollyPay. If it is unavailable, use Telegram Stars or Plisio checkout below.</p>
 
       <div class="pricing-stars-alt pricing-stars-alt--primary">
         <span class="pricing-stars-alt__label">Available now</span>
@@ -185,9 +194,9 @@
         <details class="faq__item">
           <summary>How does payment work?</summary>
           <div class="faq__answer">
+            <p><strong>Card:</strong> Visa / Mastercard card checkout opens a hosted RollyPay payment page. After the signed webhook confirms payment, your key appears here and is sent by email.</p>
             <p><strong>Telegram Stars:</strong> Tap the Image PRO or OMNI Video Stars button, then pay inside @BananaCleanBot.</p>
             <p><strong>Crypto:</strong> Choose Image PRO 30 days ($2.99), Image PRO yearly ($24.99), or OMNI Video 30 days ($9.99). Plisio opens a hosted invoice page, then the key is issued after the webhook confirms payment.</p>
-            <p><strong>Card checkout:</strong> unavailable while the provider account is pending.</p>
           </div>
         </details>
         <details class="faq__item">
@@ -211,8 +220,8 @@
         <details class="faq__item">
           <summary>What subscription plans are available?</summary>
           <div class="faq__answer">
-            <p><strong>Image PRO:</strong> 250 Stars or $2.99 crypto for 30 days; $24.99 yearly.</p>
-            <p><strong>OMNI Video:</strong> 500 Stars or $9.99 crypto for 30 days. This is separate from Image PRO.</p>
+            <p><strong>Image PRO:</strong> Visa / Mastercard card checkout, 250 Stars, or $2.99 crypto for 30 days; $24.99 yearly.</p>
+            <p><strong>OMNI Video:</strong> Visa / Mastercard card checkout, 500 Stars, or $9.99 crypto for 30 days. This is separate from Image PRO.</p>
           </div>
         </details>
         <details class="faq__item">
@@ -415,7 +424,7 @@
       {
         "@type": "Question",
         "name": "How does payment work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Telegram Stars and Plisio crypto checkout are available right now. The key is issued after the provider webhook confirms payment. Card checkout is unavailable while the provider account is pending." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Visa / Mastercard card checkout opens a hosted RollyPay payment page. Telegram Stars and Plisio crypto checkout are also available. The key is issued after the provider webhook confirms payment." }
       },
       {
         "@type": "Question",
@@ -425,7 +434,7 @@
       {
         "@type": "Question",
         "name": "What subscription plans are available?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Image PRO is 250 Stars or $2.99 crypto for 30 days, with $24.99 yearly. OMNI Video is a separate 30-day plan for 500 Stars or $9.99 crypto." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Image PRO supports Visa / Mastercard card checkout, 250 Stars, or $2.99 crypto for 30 days, with $24.99 yearly. OMNI Video is a separate 30-day plan with Visa / Mastercard card checkout, 500 Stars, or $9.99 crypto." }
       },
       {
         "@type": "Question",

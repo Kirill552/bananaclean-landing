@@ -12,6 +12,7 @@ bindBeforeAfterSlider();
 bindInstallLinks();
 bindStickyInstall();
 bindBuyStars();
+bindRollyPayCheckout();
 bindCryptoCheckout();
 trackPricingView();
 
@@ -137,6 +138,159 @@ function bindBuyStars() {
       });
     });
   });
+}
+
+function bindRollyPayCheckout() {
+  const buttons = Array.from(document.querySelectorAll('[data-rollypay-plan]'));
+  if (!buttons.length) return;
+
+  const emailInputs = Array.from(document.querySelectorAll('[data-rollypay-email]')).reduce((acc, input) => {
+    acc[input.dataset.rollypayEmail] = input;
+    return acc;
+  }, {});
+  const statuses = Array.from(document.querySelectorAll('[data-rollypay-status]')).reduce((acc, status) => {
+    acc[status.dataset.rollypayStatus] = status;
+    return acc;
+  }, {});
+  const params = new URLSearchParams(window.location.search || '');
+  const returnOrder = params.get('order') || '';
+  const returnState = params.get('rollypay') || '';
+  let cardPlans = {
+    crypto_30d: { plan: 'crypto_30d', price: '2.99', currency: 'EUR', label: 'Image PRO 30 days' },
+    crypto_yearly: { plan: 'crypto_yearly', price: '24.99', currency: 'EUR', label: 'Image PRO yearly' },
+    crypto_video_30d: { plan: 'crypto_video_30d', price: '9.99', currency: 'EUR', label: 'OMNI Video 30 days' }
+  };
+
+  const getCardPlan = (planId) => cardPlans[planId] || cardPlans.crypto_30d;
+  const setPlanStatus = (planId, message, tone) => {
+    const status = statuses[planId];
+    if (!status) return;
+    status.dataset.tone = tone || '';
+    status.textContent = message;
+  };
+  const setAllStatuses = (message, tone) => {
+    Object.keys(statuses).forEach((planId) => setPlanStatus(planId, message, tone));
+  };
+  const setButtonsEnabled = (enabled, disabledLabel) => {
+    buttons.forEach((button) => {
+      button.disabled = !enabled;
+      button.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+      button.textContent = enabled ? 'Pay by card' : (disabledLabel || 'Loading card checkout...');
+    });
+    Object.keys(emailInputs).forEach((planId) => {
+      emailInputs[planId].disabled = !enabled;
+    });
+  };
+
+  setButtonsEnabled(false);
+
+  fetch(LANDING_API_ORIGIN + '/api/rollypay/config')
+    .then((response) => response.json().then((data) => {
+      if (!response.ok) throw new Error(data.error || 'config_error');
+      return data;
+    }))
+    .then((data) => {
+      cardPlans = (data.plans || []).reduce((acc, plan) => {
+        if (plan.plan && plan.price) acc[plan.plan] = plan;
+        return acc;
+      }, cardPlans);
+      setButtonsEnabled(true);
+      buttons.forEach((button) => {
+        const plan = getCardPlan(button.dataset.rollypayPlan);
+        setPlanStatus(plan.plan, 'Visa / Mastercard via RollyPay hosted checkout.', '');
+      });
+      checkRollyPayReturn();
+    })
+    .catch((error) => {
+      setButtonsEnabled(false, 'Card unavailable');
+      const fallback = error.message === 'rollypay_not_configured'
+        ? 'Visa / Mastercard checkout is ready in the UI and will enable after RollyPay keys are added.'
+        : 'Could not load card checkout. Use Telegram Stars or Plisio checkout below.';
+      setAllStatuses(fallback, error.message === 'rollypay_not_configured' ? '' : 'error');
+      sendLandingAnalytics('card_config_failed', { provider: 'rollypay', reason: error.message || 'unknown' });
+    });
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const plan = getCardPlan(button.dataset.rollypayPlan);
+      const input = emailInputs[plan.plan];
+      const email = input ? input.value.trim() : '';
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setPlanStatus(plan.plan, 'Enter a valid email to receive your access key.', 'error');
+        if (input) input.focus();
+        return;
+      }
+
+      button.disabled = true;
+      button.setAttribute('aria-disabled', 'true');
+      button.textContent = 'Opening checkout...';
+      setPlanStatus(plan.plan, 'Creating RollyPay card checkout...', '');
+      sendLandingAnalytics('buy_card_clicked', { surface: 'pricing', provider: 'rollypay', plan: plan.plan });
+
+      fetch(LANDING_API_ORIGIN + '/api/rollypay/create-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, plan: plan.plan, source: 'pricing_card' })
+      })
+        .then((response) => response.json().then((data) => {
+          if (!response.ok) throw new Error(data.error || 'create_payment_error');
+          return data;
+        }))
+        .then((data) => {
+          if (!data.payUrl) throw new Error('missing_pay_url');
+          window.location.href = data.payUrl;
+        })
+        .catch((error) => {
+          button.disabled = false;
+          button.setAttribute('aria-disabled', 'false');
+          button.textContent = 'Pay by card';
+          setPlanStatus(
+            plan.plan,
+            error.message === 'rollypay_not_configured'
+              ? 'Card checkout is not configured yet. Use Telegram Stars or Plisio checkout below.'
+              : 'Could not create card checkout. Try again or use Telegram Stars.',
+            'error'
+          );
+          sendLandingAnalytics('card_payment_failed', { provider: 'rollypay', reason: error.message || 'unknown' });
+        });
+    });
+  });
+
+  function checkRollyPayReturn() {
+    if (!returnState) return;
+    if (returnState === 'failed') {
+      setAllStatuses('The RollyPay payment was not completed. You can try card checkout again or use Telegram Stars.', 'error');
+      return;
+    }
+    if (returnState !== 'success' || !returnOrder) return;
+
+    setAllStatuses('Checking RollyPay payment status...', '');
+    fetch(LANDING_API_ORIGIN + '/api/rollypay/status?order=' + encodeURIComponent(returnOrder))
+      .then((response) => response.json().then((data) => {
+        if (!response.ok) throw new Error(data.error || 'status_error');
+        return data;
+      }))
+      .then((data) => {
+        if (!data.success || !data.key) {
+          setAllStatuses('Payment is being confirmed. The license key will appear here after the webhook and will be sent by email.', '');
+          sendLandingAnalytics('card_pending_after_return', { provider: 'rollypay', status: data.status || '' });
+          return;
+        }
+        sendLandingAnalytics('card_license_ready', { provider: 'rollypay', plan: data.plan || '' });
+        const cards = document.querySelector('.pricing-cards');
+        const starsAlt = document.querySelector('.pricing-stars-alt--primary');
+        const cryptoAlt = document.getElementById('crypto-checkout');
+        const early = document.querySelector('.pricing-early');
+        if (starsAlt) starsAlt.style.display = 'none';
+        if (cryptoAlt) cryptoAlt.style.display = 'none';
+        if (early) early.style.display = 'none';
+        renderCryptoReady(cards, data);
+      })
+      .catch((error) => {
+        setAllStatuses('Could not check RollyPay payment status. The key will still be sent by email after payment confirmation.', 'error');
+        sendLandingAnalytics('card_status_failed', { provider: 'rollypay', reason: error.message || 'unknown' });
+      });
+  }
 }
 
 function bindCryptoCheckout() {
