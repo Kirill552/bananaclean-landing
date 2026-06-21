@@ -175,7 +175,7 @@ function bindRollyPayCheckout() {
     buttons.forEach((button) => {
       button.disabled = !enabled;
       button.setAttribute('aria-disabled', enabled ? 'false' : 'true');
-      button.textContent = enabled ? 'Pay by card' : (disabledLabel || 'Loading card checkout...');
+      button.textContent = enabled ? 'Pay by card' : (disabledLabel || 'Loading...');
     });
     Object.keys(emailInputs).forEach((planId) => {
       emailInputs[planId].disabled = !enabled;
@@ -202,7 +202,7 @@ function bindRollyPayCheckout() {
       checkRollyPayReturn();
     })
     .catch((error) => {
-      setButtonsEnabled(false, 'Card unavailable');
+      setButtonsEnabled(false, 'Unavailable');
       const fallback = error.message === 'rollypay_not_configured'
         ? 'Visa / Mastercard checkout is ready in the UI and will enable after RollyPay keys are added.'
         : 'Could not load card checkout. Use Telegram Stars or Plisio checkout below.';
@@ -223,7 +223,7 @@ function bindRollyPayCheckout() {
 
       button.disabled = true;
       button.setAttribute('aria-disabled', 'true');
-      button.textContent = 'Opening checkout...';
+      button.textContent = 'Opening...';
       setPlanStatus(plan.plan, 'Creating RollyPay card checkout...', '');
       sendLandingAnalytics('buy_card_clicked', { surface: 'pricing', provider: 'rollypay', plan: plan.plan });
 
