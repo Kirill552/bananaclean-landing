@@ -23,6 +23,11 @@
           serverError.sampleUploadError = true;
           throw serverError;
         }
+        if (data && data.stored === false) {
+          var storageError = new Error(data.reason || 'sample_storage_disabled');
+          storageError.sampleUploadError = true;
+          throw storageError;
+        }
         return data || { ok: true };
       }).catch(function (error) {
         if (error && error.sampleUploadError) throw error;

@@ -45,7 +45,7 @@ assertIncludes('manual-cleanup.html', '/blog/manual-ai-watermark-cleanup');
 assertIncludes('manual-cleanup.html', '/blog/gemini-flow-video-watermark-cleanup');
 assertIncludes('manual-cleanup.html', 'FAQPage');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/config.js');
-assertIncludes('manual-cleanup.html', 'manual-cleanup/data-collector.js');
+assertIncludes('manual-cleanup.html', 'manual-cleanup/data-collector.js?v=20260623-storage-check');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/migan-engine.js');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/migan-engine.js?v=20260618-texture-fallback');
 assertIncludes('manual-cleanup.html', 'manual-cleanup/manual-cleanup.js');

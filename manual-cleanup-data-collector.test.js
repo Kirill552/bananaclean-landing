@@ -186,6 +186,33 @@ async function testNoContentResponseReturnsOk() {
   }
 }
 
+async function testStorageDisabledResponseRejectsUpload() {
+  const previousFetch = global.fetch;
+  global.fetch = async function () {
+    return {
+      ok: true,
+      status: 202,
+      json: async function () {
+        return { ok: true, stored: false, reason: 'storage_disabled' };
+      }
+    };
+  };
+
+  try {
+    await assert.rejects(
+      createCollector().collect({
+        userConsented: true,
+        explicitUploadRequested: true,
+        imageCanvas: createCanvas('image'),
+        maskCanvas: createCanvas('mask')
+      }),
+      /storage_disabled/
+    );
+  } finally {
+    global.fetch = previousFetch;
+  }
+}
+
 async function main() {
   testConfigContract();
   testStaticOrchestratorContract();
@@ -194,6 +221,7 @@ async function main() {
   await testExplicitUploadSendsSample();
   await testNonOkJsonUsesServerError();
   await testNoContentResponseReturnsOk();
+  await testStorageDisabledResponseRejectsUpload();
   console.log('manual cleanup EN data collector contract passed');
 }
 
