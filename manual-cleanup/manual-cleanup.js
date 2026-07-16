@@ -301,6 +301,7 @@
       if (!els.fileInput.files || !els.fileInput.files[0]) return;
       loadSelectedFile(els.fileInput.files[0]);
     });
+    app.bindDropZone(els.uploadPanel, loadSelectedFile);
     els.brushSize.addEventListener('input', function () {
       state.maskEditor.setBrushSize(els.brushSize.value);
       els.brushSizeValue.textContent = els.brushSize.value + 'px';

@@ -33,8 +33,21 @@
     });
   }
 
+  function bindDropZone(dropZone, onFile) {
+    dropZone.addEventListener('dragover', function (event) {
+      event.preventDefault();
+    });
+    dropZone.addEventListener('drop', function (event) {
+      event.preventDefault();
+      var files = event.dataTransfer && event.dataTransfer.files;
+      if (!files || !files[0]) return;
+      onFile(files[0]);
+    });
+  }
+
   app.validateFile = validateFile;
   app.loadImageFile = loadImageFile;
+  app.bindDropZone = bindDropZone;
   root.BananaManualCleanup = app;
   return app;
 });
